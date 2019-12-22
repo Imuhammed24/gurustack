@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block base_content %}
+<section id="reg-pg-section">
+    <div id="reg-pg-content-div">
+        <a id="main-name-a" href="/"><center><h1 id="main-name">Guru<span id="main-name-span-white">stack</span></h1></center></a>
+
+        <center><h2 id="reg-pg-title">Make the most of your educational life</h2></center>
+        <form id="reg-form" method="post" action="{% url 'account:register' %}">
+            {% csrf_token %}
+            {{ form }}
+            <center><p class="text-muted small">By clicking Agree & Join, you agree to the LinkedIn User Agreement, Privacy Policy, and Cookie Policy.</p></center>
+
+            <input id="submit_form-input" type="submit" value="Sign up">
+            <hr>
+            <center><p>Have an account? <a href="{% url 'account:login' %}">Log in</a></p></center>
+        </form>
+        <div id="div-below-reg-form">
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

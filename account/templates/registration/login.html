@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block base_content %}
+
+<header id="login-pg-header">
+    <div id="login-header-content">
+        <ul>
+            <li><a class="navbar-li" href="/">Home</a></li>
+            <li><a class="navbar-li" href="/">About</a></li>
+        </ul>
+        <span id="logo-in-nav"><h4 id="main-name-menu">Guru<span id="main-name-span">stack</span></h4></span>
+    </div>
+</header>
+
+<section id="login-pg-section">
+    <div id="login-section-content">
+        <div id="login-section-content-top-div">
+            <h2 class="font-weight-bold">Log in to Gurustack</h2>
+            {% if messages %}
+            <ul class="messages container">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">
+                        {{ message|safe }}
+                        <a href="{% url 'account:login' %}" class="close">x</a>
+                    </li>
+                {% endfor%}
+            </ul>
+            {% endif %}
+            <form class="mt-4 mb-3" action="{% url 'account:login' %}" method="post">
+                {{ form }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{next}}">
+                <button class="btn main-login-btn mb-3">Log in</button>
+                <span class="mt-5"><p id="forgot-pwd-p" class="d-inline mt-5 forget-pwd-p"><a href="{% url 'account:password_reset' %}">Forgot Password?</a></p></span>
+            </form>
+        </div>
+
+        <div id="login-section-content-top-div2">
+            <p class="d-inline">New to Gurustack?</p> <a id="sign-up-a" class="darkorange-color" href="{% url 'account:register' %}">sign up now >></a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load static %}
+
+<!--<!doctype html>-->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% if html_title %} {{ html_title }} {% else %} {% block html_title %} {% endblock %} {% endif %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="{% static 'jquery/jquery-3.3.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'ajax/popper.min.js' %}" ></script>
+  </head>
+
+  <body>
+    {% block base_content %}
+    {% endblock %}
+  <script>
+      var vid = document.getElementById('myVid');
+      vid.playbackRate = 0.5;
+  </script>
+  </body>
+</html>

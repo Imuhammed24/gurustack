@@ -1,0 +1,1097 @@
+body{
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font-size: 100%;
+   vertical-align: baseline;
+  }
+
+.messages{
+    margin: 5px 0px 0px 0px;
+    padding: 0px;
+}
+
+.messages li{
+    list-style-type: none;
+}
+
+.messages .success{
+    padding: 20px;
+    /*background-color: limegreen;*/;
+    background-color: #ffbb00;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.messages .error{
+    padding: 20px;
+    background-color: darkred;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.messages li a{
+    color: midnightblue;
+}
+
+#main-name-menu{
+    font-family: 'Pacifico', cursive;
+    color: orange;
+    /*margin-top: -9px;*/
+    font-size: 21px;
+    display: inline;
+}
+
+#main-name-span-white{
+    color: white;
+}
+
+.orange-color{
+    color: orange;
+}
+
+
+.darkorange-color{
+    color: darkorange;
+}
+
+.navbar-li{
+    color: midnightblue;
+    padding: 7px 7px;
+    transition: .1s;
+
+}
+
+.navbar-li:hover{
+    text-decoration: unset;
+    border-bottom: 3px solid midnightblue;
+}
+
+
+#lp-section {
+    width: 100%;
+    height: 95%;
+  /*background-image: radial-gradient(circle, orange, darkorange);*/
+  background-image: radial-gradient(circle, midnightblue, #b3ced5);
+}
+
+
+#left-section-div, #right-section-div{
+    height: 100%;
+    display: inline;
+    /*float: left;*/
+    margin: 0% 0px;
+}
+
+
+#left-section-div{
+    width: 40%;
+    background-color: midnightblue;
+    float: left;
+    border: unset;
+    overflow: hidden;
+    opacity: 0.9;
+}
+
+
+
+#right-section-div{
+    width: 60%;
+    background-color: white;
+    float: right;
+    border: unset;
+    opacity: .95;
+}
+
+
+#main-name{
+    font-family: 'Pacifico', cursive;
+    color: orange;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+
+#main-name-span{
+    color: midnightblue;
+}
+
+
+#lp-info-ul{
+    padding: 0px 45px;
+}
+
+
+#lp-info-ul li{
+    list-style-type: none;
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+
+#left-section-div_content-div{
+    margin-top: 38%;
+}
+
+
+.lp-info-img{
+    width: 28px;
+    height: 28px;
+    margin-right: 20px;
+    margin-top: -12px;
+}
+
+#lp-right-content-div{
+    width: 45%;
+    height: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 21%;
+}
+
+.lp-paragraph{
+    font-size: 20px;
+    color: #343434;
+}
+
+.lp-main-btn{
+    padding: 5px 10px;
+    font-weight: bolder;
+    border-radius: 50px;
+    width: 100%;
+    display: block;
+
+}
+
+#lp-main-btn1:hover{
+    /*fill-opacity: 100%;*/
+    background-color: midnightblue;
+
+}
+
+#lp-main-btn2:hover{
+    /*fill-opacity: 100%;*/
+    background-color: midnightblue;
+    color: white;
+    border: unset;
+    /*opacity: .5;*/
+}
+
+#lp-main-btn1{
+    background-color: orange;
+    color: white;
+    margin-bottom: 15px;
+    transition: .7s;
+
+}
+
+#lp-main-btn2{
+    border: 1px solid orange;
+    color: orange;
+    margin-top: 10px;
+    transition: 1.2s;
+}
+
+.midnightblue-text{
+    color: midnightblue;
+}
+
+#lp-footer-ul{
+    padding: 5px 0px 0px 0px;
+    margin: 0px;
+}
+
+#lp-footer-ul li{
+    display: inline;
+    margin-right: 20px;
+    color: lightslategray;
+}
+
+#lp-footer{
+    background-color: rgba(58, 58, 255, 0.08);
+    height: 5%;
+}
+
+#lp-login-form{
+    padding: 30px;
+}
+
+#lp-login-form input{
+    border: 2px solid rgba(25, 25, 112, 0.6);
+    /*border: 2px solid rgba(54, 54, 240, 0.19);*/
+    border-radius: 5px;
+    padding: 3px;
+}
+
+::placeholder{
+        color: midnightblue;
+        opacity: .7;
+
+}
+
+.login-btn{
+    /*text-decoration-style: solid;*/
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1.5px;
+    background-color: midnightblue;
+    transition: .9s;
+
+}
+
+.login-btn:hover{
+    background-color: darkorange;
+    opacity: .8;
+    color: white;
+    font-weight: bold;
+}
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       LOGIN PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+#login-pg-header{
+    height: 6%;
+    min-height: 45px;
+    border-bottom: 1px solid darkgray;
+    overflow: hidden;
+    clear: none;
+}
+
+
+
+#login-header-content{
+    width: 55%;
+    margin:  0px auto;
+}
+
+#login-header-content ul{
+    float: left;
+    display: inline;
+    list-style-type: none;
+    padding: 9px 0px 0px 0px;
+}
+
+#login-header-content ul li{
+    display: inline;
+    margin-right: 20px;
+    /*margin-top: 10px;*/
+    color: #505050;
+    font-family: Kanit;
+}
+
+#login-pg-section{
+    background-color: #EDEDFF;
+    /*background-color: #e6e6ff;*/
+    /*background-color: #b4d1df;*/
+    /*opacity: .1;*/
+    height: 94%;
+    overflow: hidden;
+}
+
+
+#logo-in-nav{
+    padding-top: 9px;
+    float: right;
+}
+
+
+#login-section-content{
+    width: 55%;
+    margin: 8px auto 0px auto;
+    /*padding: 45px 20px 10px 90px;*/
+    height: fit-content;
+    /*height: 355px;*/
+    background-color: white;
+    border: 1px solid lightgray;
+}
+
+
+#login-section-content-top-div{
+    margin: 30px 0px 0px 130px;
+    width: 40%;
+}
+
+#login-section-content-top-div h2{
+    font-family: Kanit;
+    font-size: 28px;
+    letter-spacing: -.5px;
+}
+
+
+#login-section-content-top-div form input{
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #bacadb;
+    border-radius: 3px;
+    padding: 5px 4px;
+    width: 100%;
+}
+
+
+#login-section-content-top-div form input::placeholder{
+    color: #7a7a7a;
+}
+
+
+#login-section-content-top-div form label{
+    margin-bottom: 0px;
+    color: midnightblue;
+    font-family: Kanit;
+}
+
+
+
+
+
+.main-login-btn{
+    background-color: midnightblue;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+    display: block;
+}
+
+.main-login-btn:hover{
+    color: orange;
+    background-color: white;
+    border: 1px solid orange;
+}
+
+
+
+#login-section-content-top-div2{
+    width: 100%;
+    height: 93px;
+    /*opacity: .5;*/
+    background-color: #F3F3FF;
+    padding: 25px 0px 0px 130px;
+
+}
+
+.forget-pwd-p a{
+    color: darkorange;
+    font-weight: bold;
+}
+
+#sign-up-a{
+    font-weight: bold;
+}
+
+
+#sign-up-a:hover{
+    color: midnightblue;
+}
+
+
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       REGISTER PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+
+
+#reg-pg-section{
+    height: 100%;
+    min-height: 760px;
+    padding: 10px 0px;
+    width: 100%;
+    background-color: #4E4EAB;
+    overflow: hidden;
+    /*background-color: #FFB837;*/
+}
+
+
+#reg-pg-content-div{
+    width: 45%;
+    margin: 10px auto 0px auto;
+}
+
+
+#reg-pg-title{
+    color: white;
+    font-family: Kanit;
+}
+
+
+#reg-form{
+    width: 61%;
+    background-color: #EDEDFF;
+    height: fit-content;
+    margin: 0px auto;
+    padding: 8px 12px;
+}
+
+
+#reg-form input{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 5px 4px;
+    color: rgb(61, 76, 131);
+}
+
+
+#reg-form label{
+    margin-bottom: 0px;
+    font-family: Kanit;
+    color: midnightblue;
+    display: block;
+}
+
+#reg-form p{
+    color: midnightblue;
+    font-weight: bold;
+}
+
+
+.helptext{
+    font-size: 13px;
+}
+
+
+#reg-form #submit_form-input{
+    background-color: #FFA500;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 0px;
+    transition: .9s;
+}
+
+
+#reg-form #submit_form-input:hover{
+    background-color: midnightblue;
+
+}
+
+
+/*start of desktop styles */
+
+/*@media screen and (max-width: 991px) {*/
+/*!* start of large tablet styles *!*/
+
+/*}*/
+
+
+
+
+
+
+
+
+@media screen and (max-width: 800px){
+/*!* start of medium tablet styles *!*/
+
+#lp-section {
+    width: 100%;
+    height: unset;
+    /*background-image: radial-gradient(circle, orange, darkorange);*/
+    background-image: radial-gradient(circle, midnightblue, #b3ced5);
+}
+
+
+#left-section-div, #right-section-div{
+    height: unset;
+    display: block;
+    /*float: revert;*/
+    margin: 0% 0px;
+
+}
+#left-section-div{
+    height: 350px;
+    width: 100%;
+    background-color: midnightblue;
+    border: unset;
+    overflow: hidden;
+    opacity: 0.9;
+    padding-bottom: 10px;
+}
+
+#right-section-div{
+    width: 100%;
+    height: 515px;
+    background-color: white;
+    border: unset;
+    opacity: .95;
+}
+
+
+#main-name{
+    font-family: 'Pacifico', cursive;
+    color: orange;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+
+
+#lp-info-ul{
+    padding: 0px 22px;
+}
+
+
+#lp-info-ul li{
+    list-style-type: none;
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 19px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+
+#left-section-div_content-div{
+    margin-top: 5%;
+}
+
+
+.lp-info-img{
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    margin-top: -7px;
+}
+
+#lp-right-content-div{
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+}
+
+
+.lp-main-btn{
+    padding: 5px 10px;
+
+}
+
+
+#lp-footer-ul{
+    padding: 15px 0px 0px 0px;
+    margin: 0px;
+}
+
+#lp-footer-ul li{
+    display: inline;
+    margin-right: 20px;
+    color: lightslategray;
+}
+
+#lp-footer{
+    background-color: rgba(58, 58, 255, 0.08);
+    padding: 40px 0px;
+    height: unset;
+    /*overflow: hidden;*/
+    /*clear: none;*/
+    float: bottom;
+}
+
+#lp-login-form{
+    padding: 20px;
+    display: unset;
+}
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       LOGIN PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+/*#login-pg-header{*/
+/*    height: 6%;*/
+/*    min-height: 45px;*/
+/*    border-bottom: 1px solid darkgray;*/
+/*    overflow: hidden;*/
+/*    clear: none;*/
+/*}*/
+
+
+
+#login-header-content{
+    width: 70%;
+    margin:  auto auto;
+}
+
+#login-header-content ul{
+    float: none;
+    display: none;
+    list-style-type: none;
+    padding: 0px 0px 0px 0px;
+}
+
+
+#login-pg-section{
+    background-color: #EDEDFF;
+    height: 93%;
+    overflow: hidden;
+}
+
+
+#logo-in-nav{
+    padding: 20px 0px 2px 4px;
+    float: left;
+}
+
+
+#login-section-content{
+    width: 70%;
+    margin: 7px auto 0px auto;
+    height: fit-content;
+    background-color: white;
+    border: 1px solid lightgray;
+}
+
+
+#login-section-content-top-div{
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+    width: 100%;
+}
+
+#login-section-content-top-div h2{
+    font-family: Kanit;
+    font-size: 28px;
+    letter-spacing: -.5px;
+}
+
+
+#login-section-content-top-div form input{
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #bacadb;
+    border-radius: 3px;
+    padding: 5px 4px;
+    width: 100%;
+}
+
+
+#login-section-content-top-div form input::placeholder{
+    color: #7a7a7a;
+}
+
+
+#login-section-content-top-div form label{
+    margin-bottom: 0px;
+    color: midnightblue;
+    font-family: Kanit;
+}
+
+
+
+.main-login-btn{
+    background-color: midnightblue;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+    display: block;
+}
+
+.main-login-btn:hover{
+    color: orange;
+    background-color: white;
+    border: 1px solid orange;
+}
+
+
+
+#login-section-content-top-div2{
+    width: 100%;
+    height: 93px;
+    /*opacity: .5;*/
+    background-color: #F3F3FF;
+    padding: 10px;
+}
+
+
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       REGISTER PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+
+#main-name-a center h1{
+    padding: 20px 0px;
+}
+
+
+#reg-pg-section{
+    height: 100%;
+    width: 100%;
+    background-color: #4E4EAB;
+    overflow: hidden;
+}
+
+
+#reg-pg-content-div{
+    width: 70%;
+    height: fit-content;
+}
+
+
+#reg-form{
+    width: 95%;
+    background-color: rgba(237, 237, 255, 0.92);
+    height: fit-content;
+    margin: 0px auto 10px auto;
+}
+
+
+#reg-form input{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 18px;
+    padding: 5px 4px;
+    color: rgb(61, 76, 131);
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 479px) {
+/* start of phone styles */
+
+
+#lp-section {
+    width: 100%;
+    height: unset;
+  /*background-image: radial-gradient(circle, orange, darkorange);*/
+  background-image: radial-gradient(circle, midnightblue, #b3ced5);
+}
+
+
+#left-section-div, #right-section-div{
+    height: unset;
+    display: block;
+    /*float: revert;*/
+    margin: 0% 0px;
+
+}
+#left-section-div{
+    /*height: unset;*/
+    width: 100%;
+    background-color: midnightblue;
+    border: unset;
+    overflow: hidden;
+    opacity: 0.9;
+    padding-bottom: 10px;
+}
+
+
+
+#right-section-div{
+    width: 100%;
+    height: 515px;
+    background-color: white;
+    border: unset;
+    opacity: .95;
+}
+
+
+#main-name{
+    font-family: 'Pacifico', cursive;
+    color: orange;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+
+
+#lp-info-ul{
+    padding: 0px 22px;
+}
+
+
+#lp-info-ul li{
+    list-style-type: none;
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+
+#left-section-div_content-div{
+    margin-top: 5%;
+}
+
+
+.lp-info-img{
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    margin-top: -7px;
+}
+
+#lp-right-content-div{
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+}
+
+
+.lp-main-btn{
+    padding: 3px 10px;
+
+}
+
+
+#lp-footer-ul{
+    padding: 5px 0px 0px 0px;
+    margin: 0px;
+}
+
+#lp-footer-ul li{
+    display: inline;
+    margin-right: 20px;
+    color: lightslategray;
+}
+
+#lp-footer{
+    background-color: rgba(58, 58, 255, 0.08);
+    height: unset;
+    /*overflow: hidden;*/
+    /*clear: none;*/
+    float: bottom;
+}
+
+#lp-login-form{
+    padding: 0px;
+    display: none;
+}
+
+
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       LOGIN PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+/*#login-pg-header{*/
+/*    height: 6%;*/
+/*    min-height: 45px;*/
+/*    border-bottom: 1px solid darkgray;*/
+/*    overflow: hidden;*/
+/*    clear: none;*/
+/*}*/
+
+
+
+#login-header-content{
+    width: 100%;
+    margin:  0px auto;
+}
+
+#login-header-content ul{
+    float: none;
+    display: none;
+    list-style-type: none;
+    padding: 0px 0px 0px 0px;
+}
+
+/*#login-header-content ul li{*/
+/*    display: none;*/
+/*    margin-right: 0px;*/
+/*    color: #505050;*/
+/*    font-family: Kanit;*/
+/*}*/
+
+#login-pg-section{
+    background-color: #EDEDFF;
+    height: 93%;
+    overflow: hidden;
+}
+
+
+#logo-in-nav{
+    padding: 9px 0px 2px 4px;
+    float: left;
+}
+
+
+#login-section-content{
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    /*padding: 45px 20px 10px 90px;*/
+    height: fit-content;
+    background-color: white;
+    border: 1px solid lightgray;
+}
+
+
+#login-section-content-top-div{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+}
+
+#login-section-content-top-div h2{
+    font-family: Kanit;
+    font-size: 28px;
+    letter-spacing: -.5px;
+}
+
+
+#login-section-content-top-div form input{
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #bacadb;
+    border-radius: 3px;
+    padding: 5px 4px;
+    width: 100%;
+}
+
+
+#login-section-content-top-div form label{
+    margin-bottom: 0px;
+    color: midnightblue;
+    font-family: Kanit;
+}
+
+
+#login-section-content-top-div form input::placeholder{
+    color: #7a7a7a;
+}
+
+
+.main-login-btn{
+    background-color: midnightblue;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+    display: block;
+}
+
+.main-login-btn:hover{
+    color: orange;
+    background-color: white;
+    border: 1px solid orange;
+}
+
+
+
+#login-section-content-top-div2{
+    width: 100%;
+    height: 93px;
+    /*opacity: .5;*/
+    background-color: #F3F3FF;
+    padding: 10px;
+}
+
+
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       REGISTER PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+
+#main-name-a center h1{
+    /*background-color: royalblue;*/
+    padding: 20px 0px;
+}
+
+
+#reg-pg-section{
+    height: unset;
+    width: 100%;
+    background-color: #4E4EAB;
+    overflow: hidden;
+    /*background-color: #FFB837;*/
+}
+
+
+#reg-pg-content-div{
+    width: 100%;
+    height: fit-content;
+    /*margin: 0px auto 0px auto;*/
+}
+
+#reg-pg-title{
+    color: white;
+    font-family: Kanit;
+}
+
+
+#reg-form{
+    width: 95%;
+    background-color: rgba(237, 237, 255, 0.92);
+    /*background-color: #EDEDFF;*/
+    height: fit-content;
+    margin: 0px auto 10px auto;
+}
+
+
+#reg-form input{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 18px;
+    padding: 5px 4px;
+    color: rgb(61, 76, 131);
+}
+
+
+#reg-form label{
+    margin-bottom: 0px;
+    font-family: Kanit;
+    color: midnightblue;
+}
+
+#reg-form p{
+    color: midnightblue;
+    font-weight: bold;
+}
+
+
+#reg-form #submit_form-input{
+    background-color: #FFA500;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 0px;
+    transition: .9s;
+}
+
+
+#reg-form #submit_form-input:hover{
+    background-color: midnightblue;
+
+}
+
+
+
+
+}

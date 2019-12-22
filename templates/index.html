@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block base_content %}
+
+<section id="lp-section" style="background: url('{% static "img/lp-bg.png" %}')">
+    <div id="lp-section-wrapper">
+          <div id="right-section-div">
+            <form id="lp-login-form" class="float-right" action="">
+                    <input class="mb-2" id="email" placeholder="email" type="email">
+                    <input class="mb-2" id="password" placeholder="password" type="password">
+                    <button class="btn login-btn">Login</button>
+                </form>
+            <div id="right-section-div_content-div">
+                <div id="lp-right-content-div">
+                    <h1 id="main-name">Guru<span id="main-name-span">stack</span></h1>
+                    <h2 class="midnightblue-text font-weight-bold">See what's happening in your field right now</h2>
+                    <p class="mt-5 lp-paragraph font-weight-bold midnightblue-text">Join Gurustack Today.</p>
+
+                    <a id="lp-main-btn1" class="lp-main-btn" href="{{ 'account/register' }}"><center>Sign Up</center></a>
+                    <a id="lp-main-btn2" class="lp-main-btn" href="{{ 'account/login' }}"><center>Login</center></a>
+                </div>
+            </div>
+        </div>
+          <div id="left-section-div" >
+            <div id="left-section-div_content-div">
+<!--             <center>-->
+                <ul id="lp-info-ul">
+                <li><img class="lp-info-img" src="{% static 'svg/zoom.svg' %}" alt="follow interest"> Follow your interest</li>
+                <li><img class="lp-info-img" src="{% static 'svg/update.svg' %}" alt="latest update"> Know what's the latest update in your area of interest</li>
+                <li><img class="lp-info-img" src="{% static 'svg/solve.svg' %}" alt="get answers"> Get answers to questions you have from gurus in your field</li>
+                <li><img class="lp-info-img" src="{% static 'svg/people.svg' %}" alt="hear things"> Hear what people in your field are discussing</li>
+                <li><img class="lp-info-img" src="{% static 'svg/join-chat.svg' %}" alt="join the talk"> Join the conversation</li>
+            </ul>
+<!--             </center>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="lp-footer">
+    <center>
+        <ul id="lp-footer-ul">
+        <li>about</li>
+        <li>blog</li>
+        <li>developers</li>
+        <li>privacy policy</li>
+        <li>terms</li>
+        <li>settings</li>
+    </ul>
+    </center>
+</footer>
+
+{% endblock %}
