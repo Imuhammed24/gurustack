@@ -67,6 +67,11 @@ def register(request):
             return render(request, 'registration/login.html', {'html_title': 'Gurustack_Login',
                                                                'form': form})
 
+        else:
+            messages.error(request, f'{user_form.errors}')
+            return redirect('account:register')
+            # raise user_form.errors
+
     else:
         form = UserRegistrationForm()
         return render(request, 'account/register.html', {'html_title': 'Join Gurustack Now',

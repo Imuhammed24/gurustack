@@ -2,10 +2,37 @@
 {% load static %}
 
 {% block base_content %}
-<header>
+<section id="account-base-section">
     {% if request.user.is_authenticated %}
-        <a class="btn btn-danger" href="{% url 'account:logout' %}">Logout</a>
-        <a class="btn btn-success" href="{% url 'account:password_change' %}">Change Password</a>
+        <div id="account-base-section-left-div">
+            <p>
+            <span class="float-left" id="logo-in-nav"><h4 id="main-name-menu">Guru<span id="main-name-span">stack</span></h4></span>
+            </p>
+            <ul id="profile-base-ul" class="list-unstyled">
+                <li><img src="{% static 'svg/home.svg' %}" alt="">Home</li>
+                <li><img src="{% static 'svg/explore.svg' %}" alt="">Explore</li>
+                <li><img src="{% static 'svg/notification.svg' %}" alt="">Notifications</li>
+                <li><img src="{% static 'svg/messages.svg' %}" alt="">Messages</li>
+                <li><img src="{% static 'svg/bookmark.svg' %}" alt="">Bookmarks</li>
+                <li><img src="{% static 'svg/profile.svg' %}" alt="">Profile</li>
+                <li><img src="{% static 'svg/more.svg' %}" alt="">More</li>
+            </ul>
+            <a class="mt-3" id="new-post-a">New Post</a>
+        </div>
+
+        <div id="account-base-section-middle-div">
+            <div>
+                <div id="middle-div-top">
+                    <div>
+                        <h1>Home</h1>
+                    </div>
+                </div>
+                <div id="middle-div-middle"></div>
+                <div id="middle-div-bottom"></div>
+            </div>
+        </div>
+
+        <div id="account-base-section-right-div">c</div>
     {% endif %}
-</header>
+</section>
 {% endblock %}

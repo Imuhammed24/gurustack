@@ -17,18 +17,17 @@ body{
 }
 
 .messages .success{
-    padding: 20px;
-    /*background-color: limegreen;*/;
+    padding: 10px;
     background-color: #ffbb00;
-    border-radius: 15px;
+    border-radius: 10px;
     color: white;
     font-weight: bold;
 }
 
 .messages .error{
-    padding: 20px;
-    background-color: darkred;
-    border-radius: 15px;
+    padding: 10px;
+    background-color: #dc0000;
+    border-radius: 10px;
     color: white;
     font-weight: bold;
 }
@@ -412,12 +411,46 @@ body{
     width: 100%;
     background-color: #4E4EAB;
     overflow: hidden;
-    /*background-color: #FFB837;*/
+}
+
+/*##############################*/
+
+.errorlist{
+    padding: 0px 0px 0px 5px;
 }
 
 
+.form-mssg{
+    width: 24.7%;
+    margin: 0px auto;
+    /*background-color: darkorange;*/
+    background-color: midnightblue;
+    opacity: .9;
+    padding: 5px;
+    color: midnightblue;
+    border-radius: 15px;
+}
+
+#messages-div{
+    width: 100%;
+    z-index: +1;
+}
+
+.form-mssg li{
+    padding: 0px;
+    list-style-type: none;
+}
+
+.errorlist li{
+    color: orangered;
+}
+
+/*############################*/
+
+
+
 #reg-pg-content-div{
-    width: 45%;
+    width: 43%;
     margin: 10px auto 0px auto;
 }
 
@@ -480,13 +513,79 @@ body{
 }
 
 
+
+
+/*#####################################*/
+/*#####################################*/
+/*#####################################*/
+/*#####################################       ACCOUNT_BASE PAGE*/
+/*#####################################*/
+/*#####################################*/
+
+#account-base-section{
+    width: 78%;
+    margin: 0px auto;
+}
+
+#account-base-section-left-div{
+    width: 22%;
+    display: inline;
+    float: left;
+}
+
+#account-base-section-middle-div{
+    width: 48%;
+    display: inline;
+    float: left;
+    border: 1px solid #e5e5f7;
+    min-height: 100vh;
+}
+
+#account-base-section-right-div{
+    width: 30%;
+    display: inline;
+    float: right;
+}
+
+
+#profile-base-ul{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+
+#profile-base-ul li{
+    margin-bottom: 25px;
+    font-family: Kanit;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: .5px;
+}
+
+
+#profile-base-ul li img{
+    margin-right: 20px;
+}
+
+
+#new-post-a{
+    background-color: midnightblue;
+    padding: 15px 60px;
+    color: white;
+    font-size: 17px;
+    letter-spacing: .5px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+
+
 /*start of desktop styles */
 
 /*@media screen and (max-width: 991px) {*/
 /*!* start of large tablet styles *!*/
 
 /*}*/
-
 
 
 
@@ -726,6 +825,21 @@ body{
 /*#####################################       REGISTER PAGE*/
 /*#####################################*/
 /*#####################################*/
+
+
+/*##############################*/
+
+.form-mssg{
+    width: 63.5%;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.errorlist{
+    padding: 0px 0px 0px 5px;
+}
+
+/*############################*/
 
 
 #main-name-a center h1{
@@ -1017,6 +1131,21 @@ body{
 /*#####################################       REGISTER PAGE*/
 /*#####################################*/
 /*#####################################*/
+
+
+/*##############################*/
+
+.form-mssg{
+    width: 88.9%;
+    border-radius: 12px;
+    padding: 0px 0px 0px 5px;
+}
+
+.errorlist{
+    padding: 0px 0px 0px 5px;
+}
+
+/*############################*/
 
 
 #main-name-a center h1{

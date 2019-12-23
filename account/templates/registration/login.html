@@ -18,16 +18,16 @@
         <div id="login-section-content-top-div">
             <h2 class="font-weight-bold">Log in to Gurustack</h2>
             {% if messages %}
-            <ul class="messages container">
+            <ul class="messages">
                 {% for message in messages %}
-                    <li class="{{ message.tags }}">
+                    <li class="{{ message.tags }} mb-1">
                         {{ message|safe }}
                         <a href="{% url 'account:login' %}" class="close">x</a>
                     </li>
                 {% endfor%}
             </ul>
             {% endif %}
-            <form class="mt-4 mb-3" action="{% url 'account:login' %}" method="post">
+            <form class="mb-3" action="{% url 'account:login' %}" method="post">
                 {{ form }}
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{next}}">

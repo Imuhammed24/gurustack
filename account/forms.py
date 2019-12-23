@@ -20,3 +20,9 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('passwords don\'t match')
         return cd['password2']
+
+    def clean_email(self):
+        cd = self.cleaned_data
+        if '.edu.' not in cd['email']:
+            raise forms.ValidationError('Please use an academic institution\'s email address')
+        return cd['email']

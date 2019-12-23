@@ -5,13 +5,32 @@
 {% block base_content %}
 <section id="reg-pg-section">
     <div id="reg-pg-content-div">
-        <a id="main-name-a" href="/"><center><h1 id="main-name">Guru<span id="main-name-span-white">stack</span></h1></center></a>
+        <a id="main-name-a" href="/">
+            <center><h1 id="main-name">Guru<span id="main-name-span-white">stack</span></h1></center>
+        </a>
 
         <center><h2 id="reg-pg-title">Make the most of your educational life</h2></center>
+
         <form id="reg-form" method="post" action="{% url 'account:register' %}">
+
+            <div id="messages-div">
+                {% if messages %}
+
+                <ul class="position-absolute form-mssg container">
+                    <center class="text-white">Form Errors</center>
+                    {% for message in messages %}
+                    <li class="mb- font-weight-bold">
+                        {{ message|safe }}
+                        <a href="{% url 'account:register' %}" class="float-right text-white btn btn-danger font-weight-bold">close</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
             {% csrf_token %}
             {{ form }}
-            <center><p class="text-muted small">By clicking Agree & Join, you agree to the LinkedIn User Agreement, Privacy Policy, and Cookie Policy.</p></center>
+            <center><p class="text-muted small">By clicking Agree & Join, you agree to the LinkedIn User Agreement,
+                Privacy Policy, and Cookie Policy.</p></center>
 
             <input id="submit_form-input" type="submit" value="Sign up">
             <hr>
