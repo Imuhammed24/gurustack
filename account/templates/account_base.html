@@ -9,7 +9,7 @@
             <span class="float-left" id="logo-in-nav"><h4 id="main-name-menu">Guru<span id="main-name-span">stack</span></h4></span>
             </p>
             <ul id="profile-base-ul" class="list-unstyled">
-                <li><img src="{% static 'svg/home.svg' %}" alt="">Home</li>
+                <li title="Home"><a class="text-dark no-txt-deco-li" href="{% url 'account:profile' %}"> <img src="{% static 'svg/home.svg' %}" alt=""> Home</a></li>
                 <li><img src="{% static 'svg/explore.svg' %}" alt="">Explore</li>
                 <li><img src="{% static 'svg/notification.svg' %}" alt="">Notifications</li>
                 <li><img src="{% static 'svg/messages.svg' %}" alt="">Messages</li>
@@ -23,11 +23,37 @@
         <div id="account-base-section-middle-div">
             <div>
                 <div id="middle-div-top">
-                    <div>
-                        <h1>Home</h1>
+                    <div id="middle-div-top-content-div">
+                        <h4><a class="text-dark no-txt-deco" href="{% url 'account:profile' %}">Home</a></h4>
+                        <img src="{% static 'svg/info.svg' %}" alt="">
                     </div>
                 </div>
-                <div id="middle-div-middle"></div>
+                
+                <div id="middle-div-middle">
+                    <div id="middle-div-middle-content-div">
+                        <img id="profile-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                        <form id="create-post-form" action="">
+                            <textarea class="create-post-textarea" name="" id="post" placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
+                            <hr id="create-post-hr">
+                            <div id="post-uploaded_images_div">
+                                <img class="post-uploaded-img" id="output"/>
+                            </div>
+                            <span id="create-post-icon-span">
+
+                                <label id="image-label" title="Upload an image" for="image"><img class="upload-img-img" src="{% static 'svg/upload-img.svg' %}" alt="upload image"><span class="upload-img-txt ml-1">Upload Image</span></label>
+                                <input onchange="loadFile(event)" value="image" type="file" id="image" name="image" accept="image/gif, image/jpeg, image/png" hidden>
+
+                                <label id="add-tag-label" title="Tag a user" for="tag"><img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user"><span class="upload-img-txt ml-1">Add Tag</span></label>
+                                <input id="tag" type="text" hidden>
+
+                                <input type="submit" value="post" class="submit-create-post">
+
+                            </span>
+
+                        </form>
+                    </div>
+                </div>
+
                 <div id="middle-div-bottom"></div>
             </div>
         </div>

@@ -20,9 +20,7 @@
   <body>
     {% block base_content %}
     {% endblock %}
-  <script>
-      var vid = document.getElementById('myVid');
-      vid.playbackRate = 0.5;
-  </script>
+    {% include 'textarea-script.html' %}
+    {% include 'display-form-image-script.html' %}
   </body>
 </html>
