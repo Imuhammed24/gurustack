@@ -1,4 +1,3 @@
-from django.conf.urls import url
 from django.urls import path, reverse_lazy
 from .views import login_view, register, account_view, activate
 from django.contrib.auth.views import LogoutView

@@ -1,0 +1,10 @@
+<script>
+         $(function(){
+            $("input[type = 'submit']").click(function(){
+               var $fileUpload = $("input[type='file']");
+               if (parseInt($fileUpload.get(0).files.length) > 5){
+                  alert("You are only allowed to upload a maximum of 5 files");
+               }
+            });
+         });
+</script>

@@ -8,9 +8,9 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-
 from account.tokens import account_activation_token
 from .forms import LoginForm, UserRegistrationForm
+from posts.forms import PostForm
 # Create your views here.
 
 
@@ -36,8 +36,11 @@ def login_view(request):
 
 @login_required
 def account_view(request):
+    form = PostForm()
     context = {'display_section': 'dashboard',
-               'html_title': f'{request.user} account'}
+               'html_title': f'{request.user} account',
+               }
+
     return render(request, 'account_base.html', context)
 
 

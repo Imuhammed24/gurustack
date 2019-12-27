@@ -15,7 +15,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True)
     profile_photo = models.ImageField(upload_to='profile_pictures/', blank=True)
     bio = models.TextField(blank=True)
-    interests = TaggableManager(blank=True, verbose_name='interests')
+    interests = TaggableManager(blank=True, verbose_name='Interests')
     nationality = models.CharField(max_length=32, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
     institute = models.CharField(max_length=100, blank=True)

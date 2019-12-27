@@ -1,6 +1,19 @@
 <script>
     var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
+
+	var image1 = document.getElementById('output1');
+	image1.src = URL.createObjectURL(event.target.files[0]);
+
+	var image2 = document.getElementById('output2');
+	image2.src = URL.createObjectURL(event.target.files[1]);
+
+	var image3 = document.getElementById('output3');
+	image3.src = URL.createObjectURL(event.target.files[2]);
+
+	var image4 = document.getElementById('output4');
+	image4.src = URL.createObjectURL(event.target.files[3]);
+
+	var image5 = document.getElementById('output5');
+	image5.src = URL.createObjectURL(event.target.files[4]);
 };
 </script>
