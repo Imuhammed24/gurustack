@@ -10,7 +10,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from account.tokens import account_activation_token
 from .forms import LoginForm, UserRegistrationForm
-from posts.forms import PostForm
+from posts.forms import PostForm, TagForm
 # Create your views here.
 
 
@@ -39,7 +39,7 @@ def account_view(request):
     form = PostForm()
     context = {'display_section': 'dashboard',
                'html_title': f'{request.user} account',
-               }
+               'tag_form': TagForm}
 
     return render(request, 'account_base.html', context)
 

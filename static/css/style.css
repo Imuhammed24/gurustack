@@ -643,7 +643,7 @@ body{
     /*scrollbar-base-color: white;*/
     width: 90%;
     resize: unset;
-    min-height: 50px;
+    min-height: 70px;
     max-height: 250px;
     padding: 0px 15px;
     border: unset;;
@@ -655,13 +655,29 @@ body{
     font-size: 20px;
 }
 
-#create-post-hr{
-    margin-bottom: 12px;
+#id_tags::placeholder{
+    color: gray;
+    font-size: 14px;
 }
 
-#create-post-icon-span{
-    /*margin-top: 15px;*/
-    /*display: block;*/
+
+#id_tags{
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border: lightblue;
+    width: 100%;
+    padding: 2px 7px;
+    border-radius: 5px;
+    box-shadow: rgba(173, 216, 230, 0.38) 0px 2px 7px 8px;
+}
+
+#tags-span{
+    display: none;
+}
+
+#create-post-hr{
+    margin-bottom: 7px;
 }
 
 #image-label, #add-tag-label{
@@ -676,7 +692,6 @@ body{
 }
 
 .upload-img-txt{
-    /*font-weight: bold;*/
     color: midnightblue;
     font-size: 14px;
     font-family: Kanit;
@@ -693,9 +708,9 @@ body{
     border: unset;
     font-weight: bold;
     font-size: 17px;
-    border-radius: 25px;
+    border-radius: 13px;
     float: right;
-    margin-top: -5px;
+    margin-top: -8px;
     font-family: Kanit;
     letter-spacing: .5px;
     transition: .9s;
@@ -717,17 +732,20 @@ body{
 }
 
 .post-uploaded-img{
-    border: unset;
-    max-height: 100px;
-    max-width: 100px;
+    background-color: rgba(173, 216, 230, 0.14);;
+    /*border: 1px solid rgba(173, 216, 230, 0.39);*/
+    margin-right: 9px;
+    /*max-height: 100px;*/
+    /*max-width: 100px;*/
     min-height: 0px;
     min-width: 0px;
 }
 
 #post-uploaded_images_div{
-    display: grid;
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 6px;
     margin-left: 10px;
+    /*display: none;*/
 }
 
 

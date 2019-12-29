@@ -1,19 +1,29 @@
 <script>
-    var loadFile = function(event) {
+    var loadFile = function (event) {
 
-	var image1 = document.getElementById('output1');
-	image1.src = URL.createObjectURL(event.target.files[0]);
+        var image1 = document.getElementById('output1');
+        image1.width = 100;
+        image1.height = 100;
+        image1.src = URL.createObjectURL(event.target.files[0]);
 
-	var image2 = document.getElementById('output2');
-	image2.src = URL.createObjectURL(event.target.files[1]);
+        var image2 = document.getElementById('output2');
+        image2.src = URL.createObjectURL(event.target.files[1]);
+        image2.width = 100;
+        image2.height = 100;
 
-	var image3 = document.getElementById('output3');
-	image3.src = URL.createObjectURL(event.target.files[2]);
+        var image3 = document.getElementById('output3');
+        image3.src = URL.createObjectURL(event.target.files[2]);
+        image3.width = 100;
+        image3.height = 100;
 
-	var image4 = document.getElementById('output4');
-	image4.src = URL.createObjectURL(event.target.files[3]);
+        var image4 = document.getElementById('output4');
+        image4.src = URL.createObjectURL(event.target.files[3]);
+        image4.width = 100;
+        image4.height = 100;
 
-	var image5 = document.getElementById('output5');
-	image5.src = URL.createObjectURL(event.target.files[4]);
-};
+        var image5 = document.getElementById('output5');
+        image5.src = URL.createObjectURL(event.target.files[4]);
+        image5.width = 100;
+        image5.height = 100;
+    };
 </script>

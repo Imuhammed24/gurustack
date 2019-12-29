@@ -36,32 +36,42 @@
                             {% csrf_token %}
 
                             <textarea class="create-post-textarea" name="article" id="post" placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
+                            <span id="tags-span">
+                            <br> <br>
+                            {{ tag_form.as_p}}
+<!--                            <input name="tags" id="tags" placeholder="Add tags (tag1, tag2, ...)" type="text">-->
+                            </span>
                             <hr id="create-post-hr">
-                            <div id="post-uploaded_images_div">
-                                <img class="post-uploaded-img output" id="output1"/>
-                                <img class="post-uploaded-img output" id="output2"/>
-                                <img class="post-uploaded-img output" id="output3"/>
-                                <img class="post-uploaded-img output" id="output4"/>
-                                <img class="post-uploaded-img output" id="output5"/>
+                            <div class="clearfix d-block" id="post-uploaded_images_div">
+                                <img class="post-uploaded-img" id="output1"/>
+                                <img class="post-uploaded-img" id="output2"/>
+                                <img class="post-uploaded-img" id="output3"/>
+                                <img class="post-uploaded-img" id="output4"/>
+                                <img class="post-uploaded-img" id="output5"/>
                             </div>
+
+                            <div class="clearfix d-block mt-3">
                             <span id="create-post-icon-span">
 
                                 <label id="image-label" title="Upload an image" for="image"><img class="upload-img-img" src="{% static 'svg/upload-img.svg' %}" alt="upload image"><span class="upload-img-txt ml-1">Upload Image</span></label>
-                                <input multiple onchange="loadFile(event)" value="image" type="file" id="image" name="image" accept="image/gif, image/jpeg, image/png" hidden>
+                                <input multiple onchange="loadFile(event)" value="image" type="file" id="image" name="image" accept="image/gif, image/jpeg, image/jpg, image/png" hidden>
 
-                                <label id="add-tag-label" title="Tag a user" for="tag"><img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user"><span class="upload-img-txt ml-1">Add Tag</span></label>
-                                <input name="tags" id="tag" type="text" hidden>
+                                <label onclick="myFunction()" id="add-tag-label" title="Tag a user" for="tags"><img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user"><span class="upload-img-txt ml-1">Add Tag</span></label>
+<!--                                <input name="tags" id="tag" type="text" hidden>-->
 
                                 <input type="submit" value="post" class="submit-create-post">
 
                             </span>
+                            </div>
 
                         </form>
                     </div>
                 </div>
 
                 <div id="middle-div-bottom">
+                    <form action="">
 
+                    </form>
                 </div>
             </div>
         </div>
