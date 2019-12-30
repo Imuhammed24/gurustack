@@ -788,18 +788,39 @@ body{
 }
 
 #post-info{
-    display: inline;
+    display: inline-table;
     float: left;
 }
 
 #post-info ul{
     list-style-type: none;
     padding: 0px;
+    margin-bottom: 0px;
 }
 
 #post-info ul li{
     display: inline;
     margin-right: 3px;
+    font-family: Kanit;
+}
+
+#post-meta-uname-li, #post-meta-time-li{
+    color: gray;
+    font-size: 18px;
+}
+
+#post-meta-uname-li a, #post-meta-time-li a{
+    text-decoration: none;
+    color: gray;
+}
+
+#post-meta-uname-li:after{
+    content: ' -';
+}
+
+#post-article{
+    display: inline;
+    font-family: Kanit;
 }
 
 
