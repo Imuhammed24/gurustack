@@ -3,14 +3,16 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.forms import modelformset_factory
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from account.tokens import account_activation_token
+from posts.models import Images
 from .forms import LoginForm, UserRegistrationForm
-from posts.forms import PostForm, TagForm
+from posts.forms import PostForm, TagForm, ImageForm
 # Create your views here.
 
 
@@ -36,10 +38,12 @@ def login_view(request):
 
 @login_required
 def account_view(request):
-    form = PostForm()
+    image_form = ImageForm()
     context = {'display_section': 'dashboard',
                'html_title': f'{request.user} account',
-               'tag_form': TagForm}
+               'tag_form': TagForm,
+               'image_form': image_form
+               }
 
     return render(request, 'account_base.html', context)
 

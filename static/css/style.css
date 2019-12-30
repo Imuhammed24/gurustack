@@ -528,6 +528,15 @@ body{
     padding: 3px;
 }
 
+#author-profile-pix{
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    background-color: #eeeeee;
+    padding: 3px;
+    /*margin: 10px;*/
+}
+
 #account-base-section{
     width: 78%;
     margin: 0px auto;
@@ -681,7 +690,7 @@ body{
 }
 
 #image-label, #add-tag-label{
-    padding: 5px  8px 6px 8px;
+    padding: 8px  8px 6px 8px;
     background-color: rgba(173, 216, 230, 0.32);
     border-radius: 15px;
     margin-right: 7px;
@@ -698,7 +707,7 @@ body{
 }
 
 .upload-img-img{
-    margin-top: -4px;
+    margin-top: -2px;
 }
 
 .submit-create-post{
@@ -708,7 +717,7 @@ body{
     border: unset;
     font-weight: bold;
     font-size: 17px;
-    border-radius: 13px;
+    border-radius: 20px;
     float: right;
     margin-top: -8px;
     font-family: Kanit;
@@ -746,6 +755,51 @@ body{
     margin-bottom: 6px;
     margin-left: 10px;
     /*display: none;*/
+}
+
+#welcome-content{
+    margin-top: 25px;
+}
+
+#welcome-content h3{
+    font-weight: bold;
+    font-family: Kanit;
+}
+
+#welcome-content p{
+    font-family: Kanit;
+    color: gray;
+    padding-bottom: 13px;
+}
+
+#welcome-content a{
+    font-weight: bold;
+    font-family: Kanit;
+    color: white;
+    background-color: midnightblue;
+    border-radius: 20px;
+    padding: 8px 18px;
+}
+
+#post-author-img-div{
+    display: inline;
+    float: left;
+    margin-right: 15px;
+}
+
+#post-info{
+    display: inline;
+    float: left;
+}
+
+#post-info ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+#post-info ul li{
+    display: inline;
+    margin-right: 3px;
 }
 
 

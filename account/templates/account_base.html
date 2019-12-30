@@ -36,10 +36,11 @@
                             {% csrf_token %}
 
                             <textarea class="create-post-textarea" name="article" id="post" placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
+
                             <span id="tags-span">
+
                             <br> <br>
                             {{ tag_form.as_p}}
-<!--                            <input name="tags" id="tags" placeholder="Add tags (tag1, tag2, ...)" type="text">-->
                             </span>
                             <hr id="create-post-hr">
                             <div class="clearfix d-block" id="post-uploaded_images_div">
@@ -54,10 +55,9 @@
                             <span id="create-post-icon-span">
 
                                 <label id="image-label" title="Upload an image" for="image"><img class="upload-img-img" src="{% static 'svg/upload-img.svg' %}" alt="upload image"><span class="upload-img-txt ml-1">Upload Image</span></label>
-                                <input multiple onchange="loadFile(event)" value="image" type="file" id="image" name="image" accept="image/gif, image/jpeg, image/jpg, image/png" hidden>
+                                {{ image_form }}
 
                                 <label onclick="myFunction()" id="add-tag-label" title="Tag a user" for="tags"><img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user"><span class="upload-img-txt ml-1">Add Tag</span></label>
-<!--                                <input name="tags" id="tag" type="text" hidden>-->
 
                                 <input type="submit" value="post" class="submit-create-post">
 
@@ -69,9 +69,11 @@
                 </div>
 
                 <div id="middle-div-bottom">
-                    <form action="">
+                    <div id="middle-div-bottom-content">
+<!--                        {% include 'account/user/welcome_content.html'%}-->
+                        {% include 'posts/list.html' %}
 
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
