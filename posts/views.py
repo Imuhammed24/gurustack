@@ -30,6 +30,7 @@ def create_post(request):
                 form.post = post
                 form.save()
                 tag_form.save_m2m()
+
             return redirect('account:profile')
 
     return redirect('account:profile')

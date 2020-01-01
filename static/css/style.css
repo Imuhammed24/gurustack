@@ -781,6 +781,13 @@ body{
     padding: 8px 18px;
 }
 
+#post-wrapper{
+    border-bottom: 1px solid #e5e5f7;
+    overflow: hidden;
+    clear: none;
+    padding-bottom: 10px;
+}
+
 #post-author-img-div{
     display: inline;
     float: left;
@@ -821,6 +828,28 @@ body{
 #post-article{
     display: inline;
     font-family: Kanit;
+    padding-right: 6px;
+}
+
+.post-img-gallery-img{
+    width: 100%;
+    /*width: 485px;*/
+    /*height: 350px;*/
+    /*margin: 0px auto;*/
+    padding: 10px 0px;
+    border-radius: 5%;
+}
+
+#like-nd-comment-bar a{
+    text-decoration:  none;
+    color: gray;
+    font-weight: bold;
+
+}
+
+#like-nd-comment-bar .mr{
+    margin-right: 14%;
+    /*padding-bottom: 20px;*/
 }
 
 

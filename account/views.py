@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from account.tokens import account_activation_token
-from posts.models import Images
+from posts.models import Post
 from .forms import LoginForm, UserRegistrationForm
 from posts.forms import PostForm, TagForm, ImageForm
 # Create your views here.
@@ -39,10 +39,12 @@ def login_view(request):
 @login_required
 def account_view(request):
     image_form = ImageForm()
+    posts = Post.objects.all()
     context = {'display_section': 'dashboard',
                'html_title': f'{request.user} account',
                'tag_form': TagForm,
-               'image_form': image_form
+               'image_form': image_form,
+               'posts': posts
                }
 
     return render(request, 'account_base.html', context)
