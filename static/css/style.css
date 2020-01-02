@@ -819,6 +819,7 @@ body{
 #post-meta-uname-li a, #post-meta-time-li a{
     text-decoration: none;
     color: gray;
+    font-size: 17px;
 }
 
 #post-meta-uname-li:after{

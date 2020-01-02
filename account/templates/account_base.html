@@ -32,7 +32,7 @@
                 <div id="middle-div-middle">
                     <div id="middle-div-middle-content-div">
                         <img id="profile-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
-                        <form id="create-post-form" method="post" action="{% url 'posts:create-post' %}" enctype="multipart/form-data">
+                        <form onsubmit="required()" id="create-post-form" method="post" action="{% url 'posts:create-post' %}" enctype="multipart/form-data">
                             {% csrf_token %}
 
                             <textarea class="create-post-textarea" name="article" id="post" placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
