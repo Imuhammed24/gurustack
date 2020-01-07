@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from io import BytesIO
@@ -15,6 +17,9 @@ class Post(models.Model):
     # tags = TaggableManager(blank=True)
     # image = models.ImageField(upload_to='post-images/%Y/%m/%d', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, db_index=True, null=True)
+    users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                        related_name='images_likes',
+                                        blank=True)
 
     class Meta:
         ordering = ['-created']
@@ -29,6 +34,16 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', args=[self.id])
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField(blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', null=True)
+    date = models.DateTimeField(default=timezone.now, blank=False)
+
+    def __str__(self):
+        return self.content[:10]
 
 
 class Tag(models.Model):
@@ -60,7 +75,7 @@ class Images(models.Model):
         verbose_name_plural = 'Images'
 
     def save(self, *args, **kwargs):
-        self.thumbnail = make_thumbnail(self.image, size=(485, 485))
+        self.thumbnail = make_thumbnail(self.image, size=(70, 70))
 
         super().save(*args, **kwargs)
 

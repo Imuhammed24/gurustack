@@ -786,6 +786,12 @@ body{
     overflow: hidden;
     clear: none;
     padding-bottom: 10px;
+    transition: .9s;
+}
+
+#post-wrapper:hover{
+    background-color: rgba(193, 240, 255, 0.27);
+    /*background-color: rgba(255, 165, 0, 0.15);*/
 }
 
 #post-author-img-div{
@@ -835,10 +841,15 @@ body{
 .post-img-gallery-img{
     width: 100%;
     /*width: 485px;*/
-    /*height: 350px;*/
+    max-height: 450px;
     /*margin: 0px auto;*/
     padding: 10px 0px;
     border-radius: 5%;
+}
+
+.post-images-div{
+        /*background-color: #f4f4f4;*/
+    margin-bottom: 5px;
 }
 
 #like-nd-comment-bar a{
@@ -849,9 +860,56 @@ body{
 }
 
 #like-nd-comment-bar .mr{
-    margin-right: 14%;
+    margin-right: 11%;
     /*padding-bottom: 20px;*/
 }
+
+/*#######################################################*/
+/*     COMMENT SECTION          */
+/*#######################################################*/
+
+.comment-section{
+    display: none;
+}
+
+.comment-section textarea{
+    border: unset;
+    margin: 15px 0px;
+    box-shadow: rgba(82, 171, 255, 0.17) 0px 2px 7px 8px;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+    /*height: 180px;*/
+}
+
+.comment-section label{
+    display: none;
+    color: midnightblue;
+}
+
+.comment-section *{
+    font-family: Kanit;
+}
+
+.comment-section textarea::placeholder{
+    color: gray;
+    font-size: 20px;
+}
+
+#id_content{
+    display: block;
+    margin-bottom: 10px;
+}
+
+#comment-button{
+    background-color: orange;
+    padding: 10px 20px;
+    border: none;
+    color: midnightblue;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 
 
 /*start of desktop styles */

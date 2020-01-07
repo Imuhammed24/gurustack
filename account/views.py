@@ -4,15 +4,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.forms import modelformset_factory
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.views.decorators.http import require_POST
+
 from account.tokens import account_activation_token
 from posts.models import Post
 from .forms import LoginForm, UserRegistrationForm
-from posts.forms import PostForm, TagForm, ImageForm
+from posts.forms import PostForm, TagForm, ImageForm, CommentForm
+
+
 # Create your views here.
 
 
@@ -39,12 +43,23 @@ def login_view(request):
 @login_required
 def account_view(request):
     image_form = ImageForm()
+    comment_form = CommentForm()
     posts = Post.objects.all()
+    for post in posts:
+        if post.users_like.filter(id=request.user.id).exists():
+            is_liked = True
+        else:
+            is_liked = False
+        # post.total_no_likes = post.users_like.count
+
     context = {'display_section': 'dashboard',
                'html_title': f'{request.user} account',
                'tag_form': TagForm,
                'image_form': image_form,
-               'posts': posts
+               'posts': posts,
+               'comment_form': comment_form,
+               'is_liked': is_liked,
+               # 'total_no_likes': post.users_like.count,
                }
 
     return render(request, 'account_base.html', context)
@@ -100,3 +115,24 @@ def activate(request, uidb64, token):
         return redirect('account:profile')
     else:
         return HttpResponse('Activation link is invalid')
+
+
+@login_required
+@require_POST
+def post_like(request):
+    post_id = request.POST.get('post_id')
+    post = get_object_or_404(Post, id=post_id)
+    if post.users_like.filter(id=request.user.id).exists():
+        post.users_like.remove(request.user)
+        is_liked = False
+    else:
+        post.users_like.add(request.user)
+        is_liked = True
+
+    context = {'post': post,
+               'is_liked': is_liked,
+               # 'total_no_likes': post.users_like.count,
+               }
+    if request.is_ajax():
+        html = render_to_string('posts/like_section.html', context, request=request)
+        return JsonResponse({'form': html})

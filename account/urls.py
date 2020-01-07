@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import login_view, register, account_view, activate
+from .views import login_view, register, account_view, activate, post_like
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 
@@ -9,7 +9,9 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('like-post/', post_like, name='like-post'),
     path('profile/', account_view, name='profile'),
+
 
     path('password-change/', auth_views.PasswordChangeView.as_view(
         template_name='registration/password_change_form.html',

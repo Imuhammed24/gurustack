@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Tag, Images
+from .models import Post, Tag, Images, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -26,3 +26,12 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Images
         fields = ['image']
+
+
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(label='',
+                              widget=forms.Textarea(attrs={'placeholder': 'Type your response', 'rows': '1'}))
+
+    class Meta:
+        model = Comment
+        fields = ['content']

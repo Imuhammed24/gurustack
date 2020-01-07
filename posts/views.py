@@ -1,17 +1,21 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.forms import modelformset_factory
-from django.shortcuts import render, redirect
-from .forms import ImageForm, TagForm
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
+
+from .forms import ImageForm, TagForm, CommentForm
 from .models import Post, Images
 
 
-@login_required()
+@login_required
 def create_post(request):
     if request.method == 'POST':
         print('check post')
 
-        if request.FILES.get('image') or request.POST.get('article'):
+        if request.FILES.get('image') != '' or request.POST.get('article') != '':
             post = Post()
             post.article = request.POST.get('article')
             post.user = request.user
@@ -34,3 +38,38 @@ def create_post(request):
             return redirect('account:profile')
 
     return redirect('account:profile')
+
+
+@login_required
+def add_comment(request, pk):
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        if comment_form.is_valid():
+            obj = comment_form.save(commit=False)
+            post = Post.objects.get(id=pk)
+            obj.post = post
+            obj.user = request.user
+            obj.save()
+            return redirect('account:profile')
+    return
+
+
+# @login_required
+# @require_POST
+# def post_like(request):
+#     post_id = request.POST.get('post_id')
+#     post = get_object_or_404(Post, id=post_id)
+#     if post.users_like.filter(id=request.user.id).exists():
+#         post.users_like.remove(request.user)
+#         is_liked = False
+#     else:
+#         post.users_like.add(request.user)
+#         is_liked = True
+#
+#     context = {'post': post,
+#                'is_liked': is_liked,
+#                'total_no_likes': post.users_like.count,
+#                'users_like': post.users_like.all}
+#     if request.is_ajax():
+#         html = render_to_string('like_section.html', context, request=request)
+#         return JsonResponse({'form': html})
