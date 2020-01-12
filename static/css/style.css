@@ -572,6 +572,14 @@ body{
     margin-bottom: 30px;
 }
 
+#profile-base-ul li a{
+    color: #2e2e2e;
+}
+
+.active-section{
+    color: orange;
+ }
+
 
 #profile-base-ul li{
     margin-bottom: 25px;

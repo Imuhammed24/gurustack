@@ -9,14 +9,14 @@
             <span class="float-left" id="logo-in-nav"><h4 id="main-name-menu">Guru<span id="main-name-span">stack</span></h4></span>
         </p>
         <ul id="profile-base-ul" class="list-unstyled">
-            <li title="Home"><a class="text-dark no-txt-deco-li" href="{% url 'account:home' %}"> <img
+            <li title="Home"><a class="no-txt-deco-li {% if display_section == 'home' %}active-section{% endif %}" href="{% url 'account:home' %}"> <img
                     src="{% static 'svg/home.svg' %}" alt=""> Home</a></li>
             <li><img src="{% static 'svg/explore.svg' %}" alt="">Explore</li>
             <li><img src="{% static 'svg/notification.svg' %}" alt="">Notifications</li>
             <li><img src="{% static 'svg/messages.svg' %}" alt="">Messages</li>
             <li><img src="{% static 'svg/bookmark.svg' %}" alt="">Bookmarks</li>
             <li>
-                <a class="text-dark no-txt-deco-li" href="{% url 'account:home' %}">
+                <a class="text-dark no-txt-deco-li {% if display_section == 'profile' %}active-section{% endif %}" href="{% url 'account:profile' %}">
                     <img src="{% static 'svg/profile.svg' %}" alt="">Profile
                 </a>
             </li>
