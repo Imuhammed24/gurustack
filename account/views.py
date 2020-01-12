@@ -29,7 +29,7 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('account:profile')
+                    return redirect('account:home')
                 else:
                     return HttpResponse('Disabled Account')
             else:
@@ -112,7 +112,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('account:profile')
+        return redirect('account:home')
     else:
         return HttpResponse('Activation link is invalid')
 

@@ -10,7 +10,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('like-post/', post_like, name='like-post'),
-    path('profile/', account_view, name='profile'),
+    path('home/', account_view, name='home'),
 
 
     path('password-change/', auth_views.PasswordChangeView.as_view(

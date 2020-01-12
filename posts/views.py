@@ -35,9 +35,9 @@ def create_post(request):
                 form.save()
                 tag_form.save_m2m()
 
-            return redirect('account:profile')
+            return redirect('account:home')
 
-    return redirect('account:profile')
+    return redirect('account:home')
 
 
 @login_required
@@ -50,7 +50,7 @@ def add_comment(request, pk):
             obj.post = post
             obj.user = request.user
             obj.save()
-            return redirect('account:profile')
+            return redirect('account:home')
     return
 
 
