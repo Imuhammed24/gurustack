@@ -552,8 +552,12 @@ body{
     width: 48%;
     display: inline;
     float: left;
-    border: 1px solid #e5e5f7;
+
     min-height: 100vh;
+}
+
+#account-base-section-middle-div-content{
+    border: 1px solid #e5e5f7;
 }
 
 #account-base-section-right-div{
@@ -606,7 +610,7 @@ body{
 }
 
 .no-txt-deco-li{
-    transition: .7s;
+    transition: .3s;
 }
 
 .no-txt-deco-li:hover{
@@ -643,19 +647,28 @@ body{
     float: left;
 }
 
+.create-post-textarea:focus{
+    outline: none;
+    border: 2px solid lightgray;
+    /*background-color: whitesmoke;*/
+    /*background-color: rgba(173, 216, 230, 0.11);*/
+    /*background-color: rgba(102, 141, 255, 0.06);*/
+}
+
 .create-post-textarea{
     margin-top: -1px;
+    margin-left: 9px;
     border: unset;
     clear-side: right;
     overflow: hidden;
     resize: none;
-    /*scrollbar-base-color: white;*/
-    width: 90%;
-    resize: unset;
+    width: 85%;
+    /*resize: unset;*/
     min-height: 70px;
     max-height: 250px;
-    padding: 0px 15px;
-    border: unset;;
+    padding: 9px 7px;
+    box-shadow: rgba(102, 141, 255, 0.07) 0px 2px 7px 8px;
+
 }
 
 .create-post-textarea::placeholder{
@@ -669,16 +682,33 @@ body{
     font-size: 14px;
 }
 
+#tags-span label{
+    font-size: 15px;
+}
+
+#tags-span label, #id_tags{
+    margin-top: 15px;
+}
+
+#tags-span .helptext{
+    display: block;
+}
+
+#id_tags:focus{
+    border: 2px solid lightgray;
+}
 
 #id_tags{
-    color: black;
+    font-weight: bold;
     font-size: 14px;
     font-weight: bold;
     border: lightblue;
-    width: 100%;
+    width: 85%;
+    margin-right: 3.5%;
+    float: right;
     padding: 2px 7px;
     border-radius: 5px;
-    box-shadow: rgba(173, 216, 230, 0.38) 0px 2px 7px 8px;
+    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
 }
 
 #tags-span{
@@ -786,7 +816,7 @@ body{
     overflow: hidden;
     clear: none;
     padding-bottom: 10px;
-    transition: .9s;
+    transition: .5s;
 }
 
 #post-wrapper:hover{
@@ -801,7 +831,8 @@ body{
 }
 
 #post-info{
-    display: inline-table;
+    display: inline;
+    width: 85%;
     float: left;
 }
 
@@ -848,7 +879,6 @@ body{
 }
 
 .post-images-div{
-        /*background-color: #f4f4f4;*/
     margin-bottom: 5px;
 }
 
@@ -856,12 +886,31 @@ body{
     text-decoration:  none;
     color: gray;
     font-weight: bold;
-
 }
 
 #like-nd-comment-bar .mr{
-    margin-right: 11%;
+    margin-right: 27%;
     /*padding-bottom: 20px;*/
+}
+
+.blogBox{
+    display: none;
+}
+
+#loadMore-div{
+    background-color: orange;
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#loadMore{
+    color: midnightblue;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-family: Kanit, sans-serif, monospace;
 }
 
 /*#######################################################*/
@@ -901,7 +950,7 @@ body{
     margin-bottom: 10px;
 }
 
-#comment-button{
+.comment-button{
     background-color: orange;
     padding: 10px 20px;
     border: none;

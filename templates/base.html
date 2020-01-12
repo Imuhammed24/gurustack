@@ -16,118 +16,6 @@
     <script src="{% static 'jquery/jquery.min.js' %}"></script>
     <script src="{% static 'ajax/popper.min.js' %}"></script>
 
-    <!--    <script>-->
-    <!--        function showHideComment() {-->
-    <!--            -->
-    <!--        }-->
-    <!--    </script>-->
-
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function (event) {-->
-
-<!--            $(document).on('click', '#', function (event) {-->
-<!--                event.preventDefault();-->
-<!--                var pk = $(this).attr('value')-->
-<!--                $.ajax({-->
-<!--                    type: 'POST',-->
-<!--                    url: "{% url 'account:like-post' %}",-->
-<!--                    data: {'post_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},-->
-<!--                    dataType: 'json',-->
-<!--                    success: function (response) {-->
-<!--                        $('#like-section').html(response['form'])-->
-<!--                        console.log($('#like-section').html(response['form']));-->
-<!--                    },-->
-<!--                    error: function (rs, e) {-->
-<!--                        console.log(rs.responseText);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-
-
-    <script>
-        function likePost(function(event){
-
-        })
-        {
-
-            }
-    </script>
-
-
-<!--        <script type="text/javascript">-->
-<!--        $(document).ready(function (event) {-->
-<!--            -->
-<!--            $(document).on('click', '*', function (event) {-->
-<!--                event.preventDefault();-->
-<!--                var pk = $(this).attr('value')-->
-<!--                $.ajax({-->
-<!--                    type: 'POST',-->
-<!--                    url: "{% url 'account:like-post' %}",-->
-<!--                    data: {'post_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},-->
-<!--                    dataType: 'json',-->
-<!--                    success: function (response) {-->
-<!--                        $('#like-section').html(response['form'])-->
-<!--                        console.log($('#like-section').html(response['form']));-->
-<!--                    },-->
-<!--                    error: function (rs, e) {-->
-<!--                        console.log(rs.responseText);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-
-
-<!--        <script type="text/javascript">-->
-<!--        $(document).ready(function (event) {-->
-
-<!--                        function likePost() {-->
-
-
-<!--                            // $(document).on('click', 'post_id', function (event) {-->
-<!--                                event.preventDefault();-->
-<!--                                var pk = $(this).attr('value')-->
-<!--                                $.ajax({-->
-<!--                                    type: 'POST',-->
-<!--                                    url: "{% url 'account:like-post' %}",-->
-<!--                                    data: {'post_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},-->
-<!--                                    dataType: 'json',-->
-<!--                                    success: function (response) {-->
-<!--                                        $('#like-section').html(response['form'])-->
-<!--                                        console.log($('#like-section').html(response['form']));-->
-<!--                                    },-->
-<!--                                    error: function (rs, e) {-->
-<!--                                        console.log(rs.responseText);-->
-<!--                                    }-->
-<!--                                });-->
-<!--                            // });-->
-<!--                        }-->
-<!--        });-->
-<!--    </script>-->
-
-
-<!--    <script type="text/javascript">-->
-<!--            function likePost(event) {-->
-<!--                event.preventDefault();-->
-<!--                var pk = $(this).attr('value');-->
-<!--                $.ajax({-->
-<!--                    type: 'POST',-->
-<!--                    url: "{% url 'account:like-post' %}",-->
-<!--                    data: {'post_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},-->
-<!--                    dataType: 'json',-->
-<!--                    success: function (response) {-->
-<!--                        $('#like-section').html(response['form']);-->
-<!--                        console.log($('#like-section').html(response['form']));-->
-<!--                    },-->
-<!--                    error: function (rs, e) {-->
-<!--                        console.log(rs.responseText);-->
-<!--                    }-->
-<!--                });-->
-<!--            }-->
-<!--    </script>-->
-
 
 </head>
 
@@ -136,8 +24,11 @@
 {% endblock %}
 
 
+
 {% include 'textarea-script.html' %}
+{% include 'load-more-script.html' %}
 {% include 'display-form-image-script.html' %}
+{% include 'like-post-script.html' %}
 {% include 'limit-file-upload-script.html' %}
 {% include 'show-hide-tags-script.html' %}
 </body>

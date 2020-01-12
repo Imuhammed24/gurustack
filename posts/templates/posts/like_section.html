@@ -1,23 +1,23 @@
 {% load static %}
 
-<div id="like-section">
+<div id="like-section{{post.id}}">
     <a title="Add Comment" onclick="showHideComment(post={{forloop.counter0}})" class="mr btn">
-        <img src="{% static 'svg/comment-post.svg' %}" alt=""> {{post.comments.count }}
-        Comment{{post.comments.count|pluralize}}
+        <img class="mb-1" src="{% static 'svg/comment-post.svg' %}" alt=""> {{post.comments.count }}
+<!--        Comment{{post.comments.count|pluralize}}-->
     </a>
 
-<span title="Like Post" id="like_unlike_section" class="mr">
+    <span title="Like Post" id="like_unlike_section" class="mr">
     <form action="{% url 'account:like-post' %}" class="d-inline">
         {% csrf_token %}
-            <button onclick="likePost()" type="submit" id="{{post.id}}" name="post_id" value="{{ post.id }}" class="btn">
-                {% if is_liked %}
-                    <img src="{% static 'svg/unlike.svg' %}" alt=""> Unlike
+            <button type="submit" id="like" name="post_id" value="{{ post.id }}" class="btn like">
+                {% if post.is_liked %}
+                    <img class="mb-1" src="{% static 'svg/unlike.svg' %}" alt=""> {{post.total_no_likes}}
                 {% else %}
-                    <img src="{% static 'svg/like-btn.svg' %}" alt=""> Like
+                    <img src="{% static 'svg/like-btn.svg' %}" alt=""> {{post.total_no_likes}}
                 {% endif %}
             </button>
     </form>
 </span>
 
-    <a title="Share Post" class="btn"> <img src="{% static 'svg/share-post.svg' %}" alt=""> Share</a>
+    <a title="Share Post" class="btn"> <img class="mb-1" src="{% static 'svg/share-post.svg' %}" alt=""></a>
 </div>

@@ -3,7 +3,7 @@
 
 <div id="post-list" class="mb-1">
     {% for post in posts %}
-    <div id="post-wrapper">
+    <div id="post-wrapper" class="post-wrapper blogBox">
         <div class="m-3">
             <div class="clearfix" id="post-author-img-div"><img id="author-profile-pix" src="{% static 'svg/male-profile.svg' %}" alt=""></div>
             <div class="clearfix" id="post-info">
@@ -47,7 +47,7 @@
                     <form action="{% url 'posts:add-comment' post.id %}" method="post">
                         {% csrf_token %}
                         {{ comment_form }}
-                        <input id="comment-button" type="submit" value="Reply">
+                        <input class="comment-button" type="submit" value="Reply">
                     </form>
                 </div>
 
@@ -59,3 +59,4 @@
     </div>
     {% endfor %}
 </div>
+

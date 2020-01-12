@@ -1,0 +1,16 @@
+<script>
+    $(document).ready(function () {
+        $(".post-wrapper").slice(0, 3).show();
+        if ($(".blogBox:hidden").length != 0) {
+            $("#loadMore").show();
+        }
+        $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".post-wrapper:hidden").slice(0, 3).slideDown();
+            if ($(".post-wrapper:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
+                $("#loadMore-div").fadeOut('slow');
+            }
+        });
+    });
+</script>

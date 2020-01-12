@@ -30,7 +30,7 @@ class ImageForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(label='',
-                              widget=forms.Textarea(attrs={'placeholder': 'Type your response', 'rows': '1'}))
+                              widget=forms.Textarea(attrs={'placeholder': 'Type your response', 'id': False, 'rows': '1'}))
 
     class Meta:
         model = Comment
