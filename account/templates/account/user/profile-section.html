@@ -2,7 +2,33 @@
 
 <div id="account-base-section-middle-div">
     <div id="account-base-section-middle-div-content">
+        <div id="profile-middle-div-top">
+            <div id="middle-div-top-content-div" class="clearfix pb-0">
+                <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
+                                                          src="{% static 'svg/back-btn.svg' %}" alt=""></a>
+                <h4 class="pb-0 mb-0">
+                    <a class="text-dark no-txt-deco" href="{% url 'account:home' %}">Home</a><br>
+                    <span class="d-block very-small-text">{{request.user.post.count}} post{{request.user.post.count|pluralize}}</span>
+                </h4>
 
+            </div>
+        </div>
+        
+        
+        <div id="profile-middle-div-middle" class="clearfix">
+            <div id="middle-div-middle-content-div" class="pt-1 clearfix">
+
+                <div id="user-detail-wrapper" class="clearfix d-block">
+                    <div id="user-profile-pix-div">
+                        <img id="main-profile-pix" src="{% static 'svg/big-male-profile.svg' %}" alt="">
+                    </div>
+                    <div id="user-detail-div">r</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
     </div>
 
 </div>

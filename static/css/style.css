@@ -549,10 +549,9 @@ body{
 }
 
 #account-base-section-middle-div{
-    width: 48%;
+    width: 50%;
     display: inline;
     float: left;
-
     min-height: 100vh;
 }
 
@@ -561,7 +560,7 @@ body{
 }
 
 #account-base-section-right-div{
-    width: 30%;
+    width: 28%;
     display: inline;
     float: right;
 }
@@ -572,12 +571,8 @@ body{
     margin-bottom: 30px;
 }
 
-#profile-base-ul li a{
-    color: #2e2e2e;
-}
-
 .active-section{
-    color: orange;
+    color: darkorange;
  }
 
 
@@ -975,10 +970,45 @@ body{
 /*#####################################*/
 /*#####################################*/
 
+#back-btn{
+    margin-top: 3px;
+}
 
+.very-small-text{
+    font-size: 14px;
+    word-spacing:0px;
+    color: gray;
+    font-weight: normal;
+}
 
+#user-detail-wrapper{
+    overflow: hidden;
+    clear: none;
+}
 
+#user-profile-pix-div{
+    float: left;
+    display: inline;
+    width: 33%;
+}
 
+#user-detail-div{
+    float: left;
+    display: inline;
+    width: 63%;
+}
+
+#profile-middle-div-top{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e5e5f7;
+}
+
+#main-profile-pix{
+    border-radius: 50%;
+    padding: 5px;
+    border: 3px solid white;
+    background-color: #e5e5f7;
+}
 
 
 
