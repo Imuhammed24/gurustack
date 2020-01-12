@@ -1,5 +1,5 @@
 from django.urls import path, reverse_lazy
-from .views import login_view, register, account_view, activate, post_like
+from .views import login_view, register, account_view, activate, post_like, profile_view
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('like-post/', post_like, name='like-post'),
+    path('profile/', profile_view, name='profile'),
     path('home/', account_view, name='home'),
 
 

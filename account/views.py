@@ -53,7 +53,7 @@ def account_view(request):
             post.is_liked = False
             post.total_no_likes = post.users_like.count
 
-    context = {'display_section': 'dashboard',
+    context = {'display_section': 'home',
                'html_title': f'{request.user} account',
                'tag_form': TagForm,
                'image_form': image_form,
@@ -62,6 +62,14 @@ def account_view(request):
                # 'total_no_likes': post.users_like.count,
                }
 
+    return render(request, 'account_base.html', context)
+
+
+@login_required
+def profile_view(request):
+    context = {'display_section': 'profile',
+               'html_title': f'{request.user} profile',
+               }
     return render(request, 'account_base.html', context)
 
 

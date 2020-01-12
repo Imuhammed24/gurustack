@@ -16,7 +16,7 @@
             <li><img src="{% static 'svg/messages.svg' %}" alt="">Messages</li>
             <li><img src="{% static 'svg/bookmark.svg' %}" alt="">Bookmarks</li>
             <li>
-                <a class="text-dark no-txt-deco-li" href="">
+                <a class="text-dark no-txt-deco-li" href="{% url 'account:home' %}">
                     <img src="{% static 'svg/profile.svg' %}" alt="">Profile
                 </a>
             </li>
@@ -25,76 +25,12 @@
         <a class="mt-3" id="new-post-a">New Post</a>
     </div>
 
-    <div id="account-base-section-middle-div">
-        <div id="account-base-section-middle-div-content">
-            <div id="middle-div-top">
-                <div id="middle-div-top-content-div">
-                    <h4><a class="text-dark no-txt-deco" href="{% url 'account:profile' %}">Home</a></h4>
-                    <img src="{% static 'svg/info.svg' %}" alt="">
-                </div>
-            </div>
+    {% if display_section == 'home' %}
+        {% include 'account/user/home-section.html' %}
+    {% elif display_section == 'profile' %}
+        {% include 'account/user/profile-section.html' %}
+    {% endif %}
 
-            <div id="middle-div-middle">
-                <div id="middle-div-middle-content-div">
-                    <img id="profile-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
-                    <form id="create-post-form" method="post" action="{% url 'posts:create-post' %}"
-                          enctype="multipart/form-data">
-                        {% csrf_token %}
-
-                        <textarea class="create-post-textarea" name="article" id="post"
-                                  placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
-
-                        <span id="tags-span">
-                            {{ tag_form.as_p }}
-                            </span>
-
-                        <hr id="create-post-hr">
-                        <div class="clearfix d-block" id="post-uploaded_images_div">
-                            <img class="post-uploaded-img" id="output1"/>
-                            <img class="post-uploaded-img" id="output2"/>
-                            <img class="post-uploaded-img" id="output3"/>
-                            <img class="post-uploaded-img" id="output4"/>
-                            <img class="post-uploaded-img" id="output5"/>
-                        </div>
-
-                        <div class="clearfix d-block mt-3">
-                            <span id="create-post-icon-span">
-
-                                <label id="image-label" title="Upload an image" for="image"><img class="upload-img-img"
-                                                                                                 src="{% static 'svg/upload-img.svg' %}"
-                                                                                                 alt="upload image"><span
-                                        class="upload-img-txt ml-1">Upload Image</span></label>
-                                {{ image_form }}
-
-                                <label onclick="myFunction()" id="add-tag-label" title="Tag a user" for="tags"><img
-                                        class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user"><span
-                                        class="upload-img-txt ml-1">Add Tag</span></label>
-
-                                <input type="submit" value="post" class="submit-create-post">
-
-                            </span>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-
-            <div id="middle-div-bottom">
-                <div id="middle-div-bottom-content">
-                    <!--                        {% include 'account/user/welcome_content.html'%}-->
-                    {% include 'posts/list.html' %}
-
-                </div>
-            </div>
-        </div>
-        <div id="loadMore-div" class="mb-2">
-            <center>
-                <a class="btn w-100" id="loadMore" href="">Load More</a>
-            </center>
-        </div>
-    </div>
-
-    <div id="account-base-section-right-div">c</div>
     {% endif %}
 </section>
 {% endblock %}
