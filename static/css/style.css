@@ -984,18 +984,21 @@ body{
 #user-detail-wrapper{
     overflow: hidden;
     clear: none;
+    padding-top: 40px;
 }
 
 #user-profile-pix-div{
     float: left;
     display: inline;
-    width: 33%;
+    width: 36%;
 }
 
 #user-detail-div{
     float: left;
     display: inline;
-    width: 63%;
+    width: 60%;
+    font-family: Kanit, sans-serif;
+    padding-top: 10px;
 }
 
 #profile-middle-div-top{
@@ -1003,15 +1006,41 @@ body{
     border-bottom: 2px solid #e5e5f7;
 }
 
-#main-profile-pix{
+#main-profile-pix, #main-profile-pix-demo{
     border-radius: 50%;
-    padding: 5px;
     border: 3px solid white;
     background-color: #e5e5f7;
 }
 
 
+#main-profile-pix-demo{
+        padding: 23px 10px 0 10px;
 
+}
+
+#edit-profile-btn{
+    border: 3px solid orange;
+    /*background-color: midnightblue;*/
+    color: orange;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.main-username{
+    margin-top: -20px;
+    margin-bottom: 3px;
+}
+
+.main-follow, .main-date{
+    margin: 0 0 3px 0;
+}
+
+#nav-tabContent{
+    padding: 5px 13px;
+}
 
 
 
