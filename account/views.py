@@ -45,13 +45,6 @@ def account_view(request):
     image_form = ImageForm()
     comment_form = CommentForm()
     posts = Post.objects.all()
-    for post in posts:
-        if post.users_like.filter(id=request.user.id).exists():
-            post.is_liked = True
-            post.total_no_likes = post.users_like.count
-        else:
-            post.is_liked = False
-            post.total_no_likes = post.users_like.count
 
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
@@ -132,17 +125,17 @@ def post_like(request):
     post = get_object_or_404(Post, id=post_id)
     if post.users_like.filter(id=request.user.id).exists():
         post.users_like.remove(request.user)
-        post.is_liked = False
-        post.total_no_likes = post.users_like.count
+        # post.is_liked = False
+        # post.total_no_likes = post.users_like.count
 
     else:
         post.users_like.add(request.user)
-        post.is_liked = True
-        post.total_no_likes = post.users_like.count
+        # post.is_liked = True
+        # post.total_no_likes = post.users_like.count
 
     context = {'post': post,
-               'is_liked': post.is_liked,
-               'total_no_likes': post.users_like.count,
+               # 'is_liked': post.is_liked,
+               # 'total_no_likes': post.users_like.count,
                }
     if request.is_ajax():
         html = render_to_string('posts/like_section.html', context, request=request)

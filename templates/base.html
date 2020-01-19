@@ -23,6 +23,26 @@
 {% block base_content %}
 {% endblock %}
 
+<script>
+    var modal = document.querySelector(".modal");
+    var trigger = document.querySelector("#edit-profile-btn");
+    var closeButton = document.querySelector(".close-button");
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
+</script>
+
 {% include 'textarea-script.html' %}
 {% include 'load-more-script.html' %}
 {% include 'display-form-image-script.html' %}

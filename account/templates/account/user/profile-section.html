@@ -2,6 +2,7 @@
 
 <div id="account-base-section-middle-div">
     <div id="account-base-section-middle-div-content">
+
         <div id="profile-middle-div-top">
             <div id="middle-div-top-content-div" class="clearfix pb-0">
                 <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
@@ -24,9 +25,17 @@
                         <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
                     </div>
                     <div id="user-detail-div">
-                        <h4>{{ request.user.first_name.title }} {{ request.user.last_name.title }} <span><a
-                                id="edit-profile-btn" class="btn" href="">Edit Profile</a></span></h4>
-                        <p class="text-muted main-username">@{{ request.user.username }}</p>
+                        <h4>{{ request.user.first_name.title }} {{ request.user.last_name.title }} <span>
+                            <button id="edit-profile-btn" class="btn trigger">Edit Profile</button></span></h4>
+
+                        <div class="modal">
+                            <div class="modal-content">
+                                <span class="close-button">&times;</span>
+                                <h1>Hello, I am a modal!</h1>
+                            </div>
+                        </div>
+
+                        <p class="text-muted main-username">@{{ request.user.username }} </p>
                         <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
                                                              alt="calendar:"> Joined {{ request.user.date_joined }}</p>
                         <p class="main-follow text-muted mt-3"><span class="text-dark">0</span> Following <span
@@ -67,7 +76,10 @@
                         {% for post in request.user.post.all %}
                         <ul>
                             {% if post.users_like.count > 0 %}
-                                <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %} @{{ user.username }}{% if not forloop.last %}, {% endif %}  {% endfor %} liked your post: {{ post.slug }}</p></li>
+                            <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
+                                @{{user.username}} {% if not forloop.last %}, {% endif %}
+                                {% endfor %} liked your post:
+                                <span class="text-black-50">{{ post.slug }}...</span></p></li>
                             {% endif %}
                         </ul>
                         {% endfor %}
@@ -90,3 +102,4 @@
 <div id="account-base-section-right-div">
     <p>hiii</p>
 </div>
+

@@ -18,7 +18,7 @@ class Post(models.Model):
     # image = models.ImageField(upload_to='post-images/%Y/%m/%d', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, db_index=True, null=True)
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
-                                        related_name='images_likes',
+                                        related_name='posts_likes',
                                         blank=True)
 
     class Meta:

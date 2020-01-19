@@ -10,10 +10,10 @@
     <form action="{% url 'account:like-post' %}" class="d-inline">
         {% csrf_token %}
             <button type="submit" id="like" name="post_id" value="{{ post.id }}" class="btn like">
-                {% if post.is_liked %}
-                    <img class="mb-1" src="{% static 'svg/unlike.svg' %}" alt=""> {{post.total_no_likes}}
+                {% if post in request.user.posts_likes.all %}
+                    <img class="mb-1" src="{% static 'svg/unlike.svg' %}" alt=""> {{post.users_like.count}}
                 {% else %}
-                    <img src="{% static 'svg/like-btn.svg' %}" alt=""> {{post.total_no_likes}}
+                    <img src="{% static 'svg/like-btn.svg' %}" alt=""> {{post.users_like.count}}
                 {% endif %}
             </button>
     </form>
