@@ -1,12 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.forms import modelformset_factory
-from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
-from django.views.decorators.http import require_POST
+from django.shortcuts import redirect
 
-from .forms import ImageForm, TagForm, CommentForm
+from .forms import TagForm, CommentForm
 from .models import Post, Images
 
 
@@ -52,24 +48,3 @@ def add_comment(request, pk):
             obj.save()
             return redirect('account:home')
     return
-
-
-# @login_required
-# @require_POST
-# def post_like(request):
-#     post_id = request.POST.get('post_id')
-#     post = get_object_or_404(Post, id=post_id)
-#     if post.users_like.filter(id=request.user.id).exists():
-#         post.users_like.remove(request.user)
-#         is_liked = False
-#     else:
-#         post.users_like.add(request.user)
-#         is_liked = True
-#
-#     context = {'post': post,
-#                'is_liked': is_liked,
-#                'total_no_likes': post.users_like.count,
-#                'users_like': post.users_like.all}
-#     if request.is_ajax():
-#         html = render_to_string('like_section.html', context, request=request)
-#         return JsonResponse({'form': html})
