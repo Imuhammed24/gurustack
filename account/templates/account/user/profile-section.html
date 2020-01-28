@@ -25,8 +25,8 @@
                         <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
                     </div>
                     <div id="user-detail-div">
-                        <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title
-                            }} <span>
+                        <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title }}
+                            <span>
                             <button onclick="document.getElementById('edit-profile_modal').style.display='block'"
                                     id="edit-profile-btn">Edit Profile</button>
                         </span></h4>
