@@ -1224,10 +1224,21 @@ button {
     cursor: pointer;
 }
 
-#edit-profile-modal-form input {
-    border: unset;
-    background-color: rgba(192, 240, 255, 0.65);
+#edit-profile-modal-form input, #edit-profile-modal-form textarea, #edit-profile-modal-form select {
+    border-top: unset;
+    border-bottom: unset;
+    border-left: unset;
+    /*background-color: rgba(192, 240, 255, 0.29);*/
+    background-color: rgba(229, 229, 247, 0.52);
     padding: 10px;
+    border-right: 5px solid darkorange;
+    /*border-top-right-radius: 10px;*/
+    /*border-bottom-right-radius: 10px;*/
+}
+
+#edit-profile-modal-form p label {
+    color: midnightblue;
+    font-weight: bold;
 }
 
 #id_department {
@@ -1256,6 +1267,24 @@ button {
 
 #edit-profile-modal-form select {
     margin-left: 80px;
+    /*-moz-appearance: none;*/
+    /*-webkit-appearance: none;*/
+    appearance: none;
+}
+
+#edit-profile-modal-form select option {
+    font-weight:normal;
+}
+
+#edit-profile-modal-form select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.24);
+    color: #222;
+    outline: none;
+}
+
+#edit-profile-modal-form select::-ms-expand {
+    display: none;
 }
 
 #edit-page-profile-demo-img, #edit-page-profile-img {
