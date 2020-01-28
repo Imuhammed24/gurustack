@@ -3,8 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
-from django.forms import modelformset_factory
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
@@ -12,9 +11,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.http import require_POST
 
 from account.tokens import account_activation_token
+from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post
-from .forms import LoginForm, UserRegistrationForm
-from posts.forms import PostForm, TagForm, ImageForm, CommentForm
+from .forms import LoginForm, UserRegistrationForm, ProfileForm
 
 
 # Create your views here.
@@ -60,7 +59,9 @@ def account_view(request):
 
 @login_required
 def profile_view(request):
+    profile_form = ProfileForm()
     context = {'display_section': 'profile',
+               'profile_form': profile_form,
                'html_title': f'{request.user} profile',
                }
     return render(request, 'account_base.html', context)

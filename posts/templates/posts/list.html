@@ -4,7 +4,7 @@
 <div id="post-list" class="mb-1">
     {% for post in posts %}
     <div id="post-wrapper" class="post-wrapper blogBox">
-        <div class="m-3">
+        <div class="m-3 overflow-hidden">
             <div class="clearfix" id="post-author-img-div"><img id="author-profile-pix" src="{% static 'svg/male-profile.svg' %}" alt=""></div>
             <div class="clearfix" id="post-info">
                 <ul id="post-meta">
@@ -51,12 +51,17 @@
                     </form>
                 </div>
 
-                <div id="like-nd-comment-bar">
-                    {% include 'posts/like_section.html' %}
-                </div>
+
             </div>
         </div>
+
+        <div id="like-nd-comment-bar">
+            <center>
+                {% include 'posts/like_section.html' %}
+            </center>
+        </div>
     </div>
+
     {% endfor %}
 </div>
 

@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from .models import Profile
+
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -23,6 +25,16 @@ class UserRegistrationForm(forms.ModelForm):
 
     def clean_email(self):
         cd = self.cleaned_data
-        if '.edu.' not in cd['email']:
+        if 'futminna.edu.ng' not in cd['email']:
             raise forms.ValidationError('Please use an academic institution\'s email address')
         return cd['email']
+
+
+class ProfileForm(forms.ModelForm):
+    profile_photo = forms.ImageField(label='')
+
+    class Meta:
+        model = Profile
+        fields = ['profile_photo', 'gender', 'bio', 'department', 'interests',
+                  'phone_number', 'allow_messages', 'year_of_entrance',
+                  'year_of_graduation']

@@ -1,0 +1,35 @@
+{% load static %}
+<div id="edit-profile_modal" class="modal fade-in">
+    <div id="edit-profile-modal-content">
+
+        <header class="edit-modal-header">
+            <span onclick="document.getElementById('edit-profile_modal').style.display='none'"
+                  class="w3-button edit-pg-modal-close-btn w3-large w3-display-topright">&times;</span>
+            <h4>Edit your profile</h4>
+        </header>
+
+        <div>
+            <form action="{% url 'account:profile' %}" id="edit-profile-modal-form">
+                {% csrf_token %}
+                {% if request.user.profile.profile_photo %}
+                <label id="choose-profile-image" for="id_profile_photo" class="d-inline mb-3 pointer-cursor"><img
+                        id="edit-page-profile-img" src="{{request.user.profile.profile_photo.url}}" alt=""></label>
+                {% else %}
+                <label for="id_profile_photo" class="d-inline mb-3 pointer-cursor"><img id="edit-page-profile-demo-img"
+                                                                                        src="{% static 'svg/male-profile.svg' %}"
+                                                                                        alt=""></label>
+                {% endif %}
+                <p class="mt-1"><strong>{{ request.user.username }}</strong><br> <label
+                        class="blue-color pointer-cursor font-weight-bold" for="id_profile_photo">change</label> or
+                    <label class="blue-color pointer-cursor text-danger font-weight-bold" for="">remove</label> profile
+                    picture</p>
+                {{ profile_form.as_p }}
+            </form>
+        </div>
+
+        <!--        <footer class="w3-container w3-teal">-->
+        <!--            <p>Modal Footer</p>-->
+        <!--        </footer>-->
+
+    </div>
+</div>

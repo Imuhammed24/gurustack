@@ -25,77 +25,76 @@
                         <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
                     </div>
                     <div id="user-detail-div">
-                        <h4>{{ request.user.first_name.title }} {{ request.user.last_name.title }} <span>
-                            <button id="edit-profile-btn" class="btn trigger">Edit Profile</button></span></h4>
+                        <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title
+                            }} <span>
+                            <button onclick="document.getElementById('edit-profile_modal').style.display='block'"
+                                    id="edit-profile-btn">Edit Profile</button>
+                        </span></h4>
+                        {% include 'account/user/edit-profile_template.html' %}
+                    </div>
 
-                        <div class="modal">
-                            <div class="modal-content">
-                                <span class="close-button">&times;</span>
-                                <h1>Hello, I am a modal!</h1>
-                            </div>
-                        </div>
-
-                        <p class="text-muted main-username">@{{ request.user.username }} </p>
-                        <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
-                                                             alt="calendar:"> Joined {{ request.user.date_joined }}</p>
-                        <p class="main-follow text-muted mt-3"><span class="text-dark">0</span> Following <span
-                                class="text-dark ml-4">0</span> Follower</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div id="middle-div-bottom" class="mt-4">
-            <div id="middle-div-bottom-content">
-                <nav>
-                    <div class="nav nav-tabs pl-5 pr-5" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link text-dark active" id="nav-home-tab" data-toggle="tab"
-                           href="#nav-home"
-                           role="tab"
-                           aria-controls="nav-home" aria-selected="true">Posts</a>
-                        <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab"
-                           href="#nav-profile"
-                           role="tab"
-                           aria-controls="nav-profile" aria-selected="false">Likes</a>
-                        <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab"
-                           href="#nav-contact"
-                           role="tab"
-                           aria-controls="nav-contact" aria-selected="false">Tags</a>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        {% include 'posts/list.html' with posts=request.user.post.all %}
-                        <div id="loadMore-div" class="mb-1">
-                            <center>
-                                <a class="btn w-100" id="loadMore" href="#">Load More</a>
-                            </center>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        {% for post in request.user.post.all %}
-                        <ul>
-                            {% if post.users_like.count > 0 %}
-                            <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
-                                @{{user.username}} {% if not forloop.last %}, {% endif %}
-                                {% endfor %} liked your post:
-                                <span class="text-black-50">{{ post.slug }}...</span></p></li>
-                            {% endif %}
-                        </ul>
-                        {% endfor %}
-                    </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        A aut consequatur culpa cupiditate distinctio facere in ipsa
-                        maiores minima minus nemo numquam obcaecati ratione, repellendus
-                        sed tempora veritatis, vitae voluptate!
-                    </div>
+                    <p class="text-muted main-username">@{{ request.user.username }} </p>
+                    <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
+                                                         alt="calendar:"> Joined {{ request.user.date_joined }}</p>
+                    <p class="main-follow text-muted mt-3"><span class="text-dark">0</span> Following <span
+                            class="text-dark ml-4">0</span> Follower</p>
                 </div>
             </div>
+
         </div>
-
-
     </div>
+    <div id="profile-middle-div-bottom" class="mt-4">
+        <div id="profile-middle-div-bottom-content">
+            <nav>
+                <div class="nav nav-tabs pr-5" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link text-dark active" id="nav-home-tab" data-toggle="tab"
+                       href="#profile-nav-posts"
+                       role="tab"
+                       aria-controls="nav-home" aria-selected="true">Posts</a>
+                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab"
+                       href="#profile-nav-likes"
+                       role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Likes</a>
+                    <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab"
+                       href="#profile-nav-tags"
+                       role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Tags</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="profile-nav-tabContent">
+                <div class="tab-pane fade show active" id="profile-nav-posts" role="tabpanel"
+                     aria-labelledby="nav-home-tab">
+                    {% include 'posts/list.html' with posts=request.user.post.all %}
+                    <div id="loadMore-div" class="mb-1">
+                        <center>
+                            <a class="btn w-100" id="loadMore" href="#">Load More</a>
+                        </center>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    {% for post in request.user.post.all %}
+                    <ul>
+                        {% if post.users_like.count > 0 %}
+                        <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
+                            @{{user.username}} {% if not forloop.last %}, {% endif %}
+                            {% endfor %} liked your post:
+                            <span class="text-black-50">{{ post.slug }}...</span></p></li>
+                        {% endif %}
+                    </ul>
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="profile-nav-tags" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    A aut consequatur culpa cupiditate distinctio facere in ipsa
+                    maiores minima minus nemo numquam obcaecati ratione, repellendus
+                    sed tempora veritatis, vitae voluptate!
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 </div>
 

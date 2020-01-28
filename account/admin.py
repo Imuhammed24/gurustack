@@ -1,10 +1,11 @@
 from django.contrib import admin
+
 from .models import Profile
 
 
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'gender', 'nationality', 'institute', 'discipline']
+    list_display = ['user', 'gender', 'department', 'staff_status', 'verified']
 
 
 admin.site.register(Profile, ProfileAdmin)
