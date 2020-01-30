@@ -32,6 +32,8 @@ class UserRegistrationForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     profile_photo = forms.ImageField(label='')
+    bio = forms.CharField(required=False,  widget=forms.Textarea(
+                                  attrs={'placeholder': 'Short description about yourself'}))
 
     class Meta:
         model = Profile
