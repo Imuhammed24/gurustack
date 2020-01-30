@@ -59,9 +59,11 @@ def account_view(request):
 
 @login_required
 def profile_view(request):
+    comment_form = CommentForm()
     profile_form = ProfileForm()
     context = {'display_section': 'profile',
                'profile_form': profile_form,
+               'comment_form': comment_form,
                'html_title': f'{request.user} profile',
                }
     return render(request, 'account_base.html', context)

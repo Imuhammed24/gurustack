@@ -23,7 +23,9 @@
                         class="blue-color pointer-cursor font-weight-bold" for="id_profile_photo">change</label> or
                     <label class="blue-color pointer-cursor text-danger font-weight-bold" for="">remove</label> profile
                     picture</p>
-                {{ profile_form.as_p }}
+                {{ profile_form }}
+
+                <button type="submit" class="float-right" id="edit-profile-submit-btn">Save</button>
             </form>
         </div>
 

@@ -1099,12 +1099,13 @@ button {
 }
 
 #edit-profile-modal-content {
-    width: 40%;
+    width: 35%;
     height: 90%;
     margin: 40px auto 40px auto;
     background-color: white;
     padding: 15px;
     overflow: scroll;
+    border-radius: 15px;
 }
 
 #edit-profile-modal-content p, h1, h2, h3, h4, span, li, a {
@@ -1179,18 +1180,6 @@ button {
 /*########################################################*/
 /*########################################################         EDIT PROFILE MODAL FORM             */
 /*########################################################*/
-
-#id_bio {
-    min-height: 35px;
-    width: 50%;
-    max-height: 80px;
-    clear-side: right;
-    overflow: hidden;
-    resize: none;
-    font-family: Kanit, sans-serif;
-}
-
-
 .create-post-textarea:focus {
     outline: none;
     border: 2px solid lightgray;
@@ -1225,51 +1214,60 @@ button {
 }
 
 #edit-profile-modal-form input, #edit-profile-modal-form textarea, #edit-profile-modal-form select {
+    background-color: rgba(25, 25, 112, 0.03);
+    padding: 7px;
     border-top: unset;
-    border-bottom: unset;
+    border-bottom: 3px solid rgba(25, 25, 112, 0.13);
     border-left: unset;
-    /*background-color: rgba(192, 240, 255, 0.29);*/
-    background-color: rgba(229, 229, 247, 0.52);
-    padding: 10px;
-    border-right: 5px solid darkorange;
-    /*border-top-right-radius: 10px;*/
-    /*border-bottom-right-radius: 10px;*/
+    border-right: 3px solid rgba(25, 25, 112, 0.13);
+    border-radius: 7px;
 }
 
-#edit-profile-modal-form p label {
+#edit-profile-modal-form label {
     color: midnightblue;
-    font-weight: bold;
+    font-weight: 600;
+    /*background-color: rgba(25, 25, 112, 0.03);*/
+    /*width: 100%;*/
 }
 
-#id_department {
-    margin-left: 47px;
+#edit-profile-modal-form label{
+    margin-bottom: 1px;
 }
 
-#id_interests {
-    margin-left: 73px;
+#edit-profile-modal-form .helptext {
+    display: none;
+    visibility: hidden;
 }
 
-#id_phone_number {
-    margin-left: 27px;
+
+#id_bio {
+    min-height: 35px;
+    width: 100%;
+    max-height: 80px;
+    clear-side: right;
+    overflow: hidden;
+    resize: none;
+    font-family: Kanit, sans-serif;
+    display: block;
+    margin-bottom: 20px;
 }
+
+#id_department,#id_interests,#id_phone_number,#id_year_of_entrance,
+#id_year_of_graduation {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 
 #id_allow_messages {
-    margin-left: 20px;
-}
-
-#id_year_of_entrance {
-    margin-left: 17px;
-}
-
-#id_year_of_graduation {
-    margin-left: 4px;
+    display: block;
 }
 
 #edit-profile-modal-form select {
-    margin-left: 80px;
-    /*-moz-appearance: none;*/
-    /*-webkit-appearance: none;*/
+    display: block;
     appearance: none;
+    margin-bottom: 20px;
 }
 
 #edit-profile-modal-form select option {
@@ -1288,12 +1286,19 @@ button {
 }
 
 #edit-page-profile-demo-img, #edit-page-profile-img {
-    margin-right: 85px;
+    margin-right: 15px;
+    margin-bottom: 10px;
 }
 
-#edit-profile-modal-form textarea {
-    margin-left: 108px;
+#edit-profile-submit-btn{
+    background-color: midnightblue;
+    color: white;
+    border: unset;
+    padding: 10px 15px;
+    margin-bottom: 20px;
 }
+
+
 
 
 /*start of desktop styles */
