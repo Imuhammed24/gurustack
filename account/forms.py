@@ -26,7 +26,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_email(self):
         cd = self.cleaned_data
         if 'futminna.edu.ng' not in cd['email']:
-            raise forms.ValidationError('Please use an academic institution\'s email address')
+            raise forms.ValidationError('Please use your school email address')
         return cd['email']
 
 
@@ -34,6 +34,11 @@ class ProfileForm(forms.ModelForm):
     profile_photo = forms.ImageField(label='')
     bio = forms.CharField(required=False,  widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
+    department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
+    interests = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'football, programming, computer-graphics, ...'}))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
+    year_of_entrance = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2020-01-30'}))
+    year_of_graduation = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2020-01-30'}))
 
     class Meta:
         model = Profile

@@ -1124,26 +1124,6 @@ button {
     margin-bottom: 15px;
 }
 
-
-/*    .marquee {*/
-/*!*	background-color: Pink;*!*/
-/*!*	color: Black;*!*/
-/*    white-space: nowrap;*/
-/*    overflow: hidden;*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-/*.marquee p{*/
-/*    display: inline-block;*/
-/*    padding-left: 100%;*/
-/*    animation: marquee 10s linear infinite;*/
-/*}*/
-/*@keyframes marquee {*/
-/*    0%   { transform: translate(0, 0); }*/
-/*    100% { transform: translate(-100%, 0); }*/
-/*}*/
-
-
 .fade-in {
     animation: fadeIn ease .8s;
     -webkit-animation: fadeIn ease .8s;
@@ -1303,7 +1283,18 @@ button {
     display: block;
     width: 100%;
     margin-bottom: 20px;
+    font-family: Kanit;
+    color: rgba(0, 0, 0, 0.67);
 }
+
+#id_department::placeholder,#id_interests::placeholder,#id_phone_number::placeholder,#id_year_of_entrance::placeholder,
+#id_year_of_graduation::placeholder, #id_bio::placeholder{
+    color: rgba(25, 25, 112, 0.39);
+}
+
+/*#id_department::placeholder{*/
+/*    content: 'Department';*/
+/*}*/
 
 
 #id_allow_messages {
