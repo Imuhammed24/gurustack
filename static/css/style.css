@@ -1081,6 +1081,10 @@ button {
 }
 
 .edit-pg-modal-close-btn:hover {
+    background-color: rgba(255, 140, 0, 0.16);
+}
+
+.edit-pg-modal-close-btn:hover {
     color: red;
 }
 
@@ -1221,6 +1225,26 @@ button {
     border-left: unset;
     border-right: 3px solid rgba(25, 25, 112, 0.13);
     border-radius: 7px;
+    transition: 2s;
+}
+
+#edit-profile-modal-form input:focus, #edit-profile-modal-form textarea:focus, #edit-profile-modal-form select:focus{
+    box-shadow: 0 0 3px 5px rgba(59, 153, 252, 0.24);
+}
+
+
+
+#edit-profile-top-div{
+    background-color: rgba(25, 25, 112, 0.03);
+    padding: 13px 0 1px 10px;
+    border-radius: 20px;
+    border-right: 20px solid midnightblue;
+    margin-bottom: 15px;
+    transition: 2s;
+}
+
+#edit-profile-top-div:hover,#edit-profile-modal-form input:hover, #edit-profile-modal-form textarea:hover, #edit-profile-modal-form select:hover{
+    background-color: rgba(255, 140, 0, 0.16);
 }
 
 #edit-profile-modal-form label {

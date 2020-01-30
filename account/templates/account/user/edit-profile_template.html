@@ -10,6 +10,7 @@
 
         <div>
             <form action="{% url 'account:profile' %}" id="edit-profile-modal-form">
+                <div id="edit-profile-top-div" title="{{ request.user.first_name.title }} {{ request.user.last_name.title }}'s Profile">
                 {% csrf_token %}
                 {% if request.user.profile.profile_photo %}
                 <label id="choose-profile-image" for="id_profile_photo" class="d-inline mb-3 pointer-cursor"><img
@@ -19,10 +20,12 @@
                                                                                         src="{% static 'svg/male-profile.svg' %}"
                                                                                         alt=""></label>
                 {% endif %}
-                <p class="mt-1"><strong>{{ request.user.username }}</strong><br> <label
+                <p id="change-or-remove-img" class="mt-1"><strong>{{ request.user.username }}</strong><br> <label
                         class="blue-color pointer-cursor font-weight-bold" for="id_profile_photo">change</label> or
                     <label class="blue-color pointer-cursor text-danger font-weight-bold" for="">remove</label> profile
                     picture</p>
+                </div>
+
                 {{ profile_form }}
 
                 <button type="submit" class="float-right" id="edit-profile-submit-btn">Save</button>
