@@ -31,14 +31,14 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    profile_photo = forms.ImageField(label='')
     bio = forms.CharField(required=False,  widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
     department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
     interests = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'football, programming, computer-graphics, ...'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
-    year_of_entrance = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2020-01-30'}))
-    year_of_graduation = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2020-01-30'}))
+    profile_photo = forms.ImageField(label='', widget=forms.ClearableFileInput(attrs={'hidden': '',
+                                                                              'onchange': "loadProfileImg(event);",
+                                                                              'accept': 'image/gif, image/jpeg, image/jpg, image/png'}))
 
     class Meta:
         model = Profile

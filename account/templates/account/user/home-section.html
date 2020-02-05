@@ -11,13 +11,18 @@
 
             <div id="middle-div-middle">
                 <div id="middle-div-middle-content-div">
-                    <img id="profile-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+<!--                    <img id="profile-pix" src="{% static 'svg/male-profile.svg' %}" alt="">-->
+                    {% if request.user.profile.profile_photo %}
+                    <img id="author-profile-pix" src="{{ request.user.profile.profile_photo.url }}" alt="">
+                    {% else %}
+                    <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                    {% endif %}
                     <form id="create-post-form" method="post" action="{% url 'posts:create-post' %}"
                           enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <textarea class="create-post-textarea" name="article" id="post"
-                                  placeholder="What's on your mind, {{ request.user.username }}?"></textarea>
+                                  placeholder="What's on your mind, {{ request.user.last_name }}?"></textarea>
 
                         <span id="tags-span">
                             {{ tag_form.as_p }}
@@ -56,8 +61,11 @@
 
             <div id="middle-div-bottom">
                 <div id="middle-div-bottom-content">
-                    <!--                        {% include 'account/user/welcome_content.html'%}-->
+                    {% if posts %}
                     {% include 'posts/list.html' %}
+                    {% else %}
+                    {% include 'account/user/welcome_content.html'%}
+                    {% endif %}
 
                 </div>
             </div>

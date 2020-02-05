@@ -21,8 +21,11 @@
 
                 <div id="user-detail-wrapper" class="clearfix d-block">
                     <div id="user-profile-pix-div">
-                        <!--                        <img id="main-profile-pix" src="{% static 'svg/big-male-profile.svg' %}" alt="">-->
+                        {% if request.user.profile.profile_photo %}
+                        <img id="main-profile-pix" src="{{ request.user.profile.profile_photo.url }}" alt="">
+                        {% else %}
                         <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
+                        {% endif %}
                     </div>
                     <div id="user-detail-div">
                         <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title }}
@@ -36,6 +39,9 @@
                     <p class="text-muted main-username">@{{ request.user.username }} </p>
                     <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
                                                          alt="calendar:"> Joined {{ request.user.date_joined }}</p>
+                    {% if request.user.profile.bio %}
+                    <p id="profile-bio"><em><strong>Bio:</strong> {{ request.user.profile.bio }}</em></p>
+                    {% endif %}
                     <p class="main-follow text-muted mt-3"><span class="text-dark">0</span> Following <span
                             class="text-dark ml-4">0</span> Follower</p>
                 </div>

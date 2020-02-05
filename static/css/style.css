@@ -517,10 +517,10 @@ body {
     padding: 3px;
 }
 
-#author-profile-pix {
+#author-profile-pix, #author-profile-demo-pix {
     border-radius: 50%;
-    height: 55px;
-    width: 55px;
+    height: 60px;
+    width: 60px;
     background-color: #eeeeee;
     padding: 3px;
     /*margin: 10px;*/
@@ -647,11 +647,11 @@ body {
     margin-top: -1px;
     margin-left: 9px;
     border: unset;
+    border-radius: 5px;
     clear-side: right;
     overflow: hidden;
     resize: none;
     width: 85%;
-    /*resize: unset;*/
     min-height: 70px;
     max-height: 250px;
     padding: 9px 7px;
@@ -660,7 +660,6 @@ body {
 }
 
 .create-post-textarea::placeholder {
-    /*color: rgba(25, 25, 112, 0.44);*/
     color: gray;
     font-size: 20px;
 }
@@ -1007,6 +1006,12 @@ body {
     background-color: #e5e5f7;
 }
 
+#main-profile-pix{
+    height: 170px;
+    width: 170px;
+    padding: 2px;
+}
+
 
 #main-profile-pix-demo {
     padding: 23px 10px 0 10px;
@@ -1041,6 +1046,11 @@ button {
 
 .main-username {
     margin-bottom: 4px;
+}
+
+#profile-bio{
+    color: gray;
+    font-family: Kanit, sans-serif;
 }
 
 .main-follow, .main-date {
@@ -1204,7 +1214,10 @@ button {
 
 #edit-page-profile-img {
     background-color: #e2e6ea;
+    padding: 2px;
     border-radius: 50%;
+    max-height: 90px;
+    max-width: 90px;
 }
 
 #id_profile_photo {
@@ -1241,7 +1254,7 @@ button {
     padding: 13px 0 1px 10px;
     border-radius: 20px;
     border-right: 20px solid midnightblue;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     transition: 1.5s;
 }
 
@@ -1278,10 +1291,17 @@ button {
     margin-bottom: 20px;
 }
 
-#id_department,#id_interests,#id_phone_number,#id_year_of_entrance,
-#id_year_of_graduation {
+
+#id_department,#id_interests,#id_phone_number{
     display: block;
     width: 100%;
+    margin-bottom: 20px;
+    font-family: Kanit;
+    color: rgba(0, 0, 0, 0.67);
+}
+
+#id_year_of_entrance,#id_year_of_graduation{
+    display: inline;
     margin-bottom: 20px;
     font-family: Kanit;
     color: rgba(0, 0, 0, 0.67);
@@ -1291,10 +1311,6 @@ button {
 #id_year_of_graduation::placeholder, #id_bio::placeholder{
     color: rgba(25, 25, 112, 0.39);
 }
-
-/*#id_department::placeholder{*/
-/*    content: 'Department';*/
-/*}*/
 
 
 #id_allow_messages {

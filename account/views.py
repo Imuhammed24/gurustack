@@ -143,3 +143,18 @@ def post_like(request):
     if request.is_ajax():
         html = render_to_string('posts/like_section.html', context, request=request)
         return JsonResponse({'form': html})
+
+
+@login_required
+@require_POST
+def register_profile_view(request):
+    profile_form = ProfileForm(data=request.POST,
+                               files=request.FILES)
+    if profile_form.is_valid():
+        obj = profile_form.save(commit=False)
+        obj.user = request.user
+        obj.save()
+        messages.success(request, 'Profile edited successfully')
+    else:
+        messages.error(request, 'Error editing profile')
+    return redirect('account:profile')

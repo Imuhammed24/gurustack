@@ -5,7 +5,13 @@
     {% for post in posts %}
     <div id="post-wrapper" class="post-wrapper blogBox">
         <div class="m-3 overflow-hidden">
-            <div class="clearfix" id="post-author-img-div"><img id="author-profile-pix" src="{% static 'svg/male-profile.svg' %}" alt=""></div>
+            <div class="clearfix" id="post-author-img-div">
+                {% if post.user.profile.profile_photo %}
+                <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
+                {% else %}
+                <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                {% endif %}
+            </div>
             <div class="clearfix" id="post-info">
                 <ul id="post-meta">
                     <li id="post-meta-name-li"><a class="font-weight-bold text-dark" href="">
