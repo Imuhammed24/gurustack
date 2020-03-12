@@ -22,7 +22,7 @@
                         {% csrf_token %}
 
                         <textarea class="create-post-textarea" name="article" id="post"
-                                  placeholder="What's on your mind, {{ request.user.last_name }}?"></textarea>
+                                  placeholder="What's on your mind{% if request.user.last_name %}, {{ request.user.last_name }}{% endif %}?"></textarea>
 
                         <span id="tags-span">
                             {{ tag_form.as_p }}
@@ -70,11 +70,13 @@
                 </div>
             </div>
         </div>
+        {% if posts %}
         <div id="loadMore-div" class="mb-2">
             <center>
                 <a class="btn w-100" id="loadMore" href="#">Load More</a>
             </center>
         </div>
+    {% endif %}
     </div>
 
     <div id="account-base-section-right-div">

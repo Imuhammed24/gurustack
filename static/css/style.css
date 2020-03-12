@@ -483,6 +483,18 @@ body {
 }
 
 
+#reg-form .helptext{
+    color: rgba(0, 0, 0, 0.75);
+}
+
+#reg-form #id_first_name::placeholder{
+    /*color: rgba(25, 25, 112, 0.41);*/
+    color: rgba(0, 0, 0, 0.75);
+    font-family: Kanit;
+    font-size: 15px;
+}
+
+
 .helptext {
     font-size: 13px;
 }
@@ -969,19 +981,20 @@ body {
 #user-detail-wrapper {
     overflow: hidden;
     clear: none;
-    padding: 30px 0px;
+    padding: 20px 0px 10px 0px ;
 }
 
 #user-profile-pix-div {
     float: left;
     display: inline;
     width: 36%;
+    margin-top: 13px;
 }
 
 #user-detail-div {
     float: left;
     display: inline;
-    width: 60%;
+    width: 62%;
     font-family: Kanit, sans-serif;
     padding-top: 10px;
 }
@@ -1019,7 +1032,7 @@ body {
 }
 
 #name-and-edit-btn {
-    margin-bottom: 4px;
+    margin-bottom: -5px;
 }
 
 * {
@@ -1035,9 +1048,11 @@ button {
     background-color: midnightblue;
     color: white;
     letter-spacing: .5px;
-    border-radius: 20px;
-    padding: 5px 8px;
+    /*border-radius: 20px;*/
+    border-radius: 15px;
+    padding: 7px 10px;
     margin-left: 5px;
+    float: right;
     /*margin-top: -0px;*/
     font-weight: bold;
     font-size: 15px;
@@ -1045,16 +1060,27 @@ button {
 }
 
 .main-username {
-    margin-bottom: 4px;
+    margin-top: -2px;
+    margin-bottom: 13px;
+}
+
+.main-follow{
+    margin-left: 36%;
+    font-weight: bold;
+    font-size: 18px;
+    /*color: #4b4b4b;*/
+    color: #686868;
+
 }
 
 #profile-bio{
+    /*color: gray;*/
     color: gray;
     font-family: Kanit, sans-serif;
 }
 
-.main-follow, .main-date {
-    margin: 0 0 3px 0;
+.main-date, .main-department {
+    margin: 0 0 -1px 0;
 }
 
 #nav-tabContent {
@@ -1272,6 +1298,11 @@ button {
 #edit-profile-modal-form label{
     margin-bottom: 1px;
 }
+
+.edit-profile-modal-form-edit p:nth-of-type(2){
+    display: none;
+}
+
 
 #edit-profile-modal-form .helptext {
     display: none;

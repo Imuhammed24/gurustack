@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from django.urls import reverse_lazy
 
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +28,7 @@ SECRET_KEY = '34y7pe!02a3r)tsv$#utyn0%e%f+z_&it$qr#ssw7pki3$cd3w'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.43.223', '127.0.0.1'
+    # '192.168.43.223', '127.0.0.1'
 ]
 
 

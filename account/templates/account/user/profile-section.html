@@ -31,7 +31,7 @@
                         <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title }}
                             <span>
                             <button onclick="document.getElementById('edit-profile_modal').style.display='block'"
-                                    id="edit-profile-btn">Edit Profile</button>
+                                    id="edit-profile-btn">{% if request.user.profile.department %}Edit{% else %}Create{% endif %} Profile</button>
                         </span></h4>
                         {% include 'account/user/edit-profile_template.html' %}
                     </div>
@@ -40,10 +40,10 @@
                     <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
                                                          alt="calendar:"> Joined {{ request.user.date_joined }}</p>
                     {% if request.user.profile.bio %}
-                    <p id="profile-bio"><em><strong>Bio:</strong> {{ request.user.profile.bio }}</em></p>
+                    <p id="profile-department" class="text-muted main-department"><img class="mr-1" src="{% static 'svg/department.svg' %}" alt="calendar:"> Department of {{ request.user.profile.department.title }}</p>
+                    <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ request.user.profile.bio }}</p>
                     {% endif %}
-                    <p class="main-follow text-muted mt-3"><span class="text-dark">0</span> Following <span
-                            class="text-dark ml-4">0</span> Follower</p>
+                    <p class="main-follow mt-3"><span>0</span> Following <span class="ml-3">0</span> Follower</p>
                 </div>
             </div>
 
@@ -71,11 +71,13 @@
                 <div class="tab-pane fade show active" id="profile-nav-posts" role="tabpanel"
                      aria-labelledby="nav-home-tab">
                     {% include 'posts/list.html' with posts=request.user.post.all %}
+                    {% if posts %}
                     <div id="loadMore-div" class="mb-1">
                         <center>
                             <a class="btn w-100" id="loadMore" href="#">Load More</a>
                         </center>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
                     {% for post in request.user.post.all %}

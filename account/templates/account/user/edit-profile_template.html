@@ -9,7 +9,7 @@
         </header>
 
         <div>
-            <form action="{% url 'account:register_profile' %}" method="post" enctype="multipart/form-data" id="edit-profile-modal-form">
+            <form {% if request.user.profile.department %}action="{% url 'account:edit_profile' %}" class="edit-profile-modal-form-edit" {% else %}action="{% url 'account:register_profile' %}"{% endif %} method="post" enctype="multipart/form-data" id="edit-profile-modal-form">
                 <div id="edit-profile-top-div" title="{{ request.user.first_name.title }} {{ request.user.last_name.title }}'s Profile">
                 {% csrf_token %}
                 {% if request.user.profile.profile_photo %}
@@ -21,13 +21,18 @@
                     <img id="edit-page-profile-demo-img" src="{% static 'svg/male-profile.svg' %}" alt="">
                 </label>
                 {% endif %}
-                <p id="change-or-remove-img" class="mt-1"><strong>@{{ request.user.username }}</strong><br> <label
-                        class="blue-color pointer-cursor font-weight-bold" for="id_profile_photo">change</label> or
-                    <label class="blue-color pointer-cursor text-danger font-weight-bold" for="">remove</label> profile
+                <p id="change-or-remove-img" class="mt-1"><strong>@{{ request.user.username }}</strong><br>
+                    <label class="blue-color pointer-cursor font-weight-bold" for="id_profile_photo">change</label> or
+                    <label class="blue-color pointer-cursor text-danger font-weight-bold" for="#">remove</label> profile
                     picture <br> <img id="uploaded-profile-img" src="" alt=""> </p>
                 </div>
+                <p>hidden></p>
+                {% if request.user.profile.department %}
+                    {{ edit_profile_form.as_p }}
+                {% else %}
+                    {{ profile_form }}
+                {% endif %}
 
-                {{ profile_form }}
 
                 <button type="submit" class="float-right" id="edit-profile-submit-btn">Save</button>
             </form>

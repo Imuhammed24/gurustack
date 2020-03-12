@@ -6,6 +6,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.utils import formats
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.http import require_POST
@@ -13,7 +14,7 @@ from django.views.decorators.http import require_POST
 from account.tokens import account_activation_token
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post
-from .forms import LoginForm, UserRegistrationForm, ProfileForm
+from .forms import LoginForm, UserRegistrationForm, ProfileForm, EditProfileForm
 
 
 # Create your views here.
@@ -61,11 +62,14 @@ def account_view(request):
 def profile_view(request):
     comment_form = CommentForm()
     profile_form = ProfileForm()
+    edit_profile_form = EditProfileForm(instance=request.user.profile)
     context = {'display_section': 'profile',
                'profile_form': profile_form,
+               'edit_profile_form': edit_profile_form,
                'comment_form': comment_form,
                'html_title': f'{request.user} profile',
                }
+    request.user.date_joined = formats.date_format(request.user.date_joined, "DATE_FORMAT")
     return render(request, 'account_base.html', context)
 
 
@@ -154,6 +158,23 @@ def register_profile_view(request):
         obj = profile_form.save(commit=False)
         obj.user = request.user
         obj.save()
+        profile_form.save_m2m()
+        messages.success(request, 'Profile edited successfully')
+    else:
+        messages.error(request, 'Error editing profile')
+    return redirect('account:profile')
+
+
+@login_required
+@require_POST
+def edit_profile_view(request):
+    edit_profile_form = ProfileForm(instance=request.user.profile,
+                                    data=request.POST,
+                                    files=request.FILES)
+    if edit_profile_form.is_valid():
+        obj = edit_profile_form.save(commit=False)
+        obj.save()
+        edit_profile_form.save_m2m()
         messages.success(request, 'Profile edited successfully')
     else:
         messages.error(request, 'Error editing profile')
