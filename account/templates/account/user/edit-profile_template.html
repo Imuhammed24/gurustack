@@ -9,7 +9,7 @@
         </header>
 
         <div>
-            <form {% if request.user.profile.department %}action="{% url 'account:edit_profile' %}" class="edit-profile-modal-form-edit" {% else %}action="{% url 'account:register_profile' %}"{% endif %} method="post" enctype="multipart/form-data" id="edit-profile-modal-form">
+            <form {% if request.user.profile.department %}action="{% url 'account:edit_profile' %}" class="edit-profile-modal-form-edit"{% else %}action="{% url 'account:register_profile' %}"{% endif %} method="post" enctype="multipart/form-data" id="edit-profile-modal-form">
                 <div id="edit-profile-top-div" title="{{ request.user.first_name.title }} {{ request.user.last_name.title }}'s Profile">
                 {% csrf_token %}
                 {% if request.user.profile.profile_photo %}
@@ -26,7 +26,7 @@
                     <label class="blue-color pointer-cursor text-danger font-weight-bold" for="#">remove</label> profile
                     picture <br> <img id="uploaded-profile-img" src="" alt=""> </p>
                 </div>
-                <p>hidden></p>
+                <p class="d-none">hidden</p>
                 {% if request.user.profile.department %}
                     {{ edit_profile_form.as_p }}
                 {% else %}

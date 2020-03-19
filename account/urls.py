@@ -2,20 +2,19 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from django.urls import path, reverse_lazy
 
-from .views import login_view, register, account_view, activate, post_like, \
-    profile_view, edit_profile_view, register_profile_view
+from .views import login_view, register, account_view, activate, post_like, profile_view, edit_profile_view, \
+    register_profile_view
 
 urlpatterns = [
     path('login/', login_view, name='login'),
+    path('edit-profile/', edit_profile_view, name='edit_profile'),
     path('register/', register, name='register'),
     path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('like-post/', post_like, name='like-post'),
     path('profile/', profile_view, name='profile'),
-    path('edit-profile/', edit_profile_view, name='edit_profile'),
     path('register-profile/', register_profile_view, name='register_profile'),
     path('home/', account_view, name='home'),
-
 
     path('password-change/', auth_views.PasswordChangeView.as_view(
         template_name='registration/password_change_form.html',
@@ -38,5 +37,4 @@ urlpatterns = [
 
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
-
 ]

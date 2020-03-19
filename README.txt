@@ -1,4 +1,12 @@
-UPDATES
+GITHUB
 
-19th January Update
-- Next thing to do is to add a Modal Popup for the edit page button
+$ git init
+$ git add .
+$ git commit -m "First commit"
+$ git remote add origin remote repository URL
+    # Sets the new remote
+    $ git remote -v
+    # Verifies the new remote URL
+$ git push origin master
+
+With Pycharm; you only need to push.

@@ -35,7 +35,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=10, default='Male', choices=GENDER_CHOICES)
     profile_photo = models.ImageField(upload_to='profile_pictures/', blank=True)
     bio = models.CharField(max_length=70, blank=True)
-    interests = TaggableManager(verbose_name='Interests')
+    interests = TaggableManager(verbose_name='Interests', help_text='football, programming, photography')
     phone_number = models.CharField(max_length=20, blank=True)
     department = models.CharField(max_length=30, blank=True)
     level = models.IntegerField(blank=True, null=True)
@@ -43,7 +43,7 @@ class Profile(models.Model):
     verified = models.BooleanField(default=False)
     email_confirmed = models.BooleanField(default=False)
     allow_messages = models.BooleanField(default=True)
-    year_of_entrance = models.CharField(max_length=10, default='2020', choices=YEAR_OF_ENTRANCE)
+    year_of_entrance = models.CharField(max_length=10, default='2020', choices=YEAR_OF_ENTRANCE, blank=True)
     year_of_graduation = models.CharField(max_length=10, blank=True, null=True, choices=YEAR_OF_GRADUATION)
 
     def __str__(self):

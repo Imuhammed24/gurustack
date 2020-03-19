@@ -44,9 +44,8 @@ class ProfileForm(forms.ModelForm):
     bio = forms.CharField(required=False,  widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
     department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
-    interests = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'football, programming, computer-graphics, ...'}))
-    phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
-    profile_photo = forms.ImageField(label='', widget=forms.ClearableFileInput(attrs={'hidden': '',
+    phone_number = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
+    profile_photo = forms.ImageField(required=False, label='', widget=forms.ClearableFileInput(attrs={'hidden': '',
                                                                               'onchange': "loadProfileImg(event);",
                                                                               'accept': 'image/gif, image/jpeg, image/jpg, image/png'}))
 
@@ -56,12 +55,16 @@ class ProfileForm(forms.ModelForm):
                   'phone_number', 'year_of_entrance',
                   'year_of_graduation', 'allow_messages']
 
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['interests'].widget.attrs['placeholder'] = 'football, photography, programming'
+
 
 class EditProfileForm(forms.ModelForm):
     bio = forms.CharField(required=False,  widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
-    # department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
-    interests = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'football, programming, computer-graphics, ...'}))
+    department = forms.CharField(required=False,
+                                 widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
     profile_photo = forms.ImageField(label='', widget=forms.ClearableFileInput(attrs={'hidden': True,
                                                                               'onchange': "loadProfileImg(event);",
@@ -69,5 +72,6 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['profile_photo', 'gender', 'bio', 'interests',
+        fields = ['profile_photo', 'gender', 'bio', 'department', 'interests',
                   'phone_number', 'year_of_graduation', 'allow_messages']
+

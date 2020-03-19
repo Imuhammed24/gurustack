@@ -566,6 +566,10 @@ body {
     float: right;
 }
 
+#middle-div-bottom{
+    padding-bottom: 25px;
+}
+
 
 #profile-base-ul {
     margin-top: 40px;

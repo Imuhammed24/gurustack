@@ -39,8 +39,10 @@
                     <p class="text-muted main-username">@{{ request.user.username }} </p>
                     <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
                                                          alt="calendar:"> Joined {{ request.user.date_joined }}</p>
-                    {% if request.user.profile.bio %}
+                    {% if request.user.profile.department %}
                     <p id="profile-department" class="text-muted main-department"><img class="mr-1" src="{% static 'svg/department.svg' %}" alt="calendar:"> Department of {{ request.user.profile.department.title }}</p>
+                    {% endif %}
+                    {% if request.user.profile.bio %}
                     <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ request.user.profile.bio }}</p>
                     {% endif %}
                     <p class="main-follow mt-3"><span>0</span> Following <span class="ml-3">0</span> Follower</p>

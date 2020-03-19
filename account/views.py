@@ -62,7 +62,9 @@ def account_view(request):
 def profile_view(request):
     comment_form = CommentForm()
     profile_form = ProfileForm()
-    edit_profile_form = EditProfileForm(instance=request.user.profile)
+    edit_profile_form = None
+    if request.user.profile:
+        edit_profile_form = EditProfileForm(instance=request.user.profile)
     context = {'display_section': 'profile',
                'profile_form': profile_form,
                'edit_profile_form': edit_profile_form,
@@ -151,14 +153,13 @@ def post_like(request):
 
 @login_required
 @require_POST
-def register_profile_view(request):
-    profile_form = ProfileForm(data=request.POST,
-                               files=request.FILES)
-    if profile_form.is_valid():
-        obj = profile_form.save(commit=False)
-        obj.user = request.user
-        obj.save()
-        profile_form.save_m2m()
+def edit_profile_view(request):
+    edit_profile_form = ProfileForm(instance=request.user.profile,
+                                    data=request.POST,
+                                    files=request.FILES)
+    if edit_profile_form.is_valid():
+        edit_profile_form.save()
+        # edit_profile_form.save_m2m()
         messages.success(request, 'Profile edited successfully')
     else:
         messages.error(request, 'Error editing profile')
@@ -167,14 +168,14 @@ def register_profile_view(request):
 
 @login_required
 @require_POST
-def edit_profile_view(request):
-    edit_profile_form = ProfileForm(instance=request.user.profile,
-                                    data=request.POST,
-                                    files=request.FILES)
-    if edit_profile_form.is_valid():
-        obj = edit_profile_form.save(commit=False)
+def register_profile_view(request):
+    profile_form = ProfileForm(data=request.POST,
+                               files=request.FILES)
+    if profile_form.is_valid():
+        obj = profile_form.save(commit=False)
+        obj.user = request.user
         obj.save()
-        edit_profile_form.save_m2m()
+        # profile_form.save_m2m()
         messages.success(request, 'Profile edited successfully')
     else:
         messages.error(request, 'Error editing profile')
