@@ -40,38 +40,91 @@ class UserRegistrationForm(forms.ModelForm):
         return instance
 
 
-class ProfileForm(forms.ModelForm):
+class StudentProfileForm(forms.ModelForm):
     bio = forms.CharField(required=False,  widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
     department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
     phone_number = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
-    profile_photo = forms.ImageField(required=False, label='', widget=forms.ClearableFileInput(attrs={'hidden': '',
-                                                                              'onchange': "loadProfileImg(event);",
-                                                                              'accept': 'image/gif, image/jpeg, image/jpg, image/png'}))
+    profile_photo = forms.ImageField(required=False, label='',
+                                     widget=forms.ClearableFileInput(attrs={'hidden': '',
+                                                                            'onchange': "loadProfileImg(event);",
+                                                                            'accept': 'image/gif, image/jpeg,'
+                                                                                      ' image/jpg, image/png'}))
 
     class Meta:
         model = Profile
-        fields = ['profile_photo', 'gender', 'bio', 'department', 'interests',
+        fields = ['profile_photo', 'gender', 'bio',
+                  'department', 'interests',
                   'phone_number', 'year_of_entrance',
-                  'year_of_graduation', 'allow_messages']
+                  'year_of_graduation']
 
     def __init__(self, *args, **kwargs):
-        super(ProfileForm, self).__init__(*args, **kwargs)
+        super(StudentProfileForm, self).__init__(*args, **kwargs)
+        self.fields['interests'].widget.attrs['placeholder'] = 'football, photography, programming'
+
+
+class StaffProfileForm(forms.ModelForm):
+    bio = forms.CharField(required=False,
+                          widget=forms.Textarea(attrs={'placeholder': 'Short description about yourself'}))
+    department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
+    phone_number = forms.CharField(required=False,
+                                   widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
+    profile_photo = forms.ImageField(required=False, label='',
+                                     widget=forms.ClearableFileInput(attrs={'hidden': '',
+                                                                            'onchange': "loadProfileImg(event);",
+                                                                            'accept': 'image/gif, image/jpeg,'
+                                                                                      ' image/jpg, image/png'}))
+
+    class Meta:
+        model = Profile
+        fields = ['profile_photo', 'gender', 'bio',
+                  'department', 'interests',
+                  'phone_number', 'staff_status', ]
+
+    def __init__(self, *args, **kwargs):
+        super(StaffProfileForm, self).__init__(*args, **kwargs)
+        self.fields['interests'].widget.attrs['placeholder'] = 'football, photography, programming'
+
+
+class EditStaffProfileForm(forms.ModelForm):
+    bio = forms.CharField(required=False,
+                          widget=forms.Textarea(attrs={'placeholder': 'Short description about yourself'}))
+    department = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
+    phone_number = forms.CharField(required=False,
+                                   widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
+    profile_photo = forms.ImageField(required=False, label='',
+                                     widget=forms.ClearableFileInput(attrs={'hidden': '',
+                                                                            'onchange': "loadProfileImg(event);",
+                                                                            'accept': 'image/gif, image/jpeg,'
+                                                                                      ' image/jpg, image/png'}))
+
+    class Meta:
+        model = Profile
+        fields = ['profile_photo', 'gender', 'bio',
+                  'department', 'interests',
+                  'phone_number', 'staff_status', ]
+
+    def __init__(self, *args, **kwargs):
+        super(EditStaffProfileForm, self).__init__(*args, **kwargs)
         self.fields['interests'].widget.attrs['placeholder'] = 'football, photography, programming'
 
 
 class EditProfileForm(forms.ModelForm):
-    bio = forms.CharField(required=False,  widget=forms.Textarea(
+    bio = forms.CharField(required=False,
+                          widget=forms.Textarea(
                                   attrs={'placeholder': 'Short description about yourself'}))
     department = forms.CharField(required=False,
                                  widget=forms.TextInput(attrs={'placeholder': 'Cyber Security Science'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '07036653300'}))
-    profile_photo = forms.ImageField(label='', widget=forms.ClearableFileInput(attrs={'hidden': True,
-                                                                              'onchange': "loadProfileImg(event);",
-                                                                              'accept': 'image/gif, image/jpeg, image/jpg, image/png'}))
+    profile_photo = forms.ImageField(label='',
+                                     widget=forms.ClearableFileInput(attrs={'hidden': True,
+                                                                            'onchange': "loadProfileImg(event);",
+                                                                            'accept': 'image/gif, image/jpeg,'
+                                                                                      'image/jpg, image/png'}))
 
     class Meta:
         model = Profile
-        fields = ['profile_photo', 'gender', 'bio', 'department', 'interests',
-                  'phone_number', 'year_of_graduation', 'allow_messages']
+        fields = ['profile_photo', 'gender',
+                  'bio', 'department', 'interests',
+                  'phone_number', 'year_of_graduation']
 

@@ -27,10 +27,18 @@
                     picture <br> <img id="uploaded-profile-img" src="" alt=""> </p>
                 </div>
                 <p class="d-none">hidden</p>
-                {% if request.user.profile.department %}
-                    {{ edit_profile_form.as_p }}
+                {% if '.st' not in request.user.email %}
+                    {% if request.user.profile.department %}
+                        {{ edit_staff_profile_form.as_p }}
+                    {% else %}
+                        {{ staff_profile_form.as_p }}
+                    {% endif %}
                 {% else %}
-                    {{ profile_form }}
+                    {% if request.user.profile.department %}
+                        {{ edit_profile_form.as_p }}
+                    {% else %}
+                        {{ profile_form }}
+                    {% endif %}
                 {% endif %}
 
 

@@ -14,8 +14,12 @@
             </div>
             <div class="clearfix" id="post-info">
                 <ul id="post-meta">
-                    <li id="post-meta-name-li"><a class="font-weight-bold text-dark" href="">
-                        {{post.user.first_name.title }} {{ post.user.last_name.title }}</a></li>
+                    <li id="post-meta-name-li">
+                        <a class="font-weight-bold text-dark" href="">
+                        {{post.user.first_name.title }} {{ post.user.last_name.title }}
+                            <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                        </a>
+                    </li>
                     <li></li>
                     <li id="post-meta-uname-li"><a href="">@{{ post.user.username }}</a></li>
                     <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>

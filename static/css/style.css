@@ -866,6 +866,13 @@ body {
     content: ' -';
 }
 
+#verified-icon-in-post{
+    margin-top: -4px;
+    margin-left: -2px;
+    width: 15px;
+    height: 15px;
+}
+
 #post-article {
     display: inline;
     font-family: Kanit, sans-serif;
@@ -980,6 +987,10 @@ body {
     word-spacing: 0px;
     color: gray;
     font-weight: normal;
+}
+
+#main-verified-icon{
+    margin-top: 4px;
 }
 
 #user-detail-wrapper {

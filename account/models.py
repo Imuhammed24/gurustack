@@ -32,7 +32,7 @@ class Profile(models.Model):
         ('2024', '2024'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    gender = models.CharField(max_length=10, default='Male', choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     profile_photo = models.ImageField(upload_to='profile_pictures/', blank=True)
     bio = models.CharField(max_length=70, blank=True)
     interests = TaggableManager(verbose_name='Interests', help_text='football, programming, photography')
@@ -41,10 +41,9 @@ class Profile(models.Model):
     level = models.IntegerField(blank=True, null=True)
     staff_status = models.BooleanField(default=False)
     verified = models.BooleanField(default=False)
-    email_confirmed = models.BooleanField(default=False)
-    allow_messages = models.BooleanField(default=True)
     year_of_entrance = models.CharField(max_length=10, default='2020', choices=YEAR_OF_ENTRANCE, blank=True)
     year_of_graduation = models.CharField(max_length=10, blank=True, null=True, choices=YEAR_OF_GRADUATION)
+    email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return f'profile for user {self.user.username}'

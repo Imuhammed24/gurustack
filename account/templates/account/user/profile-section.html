@@ -29,6 +29,7 @@
                     </div>
                     <div id="user-detail-div">
                         <h4 id="name-and-edit-btn">{{ request.user.first_name.title }} {{ request.user.last_name.title }}
+                            <span class="position-absolute ml-1">{% if request.user.profile.verified %}<img id="main-verified-icon" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                             <span>
                             <button onclick="document.getElementById('edit-profile_modal').style.display='block'"
                                     id="edit-profile-btn">{% if request.user.profile.department %}Edit{% else %}Create{% endif %} Profile</button>

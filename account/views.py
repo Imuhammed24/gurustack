@@ -14,7 +14,9 @@ from django.views.decorators.http import require_POST
 from account.tokens import account_activation_token
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post
-from .forms import LoginForm, UserRegistrationForm, ProfileForm, EditProfileForm
+from .forms import LoginForm, UserRegistrationForm, \
+    StudentProfileForm, EditProfileForm, \
+    StaffProfileForm, EditStaffProfileForm
 
 
 # Create your views here.
@@ -61,16 +63,21 @@ def account_view(request):
 @login_required
 def profile_view(request):
     comment_form = CommentForm()
-    profile_form = ProfileForm()
+    profile_form = StudentProfileForm()
+    staff_profile_form = StaffProfileForm()
     edit_profile_form = None
     if request.user.profile:
         edit_profile_form = EditProfileForm(instance=request.user.profile)
     context = {'display_section': 'profile',
                'profile_form': profile_form,
+               'staff_profile_form': staff_profile_form,
                'edit_profile_form': edit_profile_form,
                'comment_form': comment_form,
                'html_title': f'{request.user} profile',
                }
+    if request.user.profile.staff_status:
+        edit_staff_profile_form = EditStaffProfileForm(instance=request.user.profile)
+        context['edit_staff_profile_form'] = edit_staff_profile_form
     request.user.date_joined = formats.date_format(request.user.date_joined, "DATE_FORMAT")
     return render(request, 'account_base.html', context)
 
@@ -120,6 +127,7 @@ def activate(request, uidb64, token):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
+        user.profile.email_confirmed = True
         user.save()
         login(request, user)
         return redirect('account:home')
@@ -154,29 +162,52 @@ def post_like(request):
 @login_required
 @require_POST
 def edit_profile_view(request):
-    edit_profile_form = ProfileForm(instance=request.user.profile,
-                                    data=request.POST,
-                                    files=request.FILES)
-    if edit_profile_form.is_valid():
-        edit_profile_form.save()
-        # edit_profile_form.save_m2m()
-        messages.success(request, 'Profile edited successfully')
-    else:
-        messages.error(request, 'Error editing profile')
+    edit_profile_form = StudentProfileForm(instance=request.user.profile,
+                                           data=request.POST,
+                                           files=request.FILES)
+    edit_staff_profile_form = EditStaffProfileForm(instance=request.user.profile,
+                                                   data=request.POST,
+                                                   files=request.FILES)
+    if edit_profile_form is not None:
+        if edit_profile_form.is_valid():
+            edit_profile_form.save()
+            messages.success(request, 'Profile edited successfully')
+        else:
+            messages.error(request, 'Error editing profile')
+
+    if edit_staff_profile_form is not None:
+        if edit_staff_profile_form.is_valid():
+            edit_staff_profile_form.save()
+            messages.success(request, 'Profile edited successfully')
+        else:
+            messages.error(request, 'Error editing profile')
     return redirect('account:profile')
 
 
 @login_required
 @require_POST
 def register_profile_view(request):
-    profile_form = ProfileForm(data=request.POST,
-                               files=request.FILES)
-    if profile_form.is_valid():
-        obj = profile_form.save(commit=False)
-        obj.user = request.user
-        obj.save()
-        # profile_form.save_m2m()
-        messages.success(request, 'Profile edited successfully')
-    else:
-        messages.error(request, 'Error editing profile')
+    profile_form = StudentProfileForm(instance=request.user.profile,
+                                      data=request.POST or None,
+                                      files=request.FILES or None)
+    staff_profile_form = StaffProfileForm(instance=request.user.profile,
+                                          data=request.POST or None,
+                                          files=request.FILES or None)
+    if profile_form is not None:
+        if profile_form.is_valid():
+            obj = profile_form.save(commit=False)
+            obj.save()
+            messages.success(request, 'Profile created successfully')
+        else:
+            messages.error(request, 'Error creating profile')
+
+    if staff_profile_form is not None:
+        if staff_profile_form.is_valid():
+            profile = staff_profile_form.save(commit=False)
+            profile.staff_status = True
+            profile.verified = True
+            profile.save()
+            messages.success(request, 'Profile created successfully')
+        else:
+            messages.error(request, 'Error creating profile')
     return redirect('account:profile')
