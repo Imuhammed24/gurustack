@@ -1,0 +1,18 @@
+<!--<script type = "text/javascript">-->
+<!--     $(document).ready(function () {-->
+<!--        $("#id_tags").autocomplete({-->
+<!--            source: "/account/complete-newuser-form/",-->
+<!--            minLength: 1,-->
+<!--            delay: 200,-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<script>
+$('#id_tags').tagsinput('items')({
+  typeahead: {
+    source: function(query) {
+      return $.getJSON('citynames.json');
+    }
+  }
+});
+</script>

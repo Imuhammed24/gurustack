@@ -2,29 +2,49 @@
 
 <!--<!doctype html>-->
 <html lang="en">
-<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% if html_title %} {{ html_title }} {% else %} {% block html_title %} {% endblock %} {% endif %}</title>
+
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-    <script src="{% static 'jquery/jquery-3.3.1.slim.min.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{% static 'jquery/jquery-3.3.1.slim.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'ajax/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ajax/popper.min.js' %}"></script>
+
+    {% if request.user.is_authenticated %}
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap-tagsinput.css"/>
+    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput-angular.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/helpers.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/input_with_string_items.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/input_with_object_items.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/select_with_string_items.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/select_with_object_items.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/reproduced_bugs.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/events.tests.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput-angular.tests.js"></script>
+    {% endif %}
+
+
 
 
 </head>
+
 
 <body>
 {% block base_content %}
 {% endblock %}
 
 {% include 'textarea-script.html' %}
+{% include 'ajaxify-tag-form-in-post.html' %}
 {% include 'load-more-script.html' %}
 {% include 'display-form-image-script.html' %}
 {% include 'like-post-script.html' %}

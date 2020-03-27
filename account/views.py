@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -10,6 +12,7 @@ from django.utils import formats
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.http import require_POST
+from django.views.generic import FormView
 
 from account.tokens import account_activation_token
 from posts.forms import TagForm, ImageForm, CommentForm
@@ -211,3 +214,23 @@ def register_profile_view(request):
         else:
             messages.error(request, 'Error creating profile')
     return redirect('account:profile')
+
+
+class AutoCompleteView(FormView):
+    def get(self, request, *args):
+        data = request.GET
+        username = data.get("term")
+        if username:
+            users = User.objects.filter(username__icontains=username)
+        else:
+            users = User.objects.all()
+        results = []
+        for user in users:
+            user_json = {}
+            user_json['id'] = user.id
+            user_json['label'] = user.username
+            user_json['value'] = user.username
+            results.append(user_json)
+            data = json.dumps(results)
+            mimetype = 'application/json'
+        return HttpResponse(data, mimetype)

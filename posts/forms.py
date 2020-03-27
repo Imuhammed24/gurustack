@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Post, Tag, Images, Comment
 
 
@@ -14,6 +15,11 @@ class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
         fields = ['tags']
+
+    def __init__(self, *args, **kwargs):
+        super(TagForm, self).__init__(*args, **kwargs)
+        self.fields['tags'].widget.attrs['data-role'] = 'tagsinput'
+        self.fields['tags'].widget.attrs['placeholder'] = 'add tags'
 
 
 class ImageForm(forms.ModelForm):

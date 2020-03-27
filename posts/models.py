@@ -1,13 +1,14 @@
+from io import BytesIO
+
+from PIL import Image
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.files import File
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
-from io import BytesIO
-from django.core.files import File
-from PIL import Image
 
 
 class Post(models.Model):
@@ -48,7 +49,7 @@ class Comment(models.Model):
 
 class Tag(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='tag')
-    tags = TaggableManager(blank=True)
+    tags = TaggableManager(blank=True, help_text=None, verbose_name='')
 
 
 def get_image_filename(instance, filename):

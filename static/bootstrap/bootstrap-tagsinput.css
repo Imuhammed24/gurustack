@@ -1,0 +1,61 @@
+.bootstrap-tagsinput {
+  box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
+  display: inline-block;
+  padding: 4px 6px;
+  vertical-align: middle;
+  border-radius: 4px;
+  width: 85%;
+  margin-left: 70px;
+  margin-top: 5px;
+  line-height: 32px;
+  cursor: text;
+}
+
+.bootstrap-tagsinput span{
+  background-color: rgba(173, 216, 230, 0.99);
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin: 4px 0;
+}
+
+.bootstrap-tagsinput input {
+  box-shadow: none;
+  padding: 0 6px;
+  margin: 0;
+  width: 100%;
+}
+.bootstrap-tagsinput.form-control input::-moz-placeholder {
+  color: #777;
+  opacity: 1;
+}
+.bootstrap-tagsinput.form-control input:-ms-input-placeholder {
+  color: #777;
+}
+.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
+  color: #777;
+}
+.bootstrap-tagsinput input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.bootstrap-tagsinput .tag {
+  margin-right: 1px;
+  color: white;
+  font-weight: bold;
+}
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+  content: "x";
+  padding: 1px 2px;
+  color: midnightblue;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover {
+  box-shadow: inset 0 1px 0 darkorange, 0 1px 2px darkorange;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
