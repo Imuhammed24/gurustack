@@ -714,6 +714,26 @@ body {
     box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
 }
 
+.selectize-control{
+    border: none;
+    margin-top: 5px;
+}
+
+.selectize-input{
+    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
+    border-radius: 5px;
+    min-height: 17px;
+}
+
+.selectize-dropdown-content{
+    background-color: lightgray;
+    overflow: hidden;
+    clear: none;
+    color: black;
+}
+
+/*form-control multi*/
+
 #tags-span {
     display: none;
 }

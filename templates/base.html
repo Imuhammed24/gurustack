@@ -2,6 +2,7 @@
 
 <!--<!doctype html>-->
 <html lang="en">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,30 +12,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <link href="/static/taggit_selectize/css/selectize.django.css" type="text/css" media="all" rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script type="text/javascript" src="{% static 'jquery/jquery-3.3.1.slim.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'jquery/jquery-ui.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'ajax/popper.min.js' %}"></script>
-
-    {% if request.user.is_authenticated %}
-    <link rel="stylesheet" href="/static/bootstrap/bootstrap-tagsinput.css"/>
-    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput-angular.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/helpers.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/input_with_string_items.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/input_with_object_items.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/select_with_string_items.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/select_with_object_items.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/reproduced_bugs.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/events.tests.js"></script>
-    <script type="text/javascript" src="/static/bootstrap/bootstrap-tagsinput-angular.tests.js"></script>
-    {% endif %}
-
-
-
+    <script type="text/javascript" src="/static/taggit_selectize/js/selectize.js"></script>
 
 </head>
 
@@ -44,7 +29,6 @@
 {% endblock %}
 
 {% include 'textarea-script.html' %}
-{% include 'ajaxify-tag-form-in-post.html' %}
 {% include 'load-more-script.html' %}
 {% include 'display-form-image-script.html' %}
 {% include 'like-post-script.html' %}

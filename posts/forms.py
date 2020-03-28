@@ -20,6 +20,7 @@ class TagForm(forms.ModelForm):
         super(TagForm, self).__init__(*args, **kwargs)
         self.fields['tags'].widget.attrs['data-role'] = 'tagsinput'
         self.fields['tags'].widget.attrs['placeholder'] = 'add tags'
+        self.fields['tags'].widget.attrs['class'] = 'form-control'
 
 
 class ImageForm(forms.ModelForm):

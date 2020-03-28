@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from taggit_selectize import widgets as tag_widget
 
 from .models import Profile
 
@@ -18,6 +19,9 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email']
+        widgets = {
+            'interests': tag_widget.TagSelectize(),
+        }
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -57,6 +61,9 @@ class StudentProfileForm(forms.ModelForm):
                   'department', 'interests',
                   'phone_number', 'year_of_entrance',
                   'year_of_graduation']
+        widgets = {
+            'interests': tag_widget.TagSelectize(),
+        }
 
     def __init__(self, *args, **kwargs):
         super(StudentProfileForm, self).__init__(*args, **kwargs)
@@ -80,6 +87,9 @@ class StaffProfileForm(forms.ModelForm):
         fields = ['profile_photo', 'gender', 'bio',
                   'department', 'interests',
                   'phone_number', 'staff_status', ]
+        widgets = {
+            'interests': tag_widget.TagSelectize(),
+        }
 
     def __init__(self, *args, **kwargs):
         super(StaffProfileForm, self).__init__(*args, **kwargs)
@@ -103,6 +113,9 @@ class EditStaffProfileForm(forms.ModelForm):
         fields = ['profile_photo', 'gender', 'bio',
                   'department', 'interests',
                   'phone_number', 'staff_status', ]
+        widgets = {
+            'interests': tag_widget.TagSelectize(),
+        }
 
     def __init__(self, *args, **kwargs):
         super(EditStaffProfileForm, self).__init__(*args, **kwargs)
@@ -127,4 +140,7 @@ class EditProfileForm(forms.ModelForm):
         fields = ['profile_photo', 'gender',
                   'bio', 'department', 'interests',
                   'phone_number', 'year_of_graduation']
+        widgets = {
+            'interests': tag_widget.TagSelectize(),
+        }
 
