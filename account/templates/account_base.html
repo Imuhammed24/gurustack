@@ -10,10 +10,17 @@
             <span class="float-left" id="logo-in-nav"><h4 id="main-name-menu">Guru<span id="main-name-span">stack</span></h4></span>
         </p>
         <ul id="profile-base-ul" class="list-unstyled">
-            <li title="Home"><a class="no-txt-deco-li {% if display_section == 'home' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:home' %}"> <img
-                    src="{% static 'svg/home.svg' %}" alt="">Home</a></li>
+            <li title="Home">
+                <a class="no-txt-deco-li {% if display_section == 'home' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:home' %}">
+                <img src="{% static 'svg/home.svg' %}" alt="">Home
+                </a>
+            </li>
             <li><img src="{% static 'svg/explore.svg' %}" alt="">Explore</li>
-            <li><img src="{% static 'svg/notification.svg' %}" alt="">Notifications</li>
+            <li title="Notifications">
+                <a class="no-txt-deco-li {% if display_section == 'notifications' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:notifications' %}">
+                <img src="{% static 'svg/notification.svg' %}" alt="">Notifications
+                </a>
+            </li>
             <li><img src="{% static 'svg/messages.svg' %}" alt="">Messages</li>
             <li><img src="{% static 'svg/bookmark.svg' %}" alt="">Bookmarks</li>
             <li title="Profile">
@@ -32,6 +39,8 @@
         {% include 'account/user/profile-section.html'%}
     {% elif display_section == 'connect' %}
         {% include 'account/user/connect-section.html'%}
+    {% elif display_section == 'notifications' %}
+        {% include 'account/user/notifications-section.html'%}
     {% endif %}
     {% endif %}
 </section>

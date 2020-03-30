@@ -1,0 +1,71 @@
+{% load static %}
+<div id="account-base-section-middle-div">
+        <div id="account-base-section-middle-div-content">
+            <div id="middle-div-top">
+                <div id="middle-div-top-content-div" class="pb-5">
+                    <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
+                                                          src="{% static 'svg/back-btn.svg' %}" alt=""></a>
+                    <h4><a class="text-dark no-txt-deco" href="{% url 'account:home' %}">Notifications</a></h4>
+                    <img src="{% static 'svg/info.svg' %}" alt="">
+                </div>
+            </div>
+
+<!--            <div id="middle-div-middle">-->
+<!--                <div id="middle-div-middle-content-div">-->
+<!--                    aaa-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div id="middle-div-bottom">
+                <div id="middle-div-bottom-content">
+                    <nav>
+                        <div class=" nav nav-tabs pr-5" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link midnightblue-text active" id="nav-home-tab" data-toggle="tab"
+                               href="#all-notifications" role="tab"
+                               aria-controls="nav-home" aria-selected="true">All Notifications</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="profile-nav-tabContent">
+                        <div class="tab-pane fade show active pl-3 pr-3" id="all-notifications" role="tabpanel" aria-labelledby="nav-home-tab">
+                            {% for action in actions %}
+                                <div class="notification-list-item">
+                                    {% if action.verb == 'likes' or action.verb == 'commented on' %}
+                                        {% if action.user.profile.profile_photo%}
+                                        <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
+                                        {% else %}
+                                        <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                        {% endif %}
+                                        {% if action.target.user.profile.profile_photo%}
+                                        <img id="notification-icon-for-post2" class="d-inline rounded-circle" src="{{ action.target.user.profile.profile_photo.url }}" alt="">
+                                        {% else %}
+                                            <img id="notification-icon-for-post2" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                        {% endif %}
+                                        <p class="d-inline text-muted"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{{ action.target.user.first_name.title }} {{ action.target.user.last_name.title }}</strong></a>'s post</p>
+
+                                    {% elif action.verb == 'started following' %}
+                                        {% if action.user.profile.profile_photo%}
+                                        <img id="notification-icon-for-post3" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
+                                        {% else %}
+                                        <img id="notification-icon-for-post3" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                        {% endif %}
+                                        {% if action.target.profile.profile_photo%}
+                                            <img id="notification-icon-for-post4" class="d-inline rounded-circle" src="{{ action.target.profile.profile_photo.url }}" alt="">
+                                        {% else %}
+                                        <img id="notification-icon-for-post4" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                        {% endif %}
+                                        <p class="d-inline text-muted"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{{ action.target.first_name.title }} {{ action.target.last_name.title }}</strong></a></p>
+
+                                    {% else%}
+                                        {{ action.user }} {{ action.verb }} {{ action.target }}
+                                    {% endif %}
+                                </div>
+<!--                            <hr style="background-color: #e5e5f7">-->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% include 'account/user/trends-and-who-to-follow-container.html' %}

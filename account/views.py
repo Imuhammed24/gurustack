@@ -13,6 +13,8 @@ from django.views.decorators.http import require_POST
 
 from account.models import Contact
 from account.tokens import account_activation_token
+from actions.models import Action
+from actions.utils import create_action
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post
 from .forms import LoginForm, UserRegistrationForm, \
@@ -69,11 +71,28 @@ def connect_view(request):
     users = User.objects.filter(is_active=True, rel_to_set=None)
     context = {'display_section': 'connect',
                'html_title': f'connect {request.user.username}',
-               'users_to_follow': users,
-
-               }
+               'users_to_follow': users, }
 
     return render(request, 'account_base.html', context)
+
+
+@login_required
+def notifications_view(request):
+    users = User.objects.filter(is_active=True, rel_to_set=None)
+    actions = Action.objects.all().exclude(user=request.user)
+    following_ids = request.user.following.values_list('id', flat=True)
+
+    if following_ids:
+        actions = actions.filter(user_id__in=following_ids).select_related('user',
+                                                                           'user__profile').prefetch_related('target')
+    # actions = actions[:10]
+    context = {'display_section': 'notifications',
+               'html_title': f'{request.user.username}_Notifications',
+               'users_to_follow': users,
+               'actions': actions, }
+
+    return render(request, 'account_base.html', context)
+
 
 @login_required
 def profile_view(request):
@@ -144,6 +163,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.profile.email_confirmed = True
         user.save()
+        create_action(request.user, 'has created an account')
         login(request, user)
         return redirect('account:home')
     else:
@@ -157,13 +177,11 @@ def post_like(request):
     post = get_object_or_404(Post, id=post_id)
     if post.users_like.filter(id=request.user.id).exists():
         post.users_like.remove(request.user)
-        # post.is_liked = False
-        # post.total_no_likes = post.users_like.count
 
     else:
         post.users_like.add(request.user)
-        # post.is_liked = True
-        # post.total_no_likes = post.users_like.count
+        if request.user is not post.user:
+            create_action(request.user, 'likes', post)
 
     context = {'post': post,
                # 'is_liked': post.is_liked,
@@ -264,7 +282,7 @@ def user_follow(request):
     else:
         Contact.objects.get_or_create(user_from=request.user,
                                       user_to=user)
-        # create_action(request.user, 'started following', user)
+        create_action(request.user, 'started following', user)
         is_followed = True
 
     context = {'user': user,

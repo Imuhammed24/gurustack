@@ -1547,6 +1547,7 @@ button {
 /*########################################################*/
 /*########################################################                  CONNECT SECTION            */
 /*########################################################*/
+/*########################################################*/
 
 #middle-div-middle-content-div-4-connect h4{
     font-weight: bold;
@@ -1572,11 +1573,11 @@ button {
     display: block;
     border-bottom: 1px solid rgba(173, 216, 230, 0.33);
     border-radius: 5px;
+    transition: .5s;
 }
 
 #main-user-list-div-content:hover{
     background-color: rgba(173, 216, 230, 0.14);
-    border: 1px solid rgba(173, 216, 230, 0.33);
 }
 
 #main-user-list-div-content .user-bio{
@@ -1597,6 +1598,38 @@ button {
 }
 
 
+/*########################################################*/
+/*########################################################*/
+/*########################################################                  NOTIFICATION SECTION            */
+/*########################################################*/
+/*########################################################*/
+
+#nav-tab .midnightblue-text{
+    color: midnightblue;
+    border-bottom: 3px solid midnightblue;
+    border-right: none;
+    transition: .5s;
+}
+
+#nav-tab .midnightblue-text:hover{
+    background-color: rgba(255, 165, 0, 0.19);
+    border-bottom: 3px solid orange;
+}
+
+#notification-icon-for-post, #notification-icon-for-post2, #notification-icon-for-post3, #notification-icon-for-post4{
+    height: 45px;
+    width: 45px;
+}
+
+.notification-list-item:hover{
+    background-color: rgba(229, 229, 247, 0.27);
+}
+
+.notification-list-item{
+    border-bottom: 1px solid #e5e5f7;
+    padding: 15px 5px;
+    transition: .7s;
+}
 /*start of desktop styles */
 
 /*@media screen and (max-width: 991px) {*/

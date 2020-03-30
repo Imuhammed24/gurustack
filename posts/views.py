@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
+from actions.utils import create_action
 from .forms import TagForm, CommentForm
 from .models import Post, Images
 
@@ -16,6 +17,7 @@ def create_post(request):
             post.article = request.POST.get('article')
             post.user = request.user
             post.save()
+            create_action(request.user, 'added', post)
 
             files = request.FILES.getlist('image')
             for f in files:
@@ -46,5 +48,7 @@ def add_comment(request, pk):
             obj.post = post
             obj.user = request.user
             obj.save()
+            if request.user is not post.user:
+                create_action(request.user, 'commented on', post)
             return redirect('account:home')
     return

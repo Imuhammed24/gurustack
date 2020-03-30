@@ -30,6 +30,13 @@
                     {% for user in users_to_follow %}
                         {% include 'account/user/main-users-list-template.html' %}
                     {% endfor %}
+                    {% if users_to_follow.count >= 15 %}
+                    <div id="load-more-users-div">
+                        <center>
+                            <a class="btn w-100" id="load-more-users" href="#">Load More</a>
+                        </center>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
