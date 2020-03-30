@@ -11,6 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.http import require_POST
 
+from account.models import Contact
 from account.tokens import account_activation_token
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post
@@ -47,6 +48,7 @@ def account_view(request):
     image_form = ImageForm()
     comment_form = CommentForm()
     posts = Post.objects.all()
+    users = User.objects.filter(is_active=True)[:5]
 
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
@@ -54,6 +56,7 @@ def account_view(request):
                'image_form': image_form,
                'posts': posts,
                'comment_form': comment_form,
+               'users': users,
                # 'total_no_likes': post.users_like.count,
                }
 
@@ -211,3 +214,54 @@ def register_profile_view(request):
         else:
             messages.error(request, 'Error creating profile')
     return redirect('account:profile')
+
+
+# @login_required
+# def user_list_view(request):
+#     users = User.objects.filter(is_active=True)
+#     return render(request, 'account/user/user-list.html', {'display_section': 'people',
+#                                                            'users': users})
+
+#
+# @login_required
+# def user_detail_view(request, username):
+#     user = get_object_or_404(User, username=username, is_active=True)
+#     if user.followers.filter(id=request.user.id).exists():
+#         is_followed = True
+#     else:
+#         is_followed = False
+#     return render(request, 'account/user/user-detail.html', {'display_section': 'people',
+#                                                              'is_followed': is_followed,
+#                                                              'total_no_followers': user.followers.count,
+#                                                              'all_followers': user.followers.all,
+#                                                              'total_no_following': user.following.count,
+#                                                              'user': user})
+
+
+@login_required
+@require_POST
+def user_follow(request):
+    user_id = request.POST.get('user_id')
+    user = get_object_or_404(User, id=user_id, is_active=True)
+
+    if user.followers.filter(id=request.user.id).exists():
+        Contact.objects.filter(user_from=request.user,
+                               user_to=user).delete()
+        # create_action(request.user, 'is following', user)
+        is_followed = False
+    else:
+        Contact.objects.get_or_create(user_from=request.user,
+                                      user_to=user)
+        # create_action(request.user, 'started following', user)
+        is_followed = True
+
+    context = {'user': user,
+               'is_followed': is_followed,
+               'total_no_followers': user.followers.count,
+               'all_followers': user.followers.all,
+               'total_no_following': user.following.count,
+               'display_section': 'people'}
+
+    if request.is_ajax():
+        html = render_to_string('account/user/user-follow-section.html', context, request=request)
+        return JsonResponse({'form': html})

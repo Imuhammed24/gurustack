@@ -1,0 +1,42 @@
+{% load static %}
+<div id="followers-and-following-modal" class="modal fade-in">
+    <div id="followers-and-following-modal-content">
+
+        <header class="edit-modal-header">
+            <span onclick="document.getElementById('followers-and-following-modal').style.display='none'"
+                  class="w3-button edit-pg-modal-close-btn w3-large w3-display-topright">&times;</span>
+            <h4>Follow Status</h4>
+        </header>
+
+        <div>
+            <nav>
+                <div class="nav nav-tabs pr-5" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link text-dark active" id="nav-home-tab" data-toggle="tab"
+                       href="#profile-nav-posts"
+                       role="tab"
+                       aria-controls="nav-home" aria-selected="true">Following</a>
+                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab"
+                       href="#profile-nav-likes"
+                       role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Followers</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="profile-nav-tabContent">
+
+                <div class="tab-pane fade show active" id="profile-nav-posts" role="tabpanel"aria-labelledby="nav-home-tab">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

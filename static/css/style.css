@@ -944,6 +944,48 @@ body {
     font-family: Kanit, sans-serif, monospace;
 }
 
+.verified-icon{
+    margin-top: 1px;
+    width: 17px;
+    height: 17px;
+}
+
+.who-to-follow-img{
+    height: 43px;
+    width: 43px;
+}
+
+#who-to-follow-side-container{
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    /*background-color: rgba(173, 216, 230, 0.22);*/
+    background-color: rgba(173, 216, 230, 0.18);
+    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
+}
+
+#who-to-follow-side-container h5{
+    padding: 0;
+    margin: 0;
+}
+
+.who-to-follow-hr{
+    background-color: rgba(173, 216, 230, 0.27);
+}
+
+.follow-btn{
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid midnightblue;
+    color: midnightblue;
+}
+
+.follow-btn:hover{
+    border: none;
+    color: white;
+    background-color: darkorange;
+}
 /*#######################################################*/
 /*     COMMENT SECTION          */
 /*#######################################################*/
@@ -1108,10 +1150,21 @@ button {
 
 }
 
+.main-follow button{
+    color: rgba(0, 0, 0, 0.79);
+    letter-spacing: .5px;
+}
+
+.main-follow button:hover{
+    color: rgba(25, 25, 112, 0.91);
+    transition: .5s;
+}
+
 #profile-bio{
     /*color: gray;*/
     color: gray;
     font-family: Kanit, sans-serif;
+    margin-bottom: 0px;
 }
 
 .main-date, .main-department {
@@ -1175,6 +1228,7 @@ button {
     display: none;
 }
 
+
 #edit-profile-modal-content {
     width: 35%;
     height: 90%;
@@ -1185,7 +1239,7 @@ button {
     border-radius: 15px;
 }
 
-#edit-profile-modal-content p, h1, h2, h3, h4, span, li, a {
+#edit-profile-modal-content *, h1, h2, h3, h4, span, li, a, #followers-and-following-modal-content *{
     font-family: Kanit, sans-serif;
 }
 
@@ -1251,6 +1305,27 @@ button {
         opacity: 1;
     }
 }
+
+
+#followers-and-following-modal {
+    display: none;
+}
+
+#followers-and-following-modal-content{
+    width: 35%;
+    height: 90%;
+    margin: 40px auto 40px auto;
+    background-color: white;
+    padding: 15px;
+    overflow: scroll;
+    border-radius: 15px;
+}
+
+/*########################################################*/
+/*########################################################*/
+/*########################################################                  MODAL FOR EDIT PAGE             */
+/*########################################################*/
+
 
 
 /*########################################################*/

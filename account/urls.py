@@ -3,7 +3,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path, reverse_lazy
 
 from .views import login_view, register, account_view, activate, post_like, profile_view, edit_profile_view, \
-    register_profile_view
+    register_profile_view, user_follow
 
 urlpatterns = [
     path('login/', login_view, name='login'),
@@ -15,6 +15,7 @@ urlpatterns = [
     path('profile/', profile_view, name='profile'),
     path('register-profile/', register_profile_view, name='register_profile'),
     path('home/', account_view, name='home'),
+    path('follow/', user_follow, name='user-follow'),
 
     path('password-change/', auth_views.PasswordChangeView.as_view(
         template_name='registration/password_change_form.html',

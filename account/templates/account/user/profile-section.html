@@ -46,8 +46,12 @@
                     {% if request.user.profile.bio %}
                     <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ request.user.profile.bio }}</p>
                     {% endif %}
-                    <p class="main-follow mt-3"><span>0</span> Following <span class="ml-3">0</span> Follower</p>
+                    <p class="main-follow mt-2">
+                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ request.user.followers.count }}</strong></span> Following</button>
+                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ request.user.followers.count }}</strong></span> Follower</button>
+                    </p>
                 </div>
+                {% include 'account/user/followers-and-following-template.html' %}
             </div>
 
         </div>
