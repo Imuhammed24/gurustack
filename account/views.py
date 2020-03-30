@@ -63,12 +63,14 @@ def account_view(request):
 
     return render(request, 'account_base.html', context)
 
+
 @login_required
 def connect_view(request):
     users = User.objects.filter(is_active=True, rel_to_set=None)
     context = {'display_section': 'connect',
                'html_title': f'connect {request.user.username}',
                'users_to_follow': users,
+
                }
 
     return render(request, 'account_base.html', context)

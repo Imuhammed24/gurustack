@@ -7,6 +7,10 @@ body {
     vertical-align: baseline;
 }
 
+.gray-text{
+    color: gray;
+}
+
 .messages {
     margin: 5px 0px 0px 0px;
     padding: 0px;
@@ -1343,6 +1347,9 @@ button {
     }
 }
 
+/*#who-to-follow-content:hover{*/
+/*    background-color: rgba(173, 216, 230, 0.16);*/
+/*}*/
 
 
 /*########################################################*/
@@ -1536,8 +1543,58 @@ button {
 
 
 
+/*########################################################*/
+/*########################################################*/
+/*########################################################                  CONNECT SECTION            */
+/*########################################################*/
 
+#middle-div-middle-content-div-4-connect h4{
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 0;
+}
 
+#middle-div-middle-content-div-4-connect p{
+    padding: 0;
+}
+
+#middle-div-middle-content-div-4-connect {
+    padding: 10px 15px 0 0px;
+    overflow: hidden;
+    clear: none;
+}
+
+#middle-div-middle-4-connect {
+    border-bottom: 1px solid #e5e5f7;
+}
+
+#main-user-list-div-content{
+    display: block;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.33);
+    border-radius: 5px;
+}
+
+#main-user-list-div-content:hover{
+    background-color: rgba(173, 216, 230, 0.14);
+    border: 1px solid rgba(173, 216, 230, 0.33);
+}
+
+#main-user-list-div-content .user-bio{
+    margin-left: 50px;
+    margin-top: -5px;
+    color: #5f5f5f;
+}
+
+.username-on-main-users-list{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.verified-icon-in-main-user-list{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+}
 
 
 /*start of desktop styles */

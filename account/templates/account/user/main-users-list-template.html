@@ -1,0 +1,25 @@
+{% load static %}
+
+<div id="small-user-list-div" class="d-block overflow-hidden clearfix">
+    <div id="main-user-list-div-content" class="overflow-hidden pb-3 pt-2 pr-1 pl-1 clearfix">
+        <div class="overflow-hidden pb-1 float-left clearfix">
+            <div class="d-inline float-left mr-2 overflow-hidden clearfix">
+                {% if user.profile.profile_photo %}
+                <img src="{{ user.profile.profile_photo.url }}" alt="" class="d-inline who-to-follow-img rounded-circle">
+                {% else %}
+                <img src="{% if user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}" alt="" class="who-to-follow-img d-inline img-thumbnail rounded-circle">
+                {% endif %}
+            </div>
+            <div class="d-inline float-left mr-3 overflow-hidden clearfix">
+                <h5 class="p-0 m-0 d-inline-table username-on-main-users-list"><a class="text-dark" href="#">{{ user.first_name.title }} {{ user.last_name.title }}</a> <span class="position-absolute ml-1">{% if user.profile.verified %}<img class="verified-icon-in-main-user-list d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h5>
+                <p class="gray-text p-0 m-0 d-inline-table">@{{ user.username }}</p>
+            </div>
+        </div>
+        <div id="follow-section{{user.id}}" class="follow-section d-inline float-right overflow-hidden clearfix">
+            {%include 'account/user/follow-unfollow-form.html'%}
+        </div>
+        <div class="float-left user-bio">
+            <p class="p-0 m-0 d-inline-table">{{ user.profile.bio }}</p>
+        </div>
+    </div>
+</div>

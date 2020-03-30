@@ -2,26 +2,34 @@
 <div id="account-base-section-middle-div">
         <div id="account-base-section-middle-div-content">
             <div id="middle-div-top">
-                <div id="middle-div-top-content-div">
+                <div id="middle-div-top-content-div" class="pl-3 pr-3">
+                    <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
+                                                          src="{% static 'svg/back-btn.svg' %}" alt=""></a>
                     <h4><a class="text-dark no-txt-deco" href="{% url 'account:home' %}">Connect</a></h4>
                     <img src="{% static 'svg/info.svg' %}" alt="">
                 </div>
             </div>
 
-            <div id="middle-div-middle">
-                <div id="middle-div-middle-content-div">
-                    aaaa
+            {% if request.user.following.count >= 1 %}
+            <div id="middle-div-middle-4-connect" class="pl-3 pr-3">
+                <div id="middle-div-middle-content-div-4-connect">
+                    <h4>Because you follow</h4>
+                    <p class="text-muted">{% for user in request.user.following.all %}@{{user.username}} {% endfor %}</p>
                 </div>
             </div>
+            {% else %}
+            <div id="middle-div-middle-4-connect" class="pl-3">
+                <div id="middle-div-middle-content-div-4-connect">
+                    <h5 class="pb-2 font-weight-bold">People you may follow</h5>
+                </div>
+            </div>
+            {% endif %}
 
             <div id="middle-div-bottom">
-                <div id="middle-div-bottom-content">
-                    {% if posts %}
-                    {% include 'posts/list.html' %}
-                    {% else %}
-                    {% include 'account/user/welcome_content.html'%}
-                    {% endif %}
-
+                <div class="pr-3 pl-3 pt-1" id="middle-div-bottom-content">
+                    {% for user in users_to_follow %}
+                        {% include 'account/user/main-users-list-template.html' %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -31,7 +39,7 @@
                 <a class="btn w-100" id="loadMore" href="#">Load More</a>
             </center>
         </div>
-    {% endif %}
+        {% endif %}
 </div>
 
 {% include 'account/user/trends-and-who-to-follow-container.html' %}
