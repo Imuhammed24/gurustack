@@ -51,7 +51,9 @@ def account_view(request):
     comment_form = CommentForm()
     posts = Post.objects.all()
     # users = User.objects.filter(is_active=True)[:5]
-    users = User.objects.filter(is_active=True, rel_to_set=None)[:5]
+    # users = User.objects.filter(is_active=True, rel_to_set=None)[:5]
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
 
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
@@ -68,7 +70,8 @@ def account_view(request):
 
 @login_required
 def connect_view(request):
-    users = User.objects.filter(is_active=True, rel_to_set=None)
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
     context = {'display_section': 'connect',
                'html_title': f'connect {request.user.username}',
                'users_to_follow': users, }
@@ -78,7 +81,8 @@ def connect_view(request):
 
 @login_required
 def notifications_view(request):
-    users = User.objects.filter(is_active=True, rel_to_set=None)
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
     actions = Action.objects.all().exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)
 
@@ -96,6 +100,8 @@ def notifications_view(request):
 
 @login_required
 def profile_view(request):
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
     comment_form = CommentForm()
     profile_form = StudentProfileForm()
     staff_profile_form = StaffProfileForm()
@@ -107,6 +113,7 @@ def profile_view(request):
                'staff_profile_form': staff_profile_form,
                'edit_profile_form': edit_profile_form,
                'comment_form': comment_form,
+               'users_to_follow': users,
                'html_title': f'{request.user} profile',
                }
     if request.user.profile.staff_status:
