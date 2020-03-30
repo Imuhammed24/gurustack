@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    $(document).ready(function (event) {
+        $(document).on('click', '.follower-track', function (event) {
+            event.preventDefault();
+            var pk = $(this).attr('value');
+            $.ajax({
+                type: 'POST',
+                url: "/account/follow/",
+                data: {'user_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                dataType: 'json',
+                success: function (response) {
+                    $('#follow-section' + pk).html(response['form'])
+                    console.log($('#follow-section' + pk).html(response['form']));
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText);
+                }
+            });
+        });
+    });
+</script>

@@ -979,13 +979,48 @@ body {
     border-radius: 20px;
     border: 2px solid midnightblue;
     color: midnightblue;
+    transition: .1s;
 }
+
+.unfollow-btn{
+    background-color: forestgreen;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    transition: .1s;
+}
+
+.unfollow-btn:hover{
+    background-color: darkred;
+    border: none;
+}
+
+.unfollow:hover span {display:none}
+.unfollow:hover:before {content:"Unfollow"}
 
 .follow-btn:hover{
     border: none;
     color: white;
-    background-color: darkorange;
+    background-color: forestgreen;
 }
+
+#small-user-list-div-content{
+    display: block;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.33);
+    transition: .5s;
+    border-radius: 5px;
+}
+
+#small-user-list-div-content:hover{
+    background-color: rgba(173, 216, 230, 0.14);
+    padding: 4px;
+}
+
+.username-on-users-list{
+    font-size: 16px;
+}
+
 /*#######################################################*/
 /*     COMMENT SECTION          */
 /*#######################################################*/
@@ -1153,10 +1188,12 @@ button {
 .main-follow button{
     color: rgba(0, 0, 0, 0.79);
     letter-spacing: .5px;
+    font-weight: bold;
 }
 
 .main-follow button:hover{
-    color: rgba(25, 25, 112, 0.91);
+    /*color: rgba(25, 25, 112, 0.91);*/
+    color: midnightblue;
     transition: .5s;
 }
 
@@ -1305,26 +1342,6 @@ button {
         opacity: 1;
     }
 }
-
-
-#followers-and-following-modal {
-    display: none;
-}
-
-#followers-and-following-modal-content{
-    width: 35%;
-    height: 90%;
-    margin: 40px auto 40px auto;
-    background-color: white;
-    padding: 15px;
-    overflow: scroll;
-    border-radius: 15px;
-}
-
-/*########################################################*/
-/*########################################################*/
-/*########################################################                  MODAL FOR EDIT PAGE             */
-/*########################################################*/
 
 
 
@@ -1491,6 +1508,34 @@ button {
     padding: 10px 15px;
     margin-bottom: 20px;
 }
+
+
+
+
+
+
+/*########################################################*/
+/*########################################################*/
+/*########################################################                  MODAL FOR FOLLOWING             */
+/*########################################################*/
+
+
+#followers-and-following-modal {
+    display: none;
+}
+
+#followers-and-following-modal-content{
+    width: 32%;
+    height: 90%;
+    margin: 40px auto 40px auto;
+    background-color: white;
+    padding: 15px;
+    overflow: scroll;
+    border-radius: 15px;
+}
+
+
+
 
 
 

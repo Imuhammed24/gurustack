@@ -1,0 +1,37 @@
+{% load static %}
+<div id="account-base-section-middle-div">
+        <div id="account-base-section-middle-div-content">
+            <div id="middle-div-top">
+                <div id="middle-div-top-content-div">
+                    <h4><a class="text-dark no-txt-deco" href="{% url 'account:home' %}">Connect</a></h4>
+                    <img src="{% static 'svg/info.svg' %}" alt="">
+                </div>
+            </div>
+
+            <div id="middle-div-middle">
+                <div id="middle-div-middle-content-div">
+                    aaaa
+                </div>
+            </div>
+
+            <div id="middle-div-bottom">
+                <div id="middle-div-bottom-content">
+                    {% if posts %}
+                    {% include 'posts/list.html' %}
+                    {% else %}
+                    {% include 'account/user/welcome_content.html'%}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% if posts %}
+        <div id="loadMore-div" class="mb-2">
+            <center>
+                <a class="btn w-100" id="loadMore" href="#">Load More</a>
+            </center>
+        </div>
+    {% endif %}
+</div>
+
+{% include 'account/user/trends-and-who-to-follow-container.html' %}

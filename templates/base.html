@@ -28,11 +28,14 @@
 {% block base_content %}
 {% endblock %}
 
-{% include 'textarea-script.html' %}
-{% include 'load-more-script.html' %}
-{% include 'display-form-image-script.html' %}
-{% include 'like-post-script.html' %}
-{% include 'limit-file-upload-script.html' %}
-{% include 'show-hide-tags-script.html' %}
+{% if request.user.is_authenticated %}
+    {% include 'textarea-script.html' %}
+    {% include 'load-more-script.html' %}
+    {% include 'display-form-image-script.html' %}
+    {% include 'like-post-script.html' %}
+    {% include 'limit-file-upload-script.html' %}
+    {% include 'show-hide-tags-script.html' %}
+    {% include 'follow-unfollow-script.html' %}
+{% endif %}
 </body>
 </html>

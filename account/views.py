@@ -48,7 +48,8 @@ def account_view(request):
     image_form = ImageForm()
     comment_form = CommentForm()
     posts = Post.objects.all()
-    users = User.objects.filter(is_active=True)[:5]
+    # users = User.objects.filter(is_active=True)[:5]
+    users = User.objects.filter(is_active=True, rel_to_set=None)[:5]
 
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
@@ -56,12 +57,21 @@ def account_view(request):
                'image_form': image_form,
                'posts': posts,
                'comment_form': comment_form,
-               'users': users,
+               'users_to_follow': users,
                # 'total_no_likes': post.users_like.count,
                }
 
     return render(request, 'account_base.html', context)
 
+@login_required
+def connect_view(request):
+    users = User.objects.filter(is_active=True, rel_to_set=None)
+    context = {'display_section': 'connect',
+               'html_title': f'connect {request.user.username}',
+               'users_to_follow': users,
+               }
+
+    return render(request, 'account_base.html', context)
 
 @login_required
 def profile_view(request):
@@ -260,8 +270,8 @@ def user_follow(request):
                'total_no_followers': user.followers.count,
                'all_followers': user.followers.all,
                'total_no_following': user.following.count,
-               'display_section': 'people'}
+               }
 
     if request.is_ajax():
-        html = render_to_string('account/user/user-follow-section.html', context, request=request)
+        html = render_to_string('account/user/follow-unfollow-form.html', context, request=request)
         return JsonResponse({'form': html})

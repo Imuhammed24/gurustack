@@ -77,37 +77,6 @@
             </center>
         </div>
     {% endif %}
-    </div>
+</div>
 
-    <div id="account-base-section-right-div">
-        <div id="who-to-follow-side-container">
-            <h5><strong>Who to follow</strong></h5>
-            <hr class="who-to-follow-hr">
-            {% for user in users %}
-            {% if request.user != user %}
-            <div class="d-block mb-2 overflow-hidden clearfix">
-                <div class="d-inline float-left">
-                    <div class="d-inline float-left mr-2 overflow-hidden clearfix">
-                        {% if user.profile.profile_photo %}
-                        <img src="{{ user.profile.profile_photo.url }}" alt="" class="d-inline who-to-follow-img rounded-circle">
-                        {% else %}
-                        <img src="{% if user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}" alt="" class="who-to-follow-img d-inline img-thumbnail rounded-circle">
-                        {% endif %}
-                    </div>
-                    <div class="d-inline float-left mr-3 overflow-hidden clearfix">
-                        <h6 class="p-0 m-0 d-inline-table">{{ user.first_name.title }} {{ user.last_name.title }} <span class="position-absolute ml-1">{% if request.user.profile.verified %}<img class="verified-icon d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h6>
-                        <p class="text-muted p-0 m-0 d-inline-table">@{{ user.username }}</p>
-                    </div>
-                </div>
-                <div class="d-inline float-right overflow-hidden clearfix">
-                    {%include 'account/user/follow-unfollow-form.html'%}
-                </div>
-            </div>
-            <hr class="who-to-follow-hr">
-            {% endif %}
-            {% endfor %}
-            <div class="mt-2">
-                <a href="#">show more</a>
-            </div>
-        </div>
-    </div>
+{% include 'account/user/trends-and-who-to-follow-container.html' %}

@@ -1,17 +1,15 @@
 {% load static %}
 
-<span id="follow_unfollow_form">
+<span>
     {% if request.user == user %}
     {% else%}
     <form action="/account/follow/" class="d-inline ml-2">
         {% csrf_token %}
-        <button type="submit" id="follow" name="user_id" value="{{ user.id }}" {% if request.user not in user.followers.all %}class="follow-btn d-inline-table"{% else %}class="unfollow-btn d-inline-table"{% endif %}>
             {% if request.user not in user.followers.all %}
-                Follow
+        <button type="submit" name="user_id" value="{{ user.id }}" class="follow follow-btn d-inline-table follower-track">Follow</button>
             {% else %}
-                Unfollow
+        <button type="submit" name="user_id" value="{{ user.id }}" class="unfollow unfollow-btn d-inline-table follower-track"><span>following</span></button>
             {% endif %}
-        </button>
     </form>
     {% endif %}
 </span>

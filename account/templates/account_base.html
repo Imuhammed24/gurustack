@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block base_content %}
+
 <section id="account-base-section">
     {% if request.user.is_authenticated %}
     <div id="account-base-section-left-div">
@@ -29,8 +30,10 @@
         {% include 'account/user/home-section.html' %}
     {% elif display_section == 'profile' %}
         {% include 'account/user/profile-section.html'%}
+    {% elif display_section == 'connect' %}
+        {% include 'account/user/connect-section.html'%}
     {% endif %}
-
     {% endif %}
 </section>
+
 {% endblock %}
