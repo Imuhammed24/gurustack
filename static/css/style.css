@@ -565,6 +565,7 @@ body {
 }
 
 #account-base-section-right-div {
+    padding: 3px 0;
     width: 28%;
     display: inline;
     float: right;
@@ -959,14 +960,16 @@ body {
     width: 43px;
 }
 
-#who-to-follow-side-container{
-    margin-left: 20px;
+#who-to-follow-side-container, #search-and-trend-container{
+    margin-left: 18px;
     margin-top: 10px;
     border-radius: 10px;
-    padding: 5px 10px;
-    /*background-color: rgba(173, 216, 230, 0.22);*/
+
+}
+
+#who-to-follow-side-container, #trend-side-container{
     background-color: rgba(173, 216, 230, 0.18);
-    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 7px 8px;
+    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 3px 8px;
 }
 
 #who-to-follow-side-container h5{
@@ -976,6 +979,7 @@ body {
 
 .who-to-follow-hr{
     background-color: rgba(173, 216, 230, 0.27);
+    margin: 12px 0;
 }
 
 .follow-btn{
@@ -1345,6 +1349,34 @@ button {
     100% {
         opacity: 1;
     }
+}
+
+#small-search-box-input{
+    border-right: 0px;
+    border-left: 2px solid #e5e5f7;
+    border-top: 2px solid #e5e5f7;
+    border-bottom: 2px solid #e5e5f7;
+    box-shadow: none;
+    width: 89%;
+    height: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#small-search-box-input::placeholder{
+    color: gray;
+}
+
+#small-search-box-input:focus{
+    outline-color: transparent;
+}
+
+#small-search-box-button{
+    border: none;
+    background-color: midnightblue;
+    height: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 /*#who-to-follow-content:hover{*/

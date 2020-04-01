@@ -31,3 +31,21 @@
         });
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        $(".main-user-list-div").slice(0, 15).show();
+        if ($(".blogBox:hidden").length != 0) {
+            $("#load-more-users").show();
+        }
+        $("#load-more-users").on('click', function (e) {
+            e.preventDefault();
+            $(".main-user-list-div:hidden").slice(0, 3).slideDown();
+            if ($(".main-user-list-div:hidden").length == 0) {
+                $("#load-more-users").fadeOut('slow');
+                $("#load-more-users-div").fadeOut('slow');
+            }
+        });
+    });
+</script>
+

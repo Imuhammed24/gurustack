@@ -16,7 +16,7 @@ from account.tokens import account_activation_token
 from actions.models import Action
 from actions.utils import create_action
 from posts.forms import TagForm, ImageForm, CommentForm
-from posts.models import Post
+from posts.models import Post, Tag
 from .forms import LoginForm, UserRegistrationForm, \
     StudentProfileForm, EditProfileForm, \
     StaffProfileForm, EditStaffProfileForm
@@ -54,6 +54,7 @@ def account_view(request):
     # users = User.objects.filter(is_active=True, rel_to_set=None)[:5]
     following_ids = request.user.following.values_list('id', flat=True)
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    trends = Tag.tags.most_common()
 
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
@@ -62,7 +63,7 @@ def account_view(request):
                'posts': posts,
                'comment_form': comment_form,
                'users_to_follow': users,
-               # 'total_no_likes': post.users_like.count,
+               'trends': trends,
                }
 
     return render(request, 'account_base.html', context)

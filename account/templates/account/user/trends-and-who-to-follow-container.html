@@ -1,12 +1,46 @@
 {% load static %}
 <div id="account-base-section-right-div">
+    <div id="search-and-trend-container">
+        <div id="side-search-box">
+            <form class="form-inline my-1" action="">
+              <input id="small-search-box-input" class="form-control-sm p-1" type="text" placeholder="Search Gurustack" name="search">
+              <button id="small-search-box-button" class="ml-0" type="submit"><img id="small-search-box-image" src="{% static 'svg/search-icon.svg' %}" alt=""></button>
+            </form>
+        </div>
+
+        <div id="trend-side-container" class="pt-1 mt-3 mb-4 pl-1 pr-1">
+        <h5><strong>Trends you may like</strong></h5>
+        <hr class="who-to-follow-hr">
+        {% for trend in trends.all %}
+        <div id="side-trend-content" class="side-trend-content d-block pl-1 pr-1 overflow-hidden clearfix">
+            <div class="d-inline float-left">
+                <div class="d-inline float-left mr-3 overflow-hidden clearfix">
+                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ trend.name }}</a></h6>
+                    <p class="text-muted p-0 m-0 d-inline-table">{{ trend.slug.lower }}</p>
+                </div>
+            </div>
+        </div>
+        <hr class="who-to-follow-hr">
+        {% endfor %}
+
+        <div id="load-more-trend-div" class="mb-2">
+            <center>
+                <a class="btn w-100" id="loadMoreTrend" href="#">Load More</a>
+            </center>
+        </div>
+    </div>
+    </div>
+
+
+    
+    
     {% if display_section != 'connect'%}
-    <div id="who-to-follow-side-container">
+    <div id="who-to-follow-side-container" class="pt-1 pl-1 pr-1">
         <h5><strong>Who to follow</strong></h5>
         <hr class="who-to-follow-hr">
         {% for user in users_to_follow %}
         {% if request.user != user %}
-        <div id="who-to-follow-content" class="d-block mb-2 overflow-hidden clearfix">
+        <div id="who-to-follow-content" class="d-block overflow-hidden clearfix">
             <div class="d-inline float-left">
                 <div class="d-inline float-left mr-2 overflow-hidden clearfix">
                     {% if user.profile.profile_photo %}
@@ -16,7 +50,7 @@
                     {% endif %}
                 </div>
                 <div class="d-inline float-left mr-3 overflow-hidden clearfix">
-                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ user.first_name.title }} {{ user.last_name.title }}</a> <span class="position-absolute ml-1">{% if request.user.profile.verified %}<img class="verified-icon d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h6>
+                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ user.first_name.title }} {{ user.last_name.title }}</a> <span class="position-absolute ml-1">{% if user.profile.verified %}<img class="verified-icon d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h6>
                     <p class="text-muted p-0 m-0 d-inline-table">@{{ user.username }}</p>
                 </div>
             </div>
