@@ -9,25 +9,25 @@
         </div>
 
         <div id="trend-side-container" class="pt-1 mt-3 mb-4 pl-1 pr-1">
-        <h5><strong>Trends you may like</strong></h5>
-        <hr class="who-to-follow-hr">
-        {% for trend in trends.all %}
-        <div id="side-trend-content" class="side-trend-content d-block pl-1 pr-1 overflow-hidden clearfix">
-            <div class="d-inline float-left">
-                <div class="d-inline float-left mr-3 overflow-hidden clearfix">
-                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ trend.name }}</a></h6>
-                    <p class="text-muted p-0 m-0 d-inline-table">{{ trend.slug.lower }}</p>
+            <h5><strong>Trends you may like</strong></h5>
+            <hr class="who-to-follow-hr">
+            {% for trend in trends.all %}
+            <div class="side-trend-content trendBox pl-1 pr-1 overflow-hidden clearfix">
+                <div class="side-trend-list d-inline float-left d-none">
+                    <div class="d-inline float-left mr-3 overflow-hidden clearfix">
+                        <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ trend.name }}</a></h6>
+                        <p class="text-muted p-0 m-0 d-inline-table">{{ trend.slug.lower }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr class="who-to-follow-hr">
-        {% endfor %}
+            <hr class="who-to-follow-hr">
+            {% endfor %}
 
-        <div id="load-more-trend-div" class="mb-2">
-            <center>
-                <a class="btn w-100" id="loadMoreTrend" href="#">Load More</a>
-            </center>
-        </div>
+            <div id="load-more-trend-div" class="mb-2">
+                <center>
+                    <a class="btn w-100" id="loadMoreTrend" href="#">Load More</a>
+                </center>
+            </div>
     </div>
     </div>
 

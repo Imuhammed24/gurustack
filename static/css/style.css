@@ -972,6 +972,10 @@ body {
     box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 3px 8px;
 }
 
+.side-trend-content{
+    /*display: none;*/
+}
+
 #who-to-follow-side-container h5{
     padding: 0;
     margin: 0;
