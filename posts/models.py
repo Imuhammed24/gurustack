@@ -5,22 +5,44 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.db import models
+from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from taggit_selectize.managers import TaggableManager
 
 
+class PostQuerySet(models.QuerySet):
+    def search(self, query):
+        lookup = (
+            Q(article__icontains=query) |
+            Q(slug__icontains=query) |
+            Q(user__username__icontains=query) |
+            Q(user__first_name__icontains=query) |
+            Q(user__last_name__icontains=query)
+        )
+        return self.filter(lookup)
+
+
+class PostManager(models.Manager):
+    def get_queryset(self):
+        return PostQuerySet(self.model, using=self._db)
+
+    def search(self, query=None):
+        if query is None:
+            return self.get_queryset().none()
+        return self.get_queryset().search(query)
+
+
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post')
     article = models.CharField(max_length=450)
     slug = models.CharField(max_length=200, blank=True)
-    # tags = TaggableManager(blank=True)
-    # image = models.ImageField(upload_to='post-images/%Y/%m/%d', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, db_index=True, null=True)
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                         related_name='posts_likes',
                                         blank=True)
+    objects = PostManager()
 
     class Meta:
         ordering = ['-created']

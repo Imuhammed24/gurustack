@@ -1,9 +1,10 @@
 {% load static %}
 <div id="account-base-section-right-div">
+    {% if display_section != 'explore'%}
     <div id="search-and-trend-container">
         <div id="side-search-box">
-            <form class="form-inline my-1" action="">
-              <input id="small-search-box-input" class="form-control-sm p-1" type="text" placeholder="Search Gurustack" name="search">
+            <form class="form-inline my-1" action="{% url 'account:explore'%}">
+              <input id="small-search-box-input" class="form-control-sm p-1" type="text" placeholder="Search Gurustack" name="q">
               <button id="small-search-box-button" class="ml-0" type="submit"><img id="small-search-box-image" src="{% static 'svg/search-icon.svg' %}" alt=""></button>
             </form>
         </div>
@@ -32,6 +33,7 @@
             {% endif %}
     </div>
     </div>
+    {% endif %}
 
 
     

@@ -15,7 +15,11 @@
                 <img src="{% static 'svg/home.svg' %}" alt="">Home
                 </a>
             </li>
-            <li><img src="{% static 'svg/explore.svg' %}" alt="">Explore</li>
+            <li title="Explore">
+                <a class="no-txt-deco-li {% if display_section == 'explore' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:explore' %}">
+                    <img src="{% static 'svg/explore.svg' %}" alt="">Explore
+                </a>
+            </li>
             <li title="Notifications">
                 <a class="no-txt-deco-li {% if display_section == 'notifications' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:notifications' %}">
                 <img src="{% static 'svg/notification.svg' %}" alt="">Notifications
@@ -41,6 +45,8 @@
         {% include 'account/user/connect-section.html'%}
     {% elif display_section == 'notifications' %}
         {% include 'account/user/notifications-section.html'%}
+    {% elif display_section == 'explore' %}
+        {% include 'searches/results/search-result-section.html'%}
     {% endif %}
     {% endif %}
 </section>

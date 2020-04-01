@@ -17,6 +17,7 @@ from actions.models import Action
 from actions.utils import create_action
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post, Tag
+from searches.models import SearchQuery
 from .forms import LoginForm, UserRegistrationForm, \
     StudentProfileForm, EditProfileForm, \
     StaffProfileForm, EditStaffProfileForm
@@ -43,6 +44,34 @@ def login_view(request):
         form = LoginForm
     return render(request, 'registration/login.html', {'html_title': 'Gurustack_Login',
                                                        'form': form})
+
+
+def search_view(request):
+    query = request.GET.get('q', None)
+    trends = Tag.tags.most_common()
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    user = None
+    users_queryset = None
+    posts_queryset = None
+    if request.user.is_authenticated:
+        user = request.user
+    if query is not None:
+        SearchQuery.objects.create(user=user, query=query)
+        users_queryset = User.objects.filter(username__icontains=query or None,
+                                             first_name__icontains=query or None,
+                                             last_name__icontains=query or None,
+                                             email__icontains=query or None)
+        posts_queryset = Post.objects.search(query=query)
+    context = {'display_section': 'explore',
+               'html_title': f'{request.user} account',
+               'users_to_follow': users,
+               'trends': trends,
+               'query': query,
+               'users_queryset': users_queryset,
+               'posts_queryset': posts_queryset}
+
+    return render(request, 'account_base.html', context)
 
 
 @login_required

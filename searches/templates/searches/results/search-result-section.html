@@ -1,0 +1,61 @@
+{% load static %}
+
+<div id="account-base-section-middle-div">
+    <div id="account-base-section-middle-div-content">
+
+        <div id="profile-middle-div-top">
+            <div id="middle-div-top-content-div" class="clearfix pb-0">
+                <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
+                                                          src="{% static 'svg/back-btn.svg' %}" alt=""></a>
+                <h4 class="pb-0 mb-0">
+                    <a class="text-dark no-txt-deco" href="{% url 'account:home' %}">Explore</a><br>
+                </h4>
+
+            </div>
+        </div>
+
+
+        <div id="profile-middle-div-middle" class="clearfix">
+            <div id="middle-div-middle-content-div" class="pt-1 clearfix">
+                <div id="search-div">
+                    <form class="form-inline my-1" action="{% url 'account:explore'%}">
+                        <input id="big-search-box-input" class="form-control-sm p-1" type="text" placeholder="Search Gurustack.." name="q" value="{% if query %}{{query}}{%endif%}">
+                        <button id="small-search-box-button" class="ml-0" type="submit"><img id="small-search-box-image" src="{% static 'svg/search-icon.svg' %}" alt=""></button>
+                    </form>
+                </div>
+
+                {% if not query %}
+                <div id="trends-in-explore">
+                    <div id="trend-side-container" class="pt-1 mt-2 mb-4 pl-1 pr-1 bg-transparent shadow-none border">
+                        <h5><strong>Trends you may like</strong></h5>
+                        <hr class="who-to-follow-hr">
+                        {% for trend in trends.all %}
+                        <div class="side-trend-content trendBox pl-1 pr-1 pb-1 overflow-hidden clearfix">
+                            <div class="side-trend-list float-left">
+                                <div class=" float-left mr-3 overflow-hidden clearfix">
+                                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark font-weight-bold" href="#">{{ trend.name }}</a></h6>
+                                    <small class="text-muted p-0 m-0 d-inline-table">{{ trend.num_times }} Post{{ trend.num_times|pluralize }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% if trends.all.count >= 9 %}
+                        <div id="load-more-trend-div" class="mb-2">
+                            <center>
+                                <a class="btn w-100" id="loadMoreTrend" href="#">Load More</a>
+                            </center>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% include 'account/user/trends-and-who-to-follow-container.html' %}

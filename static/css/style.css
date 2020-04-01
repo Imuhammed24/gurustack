@@ -1375,23 +1375,30 @@ button {
     }
 }
 
-#small-search-box-input{
+#small-search-box-input, #big-search-box-input{
     border-right: 0px;
     border-left: 2px solid #e5e5f7;
     border-top: 2px solid #e5e5f7;
     border-bottom: 2px solid #e5e5f7;
     box-shadow: none;
-    width: 89%;
     height: 30px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
-#small-search-box-input::placeholder{
+#small-search-box-input{
+    width: 89%;
+}
+
+#big-search-box-input{
+    width: 94%;
+}
+
+#small-search-box-input::placeholder, #big-search-box-input::placeholder{
     color: gray;
 }
 
-#small-search-box-input:focus{
+#small-search-box-input:focus, #big-search-box-input:focus{
     outline-color: transparent;
 }
 
