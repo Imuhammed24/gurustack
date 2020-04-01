@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function () {
         $(".post-wrapper").slice(0, 10).show();
-        if ($(".blogBox:hidden").length != 0) {
+        if ($(".blogBox:hidden").length !== 0) {
             $("#loadMore").show();
         }
         $("#loadMore").on('click', function (e) {
@@ -13,12 +13,10 @@
             }
         });
     });
-</script>
 
-<script>
     $(document).ready(function () {
         $(".main-user-list-div").slice(0, 15).show();
-        if ($(".blogBox:hidden").length != 0) {
+        if ($(".userListBox:hidden").length !== 0) {
             $("#load-more-users").show();
         }
         $("#load-more-users").on('click', function (e) {
@@ -30,17 +28,15 @@
             }
         });
     });
-</script>
 
-<script>
     $(document).ready(function () {
-        $(".side-trend-content").slice(0, 4).show();
-        if ($(".trendBox:hidden").length != 0) {
+        $(".side-trend-content").slice(0, 9).show();
+        if ($(".trendBox:hidden").length !== 0) {
             $("#loadMoreTrend").show();
         }
         $("#loadMoreTrend").on('click', function (e) {
             e.preventDefault();
-            $(".side-trend-content:hidden").slice(0, 3).slideDown();
+            $(".side-trend-content:hidden").slice(0, 5).slideDown();
             if ($(".side-trend-content:hidden").length == 0) {
                 $("#loadMoreTrend").fadeOut('slow');
                 $("#load-more-trend-div").fadeOut('slow');

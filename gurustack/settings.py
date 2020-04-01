@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'taggit',
     'taggit_selectize',
-    'actions'
+    'actions',
+    'searches'
 ]
 
 MIDDLEWARE = [

@@ -12,22 +12,24 @@
             <h5><strong>Trends you may like</strong></h5>
             <hr class="who-to-follow-hr">
             {% for trend in trends.all %}
-            <div class="side-trend-content trendBox pl-1 pr-1 overflow-hidden clearfix">
-                <div class="side-trend-list d-inline float-left d-none">
-                    <div class="d-inline float-left mr-3 overflow-hidden clearfix">
-                        <h6 class="p-0 m-0 d-inline-table"><a class="text-dark" href="#">{{ trend.name }}</a></h6>
-                        <p class="text-muted p-0 m-0 d-inline-table">{{ trend.slug.lower }}</p>
+            <div class="side-trend-content trendBox pl-1 pr-1 pb-1 overflow-hidden clearfix">
+                <div class="side-trend-list float-left">
+                    <div class=" float-left mr-3 overflow-hidden clearfix">
+                        <h6 class="p-0 m-0 d-inline-table"><a class="text-dark font-weight-bold" href="#">{{ trend.name }}</a></h6>
+<!--                        <p class="text-muted p-0 m-0 d-inline-table">{{ trend.name }}</p>-->
+                        <small class="text-muted p-0 m-0 d-inline-table">{{ trend.num_times }} Post{{ trend.num_times|pluralize }}</small>
                     </div>
                 </div>
             </div>
-            <hr class="who-to-follow-hr">
+<!--            <hr class="who-to-follow-hr">-->
             {% endfor %}
-
+            {% if trends.all.count >= 9 %}
             <div id="load-more-trend-div" class="mb-2">
                 <center>
                     <a class="btn w-100" id="loadMoreTrend" href="#">Load More</a>
                 </center>
             </div>
+            {% endif %}
     </div>
     </div>
 
@@ -58,11 +60,11 @@
                 {%include 'account/user/follow-unfollow-form.html'%}
             </div>
         </div>
-        <hr class="who-to-follow-hr">
+<!--        <hr class="who-to-follow-hr">-->
         {% endif %}
         {% endfor %}
-        <div class="mt-2">
-            <a href="/account/connect/">show more</a>
+        <div class="mt-2 pl-1">
+            <a href="/account/connect/" class="show-more">show more</a>
         </div>
     </div>
     {% else %}

@@ -967,23 +967,43 @@ body {
 
 }
 
+.trendBox{
+    display: none;
+}
+
+.who-to-follow-hr{
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+#trend-side-container{
+    border-radius: 10px;
+}
+
+.show-more{
+    font-size: 16px;
+}
+
 #who-to-follow-side-container, #trend-side-container{
     background-color: rgba(173, 216, 230, 0.18);
-    box-shadow: rgba(102, 141, 255, 0.08) 0px 2px 3px 8px;
+    box-shadow: rgba(102, 141, 255, 0.13) 0px 2px 3px 5px;
 }
 
 .side-trend-content{
-    /*display: none;*/
+    border-bottom: 1px solid rgba(173, 216, 230, 0.27);
+    padding: 12px 0;
+    transition: .9s;
+
+}
+.side-trend-content:hover{
+    background-color: rgba(173, 216, 230, 0.14);
+    border-bottom: 1px solid rgba(25, 25, 112, 0.75);
+
 }
 
 #who-to-follow-side-container h5{
     padding: 0;
     margin: 0;
-}
-
-.who-to-follow-hr{
-    background-color: rgba(173, 216, 230, 0.27);
-    margin: 12px 0;
 }
 
 .follow-btn{
@@ -1383,9 +1403,18 @@ button {
     border-bottom-right-radius: 10px;
 }
 
-/*#who-to-follow-content:hover{*/
-/*    background-color: rgba(173, 216, 230, 0.16);*/
-/*}*/
+#who-to-follow-content{
+    border-bottom: 1px solid rgba(173, 216, 230, 0.27);
+    padding-bottom: 12px;
+    padding-top: 12px;
+    transition: .5s;
+}
+
+#who-to-follow-content:hover{
+    background-color: rgba(173, 216, 230, 0.14);
+    border-bottom: 1px solid rgba(25, 25, 112, 0.7);
+
+}
 
 
 /*########################################################*/
@@ -1603,6 +1632,10 @@ button {
 
 #middle-div-middle-4-connect {
     border-bottom: 1px solid #e5e5f7;
+}
+
+.userListBox{
+    display: none;
 }
 
 #main-user-list-div-content{
