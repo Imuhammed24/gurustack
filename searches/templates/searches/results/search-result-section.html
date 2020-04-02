@@ -50,7 +50,206 @@
                 </div>
                 {% endif %}
 
-                <div></div>
+                {% if query %}
+                <div id="search-result-div">
+                    <nav>
+                        <div class="nav nav-tabs pr-5" id="search-result-nav-tab" role="tablist">
+                            <a class="nav-item nav-link text-dark active" id="nav-posts-tab" data-toggle="tab"
+                               href="#explore-nav-posts"
+                               role="tab"
+                               aria-controls="nav-posts" aria-selected="true">Latest Posts</a>
+                            <a class="nav-item nav-link text-dark" id="nav-people-tab" data-toggle="tab"
+                               href="#explore-nav-people"
+                               role="tab"
+                               aria-controls="nav-people" aria-selected="false">People</a>
+                            <a class="nav-item nav-link text-dark" id="nav-photos-tab" data-toggle="tab"
+                               href="#explore-nav-photos"
+                               role="tab"
+                               aria-controls="nav-photos" aria-selected="false">Photos</a>
+                            <a class="nav-item nav-link text-dark" id="nav-videos-tab" data-toggle="tab"
+                               href="#explore-nav-videos"
+                               role="tab"
+                               aria-controls="nav-videos" aria-selected="false">Videos</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="explore-nav-tabContent">
+                        <div class="tab-pane fade show active" id="explore-nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
+                            {% if posts_queryset.count >= 1 %}
+                            {% for post in posts_queryset %}
+                                <div id="post-wrapper" class="post-wrapper blogBox">
+                                    <div class="m-3 overflow-hidden">
+                                        <div class="clearfix" id="post-author-img-div">
+                                            {% if post.user.profile.profile_photo %}
+                                            <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
+                                            {% else %}
+                                            <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="clearfix" id="post-info">
+                                            <ul id="post-meta">
+                                                <li id="post-meta-name-li">
+                                                    <a class="font-weight-bold text-dark" href="">
+                                                    <span id="fullname-in-post2" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
+                                                        <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post2" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                                                    </a>
+                                                </li>
+                                                <li></li>
+                                                <li id="post-meta-uname-li"><a href="">@{{ post.user.username }}</a></li>
+                                                <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
+                                            </ul>
+                                            <article id="post-article">{{ post.article }}</article>
+                                            <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
+                                                {% with forloop.counter0 as count %}
+                                                <ol class="carousel-indicators">
+                                                    {% for img in post.images.all %}
+                                                    <li data-target="#carouselExampleIndicators{{count}}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter == 1 %}class="active"{% endif %}  ></li>
+                                                    {% endfor %}
+                                                </ol>
+
+                                                <div class="carousel-inner">
+                                                    {% for img in post.images.all %}
+                                                    <div {% if forloop.counter == 1 %} class="carousel-item active"{% else %} class="carousel-item" {% endif %}>
+                                                        <img class="d-block post-img-gallery-img" src="{{ img.image.url }}" alt="post-image">
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                                {% endwith %}
+                                            </div>
+
+                                            <div id="comment-section{{forloop.counter0}}" class="comment-section">
+                                                <a class="text-decoration-none mb-2" href="">view comment{{post.comments.count|pluralize}}</a>
+                                                <h3>Reply This Post</h3>
+                                                <form action="{% url 'posts:add-comment' post.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    {{ comment_form }}
+                                                    <input class="comment-button" type="submit" value="Reply">
+                                                </form>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div id="like-nd-comment-bar">
+                                        <center>
+                                            {% include 'posts/like_section.html' %}
+                                        </center>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            <h5>Sorry, {{request.user.last_name}}</h5>
+                            <p>No Post matched what you searched for.</p>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade show" id="explore-nav-people" role="tabpanel" aria-labelledby="nav-people-tab">
+                            {% if users_queryset %}
+                                {% for user in users_queryset %}
+                                    {% include 'account/user/main-users-list-template.html' %}
+                                {% endfor %}
+                            {% else %}
+                            <h5>Sorry, {{request.user.last_name}}</h5>
+                            <p>No user matched what you searched for.</p>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="explore-nav-photos" role="tabpanel" aria-labelledby="nav-photos-tab">
+                            {% if posts_queryset.count >= 1 %}
+                            {% for post in posts_queryset %}
+                                {% if not post.images %}
+                                {% else %}
+                                <div id="post-wrapper" class="post-wrapper blogBox">
+                                    <div class="m-3 overflow-hidden">
+                                        <div class="clearfix" id="post-author-img-div">
+                                            {% if post.user.profile.profile_photo %}
+                                            <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
+                                            {% else %}
+                                            <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="clearfix" id="post-info">
+                                            <ul id="post-meta">
+                                                <li id="post-meta-name-li">
+                                                    <a class="font-weight-bold text-dark" href="">
+                                                    <span id="fullname-in-post2" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
+                                                        <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post2" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                                                    </a>
+                                                </li>
+                                                <li></li>
+                                                <li id="post-meta-uname-li"><a href="">@{{ post.user.username }}</a></li>
+                                                <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
+                                            </ul>
+                                            <article id="post-article">{{ post.article }}</article>
+                                            <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
+                                                {% with forloop.counter0 as count %}
+                                                <ol class="carousel-indicators">
+                                                    {% for img in post.images.all %}
+                                                    <li data-target="#carouselExampleIndicators{{count}}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter == 1 %}class="active"{% endif %}  ></li>
+                                                    {% endfor %}
+                                                </ol>
+
+                                                <div class="carousel-inner">
+                                                    {% for img in post.images.all %}
+                                                    <div {% if forloop.counter == 1 %} class="carousel-item active"{% else %} class="carousel-item" {% endif %}>
+                                                        <img class="d-block post-img-gallery-img" src="{{ img.image.url }}" alt="post-image">
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                                {% endwith %}
+                                            </div>
+
+                                            <div id="comment-section{{forloop.counter0}}" class="comment-section">
+                                                <a class="text-decoration-none mb-2" href="">view comment{{post.comments.count|pluralize}}</a>
+                                                <h3>Reply This Post</h3>
+                                                <form action="{% url 'posts:add-comment' post.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    {{ comment_form }}
+                                                    <input class="comment-button" type="submit" value="Reply">
+                                                </form>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div id="like-nd-comment-bar">
+                                        <center>
+                                            {% include 'posts/like_section.html' %}
+                                        </center>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                            {% else %}
+                            <h5>Sorry, {{request.user.last_name}}</h5>
+                            <p>No Post matched what you searched for.</p>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="explore-nav-videos" role="tabpanel" aria-labelledby="nav-videos-tab">
+                            lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            A aut consequatur culpa cupiditate distinctio facere in ipsa
+                            maiores minima minus nemo numquam obcaecati ratione, repellendus
+                            sed tempora veritatis, vitae voluptate!
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
 
             </div>
         </div>

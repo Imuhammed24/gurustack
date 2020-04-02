@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
@@ -58,10 +59,13 @@ def search_view(request):
         user = request.user
     if query is not None:
         SearchQuery.objects.create(user=user, query=query)
-        users_queryset = User.objects.filter(username__icontains=query or None,
-                                             first_name__icontains=query or None,
-                                             last_name__icontains=query or None,
-                                             email__icontains=query or None)
+        lookup = (
+                Q(username__icontains=query) |
+                Q(first_name__icontains=query) |
+                Q(email__icontains=query) |
+                Q(last_name__icontains=query)
+                )
+        users_queryset = User.objects.filter(lookup)
         posts_queryset = Post.objects.search(query=query)
     context = {'display_section': 'explore',
                'html_title': f'{request.user} account',
