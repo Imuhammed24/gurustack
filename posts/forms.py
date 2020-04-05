@@ -24,9 +24,8 @@ class TagForm(forms.ModelForm):
 
 
 class ImageForm(forms.ModelForm):
-    image = forms.ImageField(label='',
+    image = forms.ImageField(label='', required=False,
                              widget=forms.ClearableFileInput(attrs={'multiple': True,
-                                                                    'required': False,
                                                                     'hidden': True,
                                                                     'onchange': "loadFile(event);",
                                                                     'id': 'image',

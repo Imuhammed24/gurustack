@@ -11,6 +11,11 @@ body {
     color: gray;
 }
 
+.overflow-nd-clear{
+    overflow: hidden;
+    clear: none;
+}
+
 .messages {
     margin: 5px 0px 0px 0px;
     padding: 0px;
@@ -844,11 +849,12 @@ body {
     overflow: hidden;
     clear: none;
     /*padding-bottom: 10px;*/
-    transition: .5s;
+    transition: .9s;
 }
 
 #post-wrapper:hover {
     background-color: rgba(193, 240, 255, 0.27);
+    border-bottom: 3px solid rgba(25, 25, 112, 0.38);
     /*background-color: rgba(255, 165, 0, 0.15);*/
 }
 
@@ -1134,8 +1140,13 @@ body {
 }
 
 
+
+/*#######################################################*/
+/*#######################################################*/
 /*#######################################################*/
 /*     COMMENT SECTION          */
+/*#######################################################*/
+/*#######################################################*/
 /*#######################################################*/
 
 .comment-section {
@@ -1173,11 +1184,63 @@ body {
 
 .comment-button {
     background-color: orange;
-    padding: 10px 20px;
+    padding: 6px 12px;
     border: none;
     color: midnightblue;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+#post-detail-comment-section{
+    box-shadow: #e5e5f7 0px 2px 7px 3px;
+    border-radius: 10px;
+    padding: 5px;
+    overflow: hidden;
+    clear: none;
+    margin: 25px 0;
+}
+
+#comment-card{
+    box-shadow: rgba(211, 211, 211, 0.3) 0px 2px 3px 3px;
+    padding: 7px;
+    border-radius: 9px;
+    margin: 6px 6px 10px 6px;
+}
+
+#comment-content{
+    overflow: hidden;
+    clear: none;
+    display: block;
+    float: left;
+    margin-top: 7px;
+}
+
+#comment-content p{
+    margin-bottom: 5px;
+}
+
+
+#post-detail-middle-div-bottom{
+    border: 1px solid #e5e5f7;
+    overflow: hidden;
+    clear: none;
+}
+
+
+#post-detail-comment-section form input{
+    border-radius: 5px;
+    float: right;
+}
+
+#post-detail-comment-section form textarea{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    /*border: 1px solid rgba(25, 25, 112, 0.51);*/
+    border: none;
+    box-shadow: #e5e5f7 0px 2px 7px 3px;
+    padding: 4px;
+    display: block;
 }
 
 

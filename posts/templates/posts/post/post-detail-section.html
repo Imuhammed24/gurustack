@@ -22,12 +22,45 @@
 
         </div>
     </div>
-    <div id="profile-middle-div-bottom" class="mt-4">
-        <div id="profile-middle-div-bottom-content">
-            fff
+    <div id="post-detail-middle-div-bottom">
+        <div id="post-detail-middle-div-bottom-content" class="p-2">
+            <div id="list-of-comments-container" class="d-block">
+                {% for comment in post.comments.all %}
+                <div id="comment-card" class="d-block overflow-hidden">
+                    <div class="clearfix" id="post-author-img-div">
+                        {% if comment.user.profile.profile_photo %}
+                        <img id="author-profile-pix" src="{{ comment.user.profile.profile_photo.url }}" alt="">
+                        {% else %}
+                        <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="overflow-nd-clear" id="post-info">
+                        <ul id="post-meta">
+                            <li id="post-meta-name-li">
+                                <a class="font-weight-bold text-decoration-none text-dark">
+                                <span id="fullname-in-post" class="float-left">{{comment.user.first_name.title }} {{ comment.user.last_name.title }}</span>
+                                    <span class="verified-icon-in-post">{% if comment.user.profile.verified %}<img id="verified-icon-in-post" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                                </a>
+                            </li>
+                            <li id="post-meta-time-li"><small>{{ comment.date | timesince }} ago</small></li>
+                        </ul>
+                        <p class="text-muted" id="post-article">@{{ comment.user.username }}</p>
+                    </div>
+                    <div id="comment-content">
+                        <p>{{ comment.content }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="post-detail-comment-section" class="post-detail-comment-section d-block">
+                <form action="{% url 'posts:add-comment' post.id %}" method="post">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <input class="comment-button" type="submit" value="Reply">
+                </form>
+            </div>
         </div>
     </div>
-
 
 </div>
 

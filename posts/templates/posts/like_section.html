@@ -2,21 +2,21 @@
 
 <div id="like-section{{post.id}}">
     <a title="Add Comment" onclick="showHideComment(post={{forloop.counter0}})" class="float-left btn">
-        <img {% if display_section == 'explore' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/comment-post.svg' %}" alt=""> <span>{{post.comments.count }}</span>
+        <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/comment-post.svg' %}" alt=""> <span>{{post.comments.count }}</span>
     </a>
     <span title="Like Post" id="like_unlike_section" class="center">
     <form action="{% url 'account:like-post' %}" class="d-inline">
         {% csrf_token %}
             <button type="submit" id="like" name="post_id" value="{{ post.id }}" class="btn like">
                 {% if post in request.user.posts_likes.all %}
-                    <img {% if display_section == 'explore' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/unlike.svg' %}" alt=""> <span>{{post.users_like.count}}</span>
+                    <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/unlike.svg' %}" alt=""> <span>{{post.users_like.count}}</span>
                 {% else %}
-                    <img {% if display_section == 'explore' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/like-btn.svg' %}" alt=""> <span>{{post.users_like.count}}</span>
+                    <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/like-btn.svg' %}" alt=""> <span>{{post.users_like.count}}</span>
                 {% endif %}
             </button>
     </form>
 </span>
     <!--        </center>-->
 
-    <a title="Share Post" class="btn float-right"> <img {% if display_section == 'explore' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/share-post.svg' %}" alt=""></a>
+    <a title="Share Post" class="btn float-right"> <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mb-1"{% endif %} src="{% static 'svg/share-post.svg' %}" alt=""></a>
 </div>
