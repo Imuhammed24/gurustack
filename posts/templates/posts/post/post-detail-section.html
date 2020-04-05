@@ -24,6 +24,13 @@
     </div>
     <div id="post-detail-middle-div-bottom">
         <div id="post-detail-middle-div-bottom-content" class="p-2">
+            <div id="post-detail-comment-section" class="post-detail-comment-section d-block">
+                <form action="{% url 'posts:add-comment' post.id %}" method="post">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <input class="comment-button" type="submit" value="Reply">
+                </form>
+            </div>
             <div id="list-of-comments-container" class="d-block">
                 {% for comment in post.comments.all %}
                 <div id="comment-card" class="d-block overflow-hidden">
@@ -52,12 +59,8 @@
                 </div>
                 {% endfor %}
             </div>
-            <div id="post-detail-comment-section" class="post-detail-comment-section d-block">
-                <form action="{% url 'posts:add-comment' post.id %}" method="post">
-                    {% csrf_token %}
-                    {{ comment_form }}
-                    <input class="comment-button" type="submit" value="Reply">
-                </form>
+            <div>
+                <a href="">load more</a>
             </div>
         </div>
     </div>

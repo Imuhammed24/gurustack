@@ -1197,11 +1197,11 @@ body {
     padding: 5px;
     overflow: hidden;
     clear: none;
-    margin: 25px 0;
+    margin-bottom: 20px;
 }
 
 #comment-card{
-    box-shadow: rgba(211, 211, 211, 0.3) 0px 2px 3px 3px;
+    box-shadow: rgba(211, 211, 211, 0.36) 0px 2px 3px 3px;
     padding: 7px;
     border-radius: 9px;
     margin: 6px 6px 10px 6px;
