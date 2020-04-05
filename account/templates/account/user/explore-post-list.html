@@ -1,0 +1,70 @@
+{% load static %}
+
+<div id="post-wrapper" class="post-wrapper blogBox">
+    <div class="m-3 overflow-hidden">
+        <div class="clearfix" id="post-author-img-div">
+            {% if post.user.profile.profile_photo %}
+            <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
+            {% else %}
+            <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="clearfix" id="post-info">
+            <ul id="post-meta">
+                <li id="post-meta-name-li">
+                    <a class="font-weight-bold text-dark" href="">
+                    <span id="fullname-in-post2" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
+                        <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post2" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                    </a>
+                </li>
+                <li></li>
+                <li id="post-meta-uname-li"><a href="">@{{ post.user.username }}</a></li>
+                <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
+            </ul>
+            <article id="post-article">{{ post.article }}</article>
+            <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
+                {% with forloop.counter0 as count %}
+                <ol class="carousel-indicators">
+                    {% for img in post.images.all %}
+                    <li data-target="#carouselExampleIndicators{{count}}" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter == 1 %}class="active"{% endif %}  ></li>
+                    {% endfor %}
+                </ol>
+
+                <div class="carousel-inner">
+                    {% for img in post.images.all %}
+                    <div {% if forloop.counter == 1 %} class="carousel-item active"{% else %} class="carousel-item" {% endif %}>
+                        <img class="d-block post-img-gallery-img" src="{{ img.image.url }}" alt="post-image">
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators{{forloop.counter0}}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                {% endwith %}
+            </div>
+
+            <div id="comment-section{{forloop.counter0}}" class="comment-section">
+                <a class="text-decoration-none mb-2" href="">view comment{{post.comments.count|pluralize}}</a>
+                <h3>Reply This Post</h3>
+                <form action="{% url 'posts:add-comment' post.id %}" method="post">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <input class="comment-button" type="submit" value="Reply">
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="like-nd-comment-bar">
+        <center>
+            {% include 'posts/like_section.html' %}
+        </center>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 <script>
-         $(function(){
+         var checkFileType = (function(){
             $("input[type = 'submit']").click(function(){
                var $fileUpload = $("input[type='file']");
                if (parseInt($fileUpload.get(0).files.length) > 5){

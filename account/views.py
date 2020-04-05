@@ -23,8 +23,8 @@ from .forms import LoginForm, UserRegistrationForm, \
     StudentProfileForm, EditProfileForm, \
     StaffProfileForm, EditStaffProfileForm
 
-
 # Create your views here.
+comment_form = CommentForm()
 
 
 def login_view(request):
@@ -72,6 +72,7 @@ def search_view(request):
                'users_to_follow': users,
                'trends': trends,
                'query': query,
+               'comment_form': comment_form,
                'users_queryset': users_queryset,
                'posts_queryset': posts_queryset}
 
@@ -81,7 +82,6 @@ def search_view(request):
 @login_required
 def account_view(request):
     image_form = ImageForm()
-    comment_form = CommentForm()
     posts = Post.objects.all()
     # users = User.objects.filter(is_active=True)[:5]
     # users = User.objects.filter(is_active=True, rel_to_set=None)[:5]

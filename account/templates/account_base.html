@@ -47,6 +47,8 @@
         {% include 'account/user/notifications-section.html'%}
     {% elif display_section == 'explore' %}
         {% include 'searches/results/search-result-section.html'%}
+    {% elif display_section == 'post_detail' %}
+        {% include 'posts/post/post-detail-section.html'%}
     {% endif %}
     {% endif %}
 </section>

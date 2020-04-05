@@ -56,7 +56,7 @@ class Post(models.Model):
         return self.article[:10]
 
     def get_absolute_url(self):
-        return reverse('detail', args=[self.id])
+        return reverse('posts:detail', args=[self.id, self.slug])
 
 
 class Comment(models.Model):
@@ -98,7 +98,7 @@ class Images(models.Model):
         verbose_name_plural = 'Images'
 
     def save(self, *args, **kwargs):
-        self.thumbnail = make_thumbnail(self.image, size=(70, 70))
-
+        if self is not None:
+            self.thumbnail = make_thumbnail(self.image, size=(70, 70))
         super().save(*args, **kwargs)
 
