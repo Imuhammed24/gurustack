@@ -3,9 +3,10 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path, reverse_lazy
 
 from .views import login_view, register, account_view, activate, post_like, profile_view, edit_profile_view, \
-    register_profile_view, user_follow, connect_view, notifications_view, search_view
+    register_profile_view, user_follow, connect_view, notifications_view, search_view, user_detail_view
 
 urlpatterns = [
+    path("users/<username>/", user_detail_view, name='user-detail'),
     path("explore/", search_view, name='explore'),
     path('notifications/', notifications_view, name='notifications'),
     path('login/', login_view, name='login'),

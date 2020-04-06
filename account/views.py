@@ -83,8 +83,6 @@ def search_view(request):
 def account_view(request):
     image_form = ImageForm()
     posts = Post.objects.all()
-    # users = User.objects.filter(is_active=True)[:5]
-    # users = User.objects.filter(is_active=True, rel_to_set=None)[:5]
     following_ids = request.user.following.values_list('id', flat=True)
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
     trends = Tag.tags.most_common()
@@ -98,6 +96,24 @@ def account_view(request):
                'users_to_follow': users,
                'trends': trends,
                }
+
+    return render(request, 'account_base.html', context)
+
+
+@login_required
+def user_detail_view(request, username):
+    user = get_object_or_404(User, username=username, is_active=True)
+    following_ids = request.user.following.values_list('id', flat=True)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    trends = Tag.tags.most_common()
+
+    context = {'display_section': 'user_detail',
+               'html_title': f'{user.username} account',
+               'tag_form': TagForm,
+               'comment_form': comment_form,
+               'users_to_follow': users,
+               'trends': trends,
+               'user': user, }
 
     return render(request, 'account_base.html', context)
 

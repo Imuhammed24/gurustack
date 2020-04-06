@@ -49,6 +49,8 @@
         {% include 'searches/results/search-result-section.html'%}
     {% elif display_section == 'post_detail' %}
         {% include 'posts/post/post-detail-section.html'%}
+    {% elif display_section == 'user_detail' %}
+        {% include 'account/user/user-detail-page.html'%}
     {% endif %}
     {% endif %}
 </section>

@@ -12,7 +12,7 @@
                 {% endif %}
             </div>
             <div class="d-inline float-left mr-3 overflow-hidden clearfix">
-                <h5 class="p-0 m-0 d-inline-table username-on-main-users-list"><a class="text-dark" href="#">{{ user.first_name.title }} {{ user.last_name.title }}</a> <span class="position-absolute ml-1">{% if user.profile.verified %}<img class="verified-icon-in-main-user-list d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h5>
+                <h5 class="p-0 m-0 d-inline-table username-on-main-users-list"><a class="text-dark" href="{% url 'account:user-detail' username=user.username %}">{{ user.first_name.title }} {{ user.last_name.title }}</a> <span class="position-absolute ml-1">{% if user.profile.verified %}<img class="verified-icon-in-main-user-list d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span></h5>
                 <p class="gray-text p-0 m-0 d-inline-table">@{{ user.username }}</p>
             </div>
         </div>

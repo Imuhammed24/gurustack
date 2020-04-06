@@ -23,6 +23,7 @@
             </nav>
             <div class="tab-content pt-2" id="profile-nav-tabContent">
 
+                {% if display_section != 'user_detail' %}
                 <div class="tab-pane fade show active" id="profile-nav-following" role="tabpanel"aria-labelledby="nav-home-tab">
                     {% if request.user.following.count >= 1 %}
                     {% for user in request.user.following.all %}
@@ -49,6 +50,34 @@
                     {% endif %}
 
                 </div>
+                {% else %}
+
+                <div class="tab-pane fade show active" id="profile-nav-following" role="tabpanel"aria-labelledby="nav-home-tab">
+                    {% if user.following.count >= 1 %}
+                    {% for user in user.following.all %}
+                        {%include 'account/user/small-users-list-template.html'%}
+                    {% endfor %}
+                    {% else %}
+                    <div class="p-2">
+                        <p>{{ user.first_name.title }} has not followed anyone yet.</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="tab-pane fade" id="profile-nav-followers" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    {% if user.followers.count >= 1 %}
+                    {% for user in user.followers.all %}
+                        {%include 'account/user/small-users-list-template.html'%}
+                    {% endfor %}
+                    {% else %}
+                    <div class="p-2">
+                        <p>{{ user.first_name.title }} currently do not have any follower.</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+                {% endif %}
 
             </div>
         </div>

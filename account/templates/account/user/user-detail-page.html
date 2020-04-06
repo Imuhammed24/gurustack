@@ -1,0 +1,102 @@
+{% load static %}
+
+<div id="account-base-section-middle-div">
+    <div id="account-base-section-middle-div-content">
+
+        <div id="profile-middle-div-top">
+            <div id="middle-div-top-content-div" class="clearfix pb-0">
+                <a onclick="history.back()" href="#"><img id="back-btn" class="float-left mr-3"
+                                                          src="{% static 'svg/back-btn.svg' %}" alt=""></a>
+
+                <h4 class="pb-0 mb-0">{{ user.first_name.title }} {{ user.last_name.title }}
+                    <span class="position-absolute ml-1">{% if user.profile.verified %}<img id="main-verified-icon" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                    <span class="d-block very-small-text">{{user.post.count}} post{{user.post.count|pluralize}}</span>
+                </h4>
+
+            </div>
+        </div>
+
+
+        <div id="profile-middle-div-middle" class="clearfix">
+            <div id="middle-div-middle-content-div" class="pt-1 clearfix">
+
+                <div id="user-detail-wrapper" class="clearfix d-block">
+                    <div id="user-profile-pix-div">
+                        {% if user.profile.profile_photo %}
+                        <img id="main-profile-pix" src="{{ user.profile.profile_photo.url }}" alt="">
+                        {% else %}
+                        <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div id="user-detail-div">
+                        <h4 id="name-and-edit-btn">{{ user.first_name.title }} {{ user.last_name.title }}
+                            <span class="position-absolute ml-1">{% if user.profile.verified %}<img id="main-verified-icon" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                        </h4>
+                    </div>
+
+                    <p class="gray-text main-username">@{{ user.username }} </p>
+                    <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
+                                                         alt="calendar:"> Joined {{ user.date_joined }}</p>
+                    {% if user.profile.department %}
+                    <p id="profile-department" class="text-muted main-department"><img class="mr-1" src="{% static 'svg/department.svg' %}" alt="calendar:"> Department of {{ user.profile.department.title }}</p>
+                    {% endif %}
+                    {% if user.profile.bio %}
+                    <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ user.profile.bio }}</p>
+                    {% endif %}
+                    <p class="main-follow mt-2">
+                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ user.following.count }}</strong></span> Following</button>
+                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ user.followers.count }}</strong></span> Follower</button>
+                    </p>
+                </div>
+                {% include 'account/user/followers-and-following-template.html' %}
+            </div>
+
+        </div>
+    </div>
+    <div id="profile-middle-div-bottom" class="mt-4">
+        <div id="profile-middle-div-bottom-content">
+            <nav>
+                <div class="nav nav-tabs pr-5" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link text-dark active" id="nav-home-tab" data-toggle="tab"
+                       href="#profile-nav-posts"
+                       role="tab"
+                       aria-controls="nav-home" aria-selected="true">Posts</a>
+                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab"
+                       href="#profile-nav-likes"
+                       role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Likes</a>
+                    <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab"
+                       href="#profile-nav-tags"
+                       role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Media</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="profile-nav-tabContent">
+                <div class="tab-pane fade show active" id="profile-nav-posts" role="tabpanel"
+                     aria-labelledby="nav-home-tab">
+                    {% include 'posts/list.html' with posts=user.post.all %}
+                </div>
+                <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    {% for post in user.post.all %}
+                    <ul>
+                        {% if post.users_like.count > 0 %}
+                        <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
+                            @{{user.username}} {% if not forloop.last %}, {% endif %}
+                            {% endfor %} liked your post:
+                            <span class="text-black-50"><a class="text-dark" href="{{ post.get_absolute_url}}">{{ post.slug }}...</a></span></p></li>
+                        {% endif %}
+                    </ul>
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="profile-nav-tags" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    {% include 'posts/list.html' with posts=user.post.all %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% include 'account/user/trends-and-who-to-follow-container.html' %}
