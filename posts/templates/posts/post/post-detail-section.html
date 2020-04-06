@@ -52,9 +52,7 @@
                             <li id="post-meta-time-li"><small>{{ comment.date | timesince }} ago</small></li>
                         </ul>
                         <p class="text-muted" id="post-article">@{{ comment.user.username }}</p>
-                    </div>
-                    <div id="comment-content">
-                        <p>{{ comment.content }}</p>
+                        <p class="mt-2">{{ comment.content }}</p>
                     </div>
                 </div>
                 {% endfor %}

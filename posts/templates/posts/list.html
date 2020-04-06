@@ -82,7 +82,7 @@
                     <img id="author-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
                     {% endif %}
                 </div>
-                <div class="clearfix d-block">
+                <div class="overflow-nd-clear d-block">
                     <ul id="post-meta" class="p-0 m-0 d-inline-block">
                         <li class="list-unstyled">
                             <a class="font-weight-bold text-decoration-none text-dark">
@@ -92,6 +92,7 @@
                         </li>
                     </ul>
                     <p class="p-0 m-0 text-muted">@{{ post.user.username }}</p>
+                    <p class="p-0 m-0">{{ post.article }}</p>
                     <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
                         {% with forloop.counter0 as count %}
                         <ol class="carousel-indicators">
@@ -117,7 +118,15 @@
                         </a>
                         {% endwith %}
                     </div>
+                    {% for tag in post.tag.all %}
+                    {% if tag.tags.all %}
+                        <small class="mr-2">with <span class="text-muted">{{tag.tags.all|join:", "}}</span></small>
+                     <small class="mr-2">-</small>
+                    {% endif %}
+                    {% endfor %}
+
                     <small class="text-muted">{{ post.created | timesince }} ago</small>
+
                 </div>
             </div>
 

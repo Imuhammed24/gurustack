@@ -1192,38 +1192,16 @@ body {
 }
 
 #post-detail-comment-section{
-    box-shadow: #e5e5f7 0px 2px 7px 3px;
-    border-radius: 10px;
-    padding: 5px;
+    box-shadow: lightgray 0px 2px 7px 3px;
+    padding: 7px;
     overflow: hidden;
     clear: none;
     margin-bottom: 20px;
+    transition: .7s;
 }
 
-#comment-card{
-    box-shadow: rgba(211, 211, 211, 0.36) 0px 2px 3px 3px;
-    padding: 7px;
-    border-radius: 9px;
-    margin: 6px 6px 10px 6px;
-}
-
-#comment-content{
-    overflow: hidden;
-    clear: none;
-    display: block;
-    float: left;
-    margin-top: 7px;
-}
-
-#comment-content p{
-    margin-bottom: 5px;
-}
-
-
-#post-detail-middle-div-bottom{
-    border: 1px solid #e5e5f7;
-    overflow: hidden;
-    clear: none;
+#post-detail-comment-section:hover{
+    box-shadow: rgba(25, 25, 112, 0.29) 0px 2px 7px 3px;
 }
 
 
@@ -1236,11 +1214,40 @@ body {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 8px;
-    /*border: 1px solid rgba(25, 25, 112, 0.51);*/
     border: none;
+    /*box-shadow: #e5e5f7 0px 2px 7px 3px;*/
     box-shadow: #e5e5f7 0px 2px 7px 3px;
     padding: 4px;
     display: block;
+    transition: .7s;
+}
+
+#post-detail-comment-section form textarea:focus{
+    box-shadow: rgba(25, 25, 112, 0.27) 0px 2px 7px 3px;
+}
+
+#comment-card{
+    box-shadow: rgba(211, 211, 211, 0.53) 0px 2px 3px 3px;
+    padding: 7px;
+    border-radius: 9px;
+    margin: 10px 10px 10px 10px;
+    transition: .9s;
+}
+
+#comment-card:hover{
+    background-color: rgba(54, 54, 241, 0.04);
+}
+
+#comment-content p{
+    margin-bottom: 3px;
+}
+
+/*p { word-break: break-all }*/
+
+#post-detail-middle-div-bottom{
+    border: 1px solid #e5e5f7;
+    overflow: hidden;
+    clear: none;
 }
 
 

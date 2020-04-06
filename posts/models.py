@@ -65,6 +65,9 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', null=True)
     date = models.DateTimeField(default=timezone.now, blank=False)
 
+    class Meta:
+        ordering = ['-date']
+
     def __str__(self):
         return self.content[:10]
 

@@ -53,7 +53,7 @@ def add_comment(request, pk):
             obj.save()
             if request.user is not post.user:
                 create_action(request.user, 'commented on', post)
-            return redirect('posts:detail')
+            return redirect('posts:detail', i_d=post.id, slug=post.slug)
     return
 
 
