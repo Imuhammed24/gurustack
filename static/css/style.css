@@ -1226,15 +1226,15 @@ body {
     box-shadow: rgba(25, 25, 112, 0.27) 0px 2px 7px 3px;
 }
 
-#comment-card{
+.comment-card{
     box-shadow: rgba(211, 211, 211, 0.53) 0px 2px 3px 3px;
-    padding: 7px;
+    padding: 3px;
     border-radius: 9px;
     margin: 10px 10px 10px 10px;
     transition: .9s;
 }
 
-#comment-card:hover{
+.comment-card:hover{
     background-color: rgba(54, 54, 241, 0.04);
 }
 
@@ -1248,6 +1248,10 @@ body {
     border: 1px solid #e5e5f7;
     overflow: hidden;
     clear: none;
+}
+
+.commmentBox{
+    display: none;
 }
 
 

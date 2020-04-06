@@ -33,7 +33,7 @@
             </div>
             <div id="list-of-comments-container" class="d-block">
                 {% for comment in post.comments.all %}
-                <div id="comment-card" class="d-block overflow-hidden">
+                <div id="" class="comment-card commmentBox overflow-hidden">
                     <div class="clearfix" id="post-author-img-div">
                         {% if comment.user.profile.profile_photo %}
                         <img id="author-profile-pix" src="{{ comment.user.profile.profile_photo.url }}" alt="">
@@ -51,15 +51,17 @@
                             </li>
                             <li id="post-meta-time-li"><small>{{ comment.date | timesince }} ago</small></li>
                         </ul>
-                        <p class="text-muted" id="post-article">@{{ comment.user.username }}</p>
-                        <p class="mt-2">{{ comment.content }}</p>
+                        <p class="text-muted pt-1" id="post-article">@{{ comment.user.username }}</p>
+                        <p class="mt-2 mb-0">{{ comment.content }}</p>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div>
-                <a href="">load more</a>
-            </div>
+            <center>
+                <div id="loadMoreCommentDiv">
+                    <a id="loadMoreComment" class="text-decoration-none text-dark" href="">load more</a>
+                </div>
+            </center>
         </div>
     </div>
 

@@ -43,5 +43,20 @@
             }
         });
     });
+
+    $(document).ready(function () {
+        $(".comment-card").slice(0, 5).show();
+        if ($(".commentBox:hidden").length !== 0) {
+            $("#loadMoreComment").show();
+        }
+        $("#loadMoreComment").on('click', function (e) {
+            e.preventDefault();
+            $(".comment-card:hidden").slice(0, 5).slideDown();
+            if ($(".comment-card:hidden").length == 0) {
+                $("#loadMoreComment").fadeOut('slow');
+                $("#loadMoreCommentDiv").fadeOut('slow');
+            }
+        });
+    });
 </script>
 

@@ -118,6 +118,7 @@ def notifications_view(request):
     following_ids = request.user.following.values_list('id', flat=True)
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
     actions = Action.objects.all().exclude(user=request.user)
+    trends = Tag.tags.most_common()
     following_ids = request.user.following.values_list('id', flat=True)
 
     if following_ids:
@@ -127,6 +128,7 @@ def notifications_view(request):
     context = {'display_section': 'notifications',
                'html_title': f'{request.user.username}_Notifications',
                'users_to_follow': users,
+               'trends': trends,
                'actions': actions, }
 
     return render(request, 'account_base.html', context)
@@ -136,7 +138,7 @@ def notifications_view(request):
 def profile_view(request):
     following_ids = request.user.following.values_list('id', flat=True)
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
-    comment_form = CommentForm()
+    trends = Tag.tags.most_common()
     profile_form = StudentProfileForm()
     staff_profile_form = StaffProfileForm()
     edit_profile_form = None
@@ -146,6 +148,7 @@ def profile_view(request):
                'profile_form': profile_form,
                'staff_profile_form': staff_profile_form,
                'edit_profile_form': edit_profile_form,
+               'trends': trends,
                'comment_form': comment_form,
                'users_to_follow': users,
                'html_title': f'{request.user} profile',
