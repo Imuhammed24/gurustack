@@ -1283,10 +1283,27 @@ body {
     padding: 20px 0px 10px 0px ;
 }
 
+#user-detail-wrapper2 {
+    overflow: hidden;
+    clear: none;
+}
+
+.user-detail-nav-tabs a{
+    padding: 15px 50px;
+}
+
+#user-detail-nav-posts-tab, #user-detail-nav-likes-tab, #user-detail-nav-media-tab{
+    /*border-top: none;*/
+    /*border-left: none;*/
+    /*border-right: none;*/
+    /*border-bottom: 1px solid #e2e6ea;*/
+}
+
+
 #user-profile-pix-div {
     float: left;
     display: inline;
-    width: 36%;
+    width: 32%;
     margin-top: 12px;
 }
 
@@ -1364,8 +1381,13 @@ button {
     margin-bottom: 13px;
 }
 
+.main-username2 {
+    margin-top: -6px;
+    margin-bottom: 13px;
+}
+
 .main-follow{
-    margin-left: 36%;
+    margin-left: 32%;
     font-weight: bold;
     font-size: 18px;
     /*color: #4b4b4b;*/
@@ -1384,6 +1406,25 @@ button {
     color: midnightblue;
     transition: .5s;
 }
+
+
+.main-follow2{
+    font-weight: bold;
+    font-size: 18px;
+    color: #686868;
+}
+
+.main-follow2 button{
+    color: rgba(0, 0, 0, 0.7);
+    letter-spacing: .5px;
+    font-weight: bold;
+}
+
+.main-follow2 button:hover{
+    color: midnightblue;
+    transition: .5s;
+}
+
 
 #profile-bio{
     /*color: gray;*/
@@ -1836,14 +1877,14 @@ button {
 /*########################################################*/
 /*########################################################*/
 
-#nav-tab .midnightblue-text{
+#nav-tab .nav-tab-a{
     color: midnightblue;
     border-bottom: 3px solid midnightblue;
     border-right: none;
     transition: .5s;
 }
 
-#nav-tab .midnightblue-text:hover{
+#nav-tab .nav-tab-a:hover{
     background-color: rgba(255, 165, 0, 0.19);
     border-bottom: 3px solid orange;
 }

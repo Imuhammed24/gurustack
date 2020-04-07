@@ -20,33 +20,35 @@
         <div id="profile-middle-div-middle" class="clearfix">
             <div id="middle-div-middle-content-div" class="pt-1 clearfix">
 
-                <div id="user-detail-wrapper" class="clearfix d-block">
-                    <div id="user-profile-pix-div">
+                <div id="user-detail-wrapper2" class="clearfix d-block pl-5">
+                    <div id="user-profile-pix-div" class="d-block w-100">
                         {% if user.profile.profile_photo %}
                         <img id="main-profile-pix" src="{{ user.profile.profile_photo.url }}" alt="">
                         {% else %}
                         <img id="main-profile-pix-demo" src="{% static 'svg/big-male-profile.svg' %}" alt="">
                         {% endif %}
                     </div>
-                    <div id="user-detail-div">
-                        <h4 id="name-and-edit-btn">{{ user.first_name.title }} {{ user.last_name.title }}
-                            <span class="position-absolute ml-1">{% if user.profile.verified %}<img id="main-verified-icon" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
-                        </h4>
-                    </div>
+                    <div class="d-block w-100 overflow-nd-clear pr-2">
+                        <span class="overflow-nd-clear d-block">
+                            <h4 class="pb-1 mb-0">{{ user.first_name.title }} {{ user.last_name.title }}
+                                <span class="position-absolute ml-1">{% if user.profile.verified %}<img id="main-verified-icon" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                            </h4>
+                        </span>
 
-                    <p class="gray-text main-username">@{{ user.username }} </p>
-                    <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
-                                                         alt="calendar:"> Joined {{ user.date_joined }}</p>
-                    {% if user.profile.department %}
-                    <p id="profile-department" class="text-muted main-department"><img class="mr-1" src="{% static 'svg/department.svg' %}" alt="calendar:"> Department of {{ user.profile.department.title }}</p>
-                    {% endif %}
-                    {% if user.profile.bio %}
-                    <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ user.profile.bio }}</p>
-                    {% endif %}
-                    <p class="main-follow mt-2">
-                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ user.following.count }}</strong></span> Following</button>
-                        <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ user.followers.count }}</strong></span> Follower</button>
-                    </p>
+                        <p class="gray-text main-username2">@{{ user.username }} </p>
+                        <p class="text-muted main-date"><img class="mr-1" src="{% static 'svg/calendar.svg' %}"
+                                                             alt="calendar:"> Joined {{ user.date_joined }}</p>
+                        {% if user.profile.department %}
+                        <p id="profile-department" class="text-muted main-department"><img class="mr-1" src="{% static 'svg/department.svg' %}" alt="calendar:"> Department of {{ user.profile.department.title }}</p>
+                        {% endif %}
+                        {% if user.profile.bio %}
+                        <p id="profile-bio"><img class="mr-1" src="{% static 'svg/bio.svg' %}" alt="calendar:"> {{ user.profile.bio }}</p>
+                        {% endif %}
+                        <p class="main-follow2 mt-2">
+                            <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ user.following.count }}</strong></span> Following</button>
+                            <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ user.followers.count }}</strong></span> Follower</button>
+                        </p>
+                    </div>
                 </div>
                 {% include 'account/user/followers-and-following-template.html' %}
             </div>
@@ -56,27 +58,28 @@
     <div id="profile-middle-div-bottom" class="mt-4">
         <div id="profile-middle-div-bottom-content">
             <nav>
-                <div class="nav nav-tabs pr-5" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link text-dark active" id="nav-home-tab" data-toggle="tab"
+                <div class="nav nav-tabs user-detail-nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active text-dark" id="user-detail-nav-posts-tab" data-toggle="tab"
                        href="#profile-nav-posts"
                        role="tab"
                        aria-controls="nav-home" aria-selected="true">Posts</a>
-                    <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab"
+                    <a class="nav-item nav-link text-dark" id="user-detail-nav-likes-tab" data-toggle="tab"
                        href="#profile-nav-likes"
                        role="tab"
                        aria-controls="nav-profile" aria-selected="false">Likes</a>
-                    <a class="nav-item nav-link text-dark" id="nav-contact-tab" data-toggle="tab"
-                       href="#profile-nav-tags"
+                    <a class="nav-item nav-link text-dark" id="user-detail-nav-media-tab" data-toggle="tab"
+                       href="#profile-nav-media"
                        role="tab"
-                       aria-controls="nav-contact" aria-selected="false">Media</a>
+                       aria-controls="nav-media" aria-selected="false">Media</a>
                 </div>
             </nav>
             <div class="tab-content" id="profile-nav-tabContent">
-                <div class="tab-pane fade show active" id="profile-nav-posts" role="tabpanel"
-                     aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade show pl-3 pr-3 active" id="profile-nav-posts" role="tabpanel"
+                     aria-labelledby="user-detail-nav-posts-tab">
                     {% include 'posts/list.html' with posts=user.post.all %}
                 </div>
-                <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="user-detail-nav-likes-tab">
                     {% for post in user.post.all %}
                     <ul>
                         {% if post.users_like.count > 0 %}
@@ -88,9 +91,11 @@
                     </ul>
                     {% endfor %}
                 </div>
-                <div class="tab-pane fade" id="profile-nav-tags" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-media" role="tabpanel" aria-labelledby="user-detail-nav-media-tab">
                     {% include 'posts/list.html' with posts=user.post.all %}
                 </div>
+
             </div>
         </div>
     </div>

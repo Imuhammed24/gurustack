@@ -124,8 +124,12 @@
                      <small class="mr-2">-</small>
                     {% endif %}
                     {% endfor %}
+                     <small class="text-muted"><span class="text-dark">posted</span> {{ post.created | timesince }} ago</small>
+                    {% if post.users_like %}
+                    <small class="d-block text-muted"><span class="text-dark">Liked by;</span> {% for user in post.users_like.all%} {%if forloop.last and not forloop.first %} and {% endif %} @{{ user }}{%if not forloop.last%},{% endif %} {% endfor%}</small>
+                    {% endif %}
 
-                    <small class="text-muted">{{ post.created | timesince }} ago</small>
+
 
                 </div>
             </div>

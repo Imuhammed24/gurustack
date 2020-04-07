@@ -57,11 +57,13 @@
                 </div>
                 {% endfor %}
             </div>
+            {% if post.comments.count >= 5 %}
             <center>
                 <div id="loadMoreCommentDiv">
                     <a id="loadMoreComment" class="text-decoration-none text-dark" href="">load more</a>
                 </div>
             </center>
+            {% endif %}
         </div>
     </div>
 
