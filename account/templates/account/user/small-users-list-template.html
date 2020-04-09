@@ -15,7 +15,7 @@
                 <small class="text-muted p-0 m-0 d-inline-table">@{{ user.username }}</small>
             </div>
         </div>
-        <div id="follow-section{{user.id}}" class="follow-section d-inline float-right overflow-hidden clearfix">
+        <div class="follow-section follow-section{{user.id}} d-inline float-right overflow-hidden clearfix">
             {%include 'account/user/follow-unfollow-form.html'%}
         </div>
     </div>

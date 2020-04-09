@@ -48,6 +48,15 @@
                             <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ user.following.count }}</strong></span> Following</button>
                             <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ user.followers.count }}</strong></span> Follower</button>
                         </p>
+                        <div id="message-follow-btn-in-user-detail-pg" class="mb-2">
+                            <div class="d-inline">
+                                <button id="message-btn-in-user-detail">Message</button>
+                            </div>
+
+                            <div class="d-inline follow-section{{user.id}}">
+                                {% include 'account/user/follow-unfollow-form.html' %}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% include 'account/user/followers-and-following-template.html' %}

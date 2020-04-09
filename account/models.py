@@ -37,7 +37,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     profile_photo = models.ImageField(upload_to='profile_pictures/', blank=True)
-    bio = models.CharField(max_length=70, blank=True)
+    bio = models.CharField(max_length=145, blank=True)
     interests = TaggableManager(verbose_name='Interests', help_text='football, programming, photography')
     phone_number = models.CharField(max_length=20, blank=True)
     department = models.CharField(max_length=30, blank=True)

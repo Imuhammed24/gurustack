@@ -1036,7 +1036,9 @@ body {
     border-radius: 20px;
     border: 2px solid midnightblue;
     color: midnightblue;
+    padding: 1px 7px;
     transition: .1s;
+    letter-spacing: 1px;
 }
 
 .unfollow-btn{
@@ -1044,6 +1046,7 @@ body {
     border-radius: 20px;
     border: none;
     color: white;
+    padding: 1px 7px;
     letter-spacing: 1px;
     transition: .1s;
 }
@@ -1292,12 +1295,27 @@ body {
     padding: 15px 50px;
 }
 
-#user-detail-nav-posts-tab, #user-detail-nav-likes-tab, #user-detail-nav-media-tab{
-    /*border-top: none;*/
-    /*border-left: none;*/
-    /*border-right: none;*/
-    /*border-bottom: 1px solid #e2e6ea;*/
+#message-follow-btn-in-user-detail-pg{
+    margin-top: -7px;
 }
+
+#message-btn-in-user-detail{
+    background-color: midnightblue;
+    border-radius: 20px;
+    border: 2px solid midnightblue;
+    color: white;
+    padding: 1px 7px;
+    transition: .5s;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#message-btn-in-user-detail:hover{
+    background-color: rgba(255, 140, 0, 0.55);
+    color: midnightblue;
+    border-color: transparent;
+}
+
 
 
 #user-profile-pix-div {

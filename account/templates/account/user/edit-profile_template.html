@@ -27,7 +27,7 @@
                     picture <br> <img id="uploaded-profile-img" src="" alt=""> </p>
                 </div>
                 <p class="d-none">hidden</p>
-                {% if '.st' not in request.user.email %}
+                {% if 'st.' not in request.user.email %}
                     {% if request.user.profile.department %}
                         {{ edit_staff_profile_form.as_p }}
                     {% else %}
