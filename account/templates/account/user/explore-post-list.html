@@ -12,17 +12,17 @@
         <div class="clearfix" id="post-info">
             <ul id="post-meta">
                 <li id="post-meta-name-li">
-                    <a class="font-weight-bold text-dark" href="">
+                    <a class="font-weight-bold text-dark" {%if request.user == post.user%}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=post.user.username %}" {% endif %}>
                     <span id="fullname-in-post2" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
                         <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post2" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                     </a>
                 </li>
                 <li></li>
-                <li id="post-meta-uname-li"><a href="">@{{ post.user.username }}</a></li>
+                <li id="post-meta-uname-li"><a href="{%if request.user == post.user%}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=post.user.username %}" {% endif %}">@{{ post.user.username }}</a></li>
                 <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
             </ul>
-            <article id="post-article">{{ post.article }}</article>
-            <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
+            <article id="post-article" onclick="location.href='{{post.get_absolute_url}}';">{{ post.article }}</article>
+            <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false" onclick="location.href='{{post.get_absolute_url}}';">
                 {% with forloop.counter0 as count %}
                 <ol class="carousel-indicators">
                     {% for img in post.images.all %}

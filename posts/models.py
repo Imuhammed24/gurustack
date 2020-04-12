@@ -16,6 +16,7 @@ class PostQuerySet(models.QuerySet):
     def search(self, query):
         lookup = (
             Q(article__icontains=query) |
+            Q(tag__tags__name__icontains=query) |
             Q(slug__icontains=query) |
             Q(user__username__icontains=query) |
             Q(user__first_name__icontains=query) |

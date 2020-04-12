@@ -1,6 +1,6 @@
 {% load static %}
 
-<div id="like-section{{post.id}}">
+<div class="like-section{{post.id}}">
     <a title="Add Comment" onclick="showHideComment(post={{forloop.counter0}})" class="float-left btn">
         <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mr-1"{% endif %} src="{% static 'svg/comment-post.svg' %}" alt=""><span>{{post.comments.count }}</span>
     </a>

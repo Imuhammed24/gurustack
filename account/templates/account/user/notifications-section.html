@@ -28,9 +28,10 @@
                     <div class="tab-content" id="profile-nav-tabContent">
                         <div class="tab-pane fade show active pl-3 pr-3" id="all-notifications" role="tabpanel" aria-labelledby="nav-home-tab">
                             {% for action in actions %}
-                                <div class="notification-list-item">
+                                <div class="notification-list-item overflow-nd-clear">
                                     {% if action.verb == 'likes' or action.verb == 'commented on' %}
                                         {% if action.user.profile.profile_photo%}
+                                    <span class="d-block">
                                         <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
                                         {% else %}
                                         <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
@@ -40,11 +41,13 @@
                                         {% else %}
                                             <img id="notification-icon-for-post2" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                                         {% endif %}
-                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{% if request.user == action.target.user %}your{% else %} {{ action.target.user.first_name.title }} {{ action.target.user.last_name.title }}'s{% endif %}</strong></a> post</p>
-                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
+                                        <p class="d-inline"><a class="text-dark" {%if request.user == action.user %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=action.user.username %}" {% endif %}><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{% if request.user == action.target.user %}your{% else %} {{ action.target.user.first_name.title }} {{ action.target.user.last_name.title }}'s{% endif %}</strong></a> post</p>
+                                    </span>
+                                        <small class="float-right d-block text-muted"> {{ action.created |timesince}} ago</small>
 
                                     {% elif action.verb == 'started following' %}
                                         {% if action.user.profile.profile_photo%}
+                                    <span class="d-block">
                                         <img id="notification-icon-for-post3" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
                                         {% else %}
                                         <img id="notification-icon-for-post3" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
@@ -54,17 +57,20 @@
                                         {% else %}
                                         <img id="notification-icon-for-post4" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                                         {% endif %}
-                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{% if request.user == action.target %} you {% else %} {{ action.target.first_name.title }} {{ action.target.last_name.title }} {% endif %}</strong></a></p>
-                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
+                                        <p class="d-inline"><a class="text-dark" {%if request.user == action.user %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=action.user.username %}" {% endif %}><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" {%if request.user == action.target %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=action.target %}" {% endif %}><strong>{% if request.user == action.target %} you {% else %} {{ action.target.first_name.title }} {{ action.target.last_name.title }} {% endif %}</strong></a></p>
+                                    </span>
+                                        <small class="float-right d-block text-muted"> {{ action.created |timesince}} ago</small>
 
                                     {% elif action.verb == 'added' %}
                                         {% if action.user.profile.profile_photo%}
+                                    <span class="d-block">
                                         <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
                                         {% else %}
                                         <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                                         {% endif %}
-                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="{{ action.target.get_absolute_url }}"><strong> a post.</strong> <span class="text-muted">({{action.target}}...)</span></a></p>
-                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
+                                        <p class="d-inline"><a class="text-dark" {%if request.user == action.user %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=action.user.username %}" {% endif %}><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="{{ action.target.get_absolute_url }}"><strong> a post.</strong> <span class="text-muted">({{action.target}}...)</span></a></p>
+                                    </span>
+                                        <small class="float-right d-block text-muted"> {{ action.created |timesince}} ago</small>
 
                                     {% else%}
                                         {{ action.user }} {{ action.verb }} {{ action.target }}

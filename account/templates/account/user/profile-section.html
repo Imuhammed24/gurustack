@@ -98,7 +98,7 @@
                                 {% else %}
                                 <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                             {% endif %}
-                            @{{user.username}} {% if not forloop.last %}, {% endif %}
+                            <a class="text-dark" {%if request.user == user %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=user.username %}" {% endif %}>@{{user.username}}</a> {% if not forloop.last %}, {% endif %}
                              liked your post:
                             <span class="text-black-50"><a class="text-dark" href="{{ post.get_absolute_url}}">{{ post.slug }}...</a></span></p></li>
                             {% else %}

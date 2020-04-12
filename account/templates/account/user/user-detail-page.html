@@ -91,9 +91,7 @@
                 </div>
 
                 <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="user-detail-nav-likes-tab">
-                    {% with posts=user.posts_likes.all %}
-                        {% include 'posts/list.html' with posts=user.post.all %}
-                    {% endwith %}
+                        {% include 'posts/list.html' with posts=user.posts_likes.all %}
                 </div>
 
                 <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-media" role="tabpanel" aria-labelledby="user-detail-nav-media-tab">

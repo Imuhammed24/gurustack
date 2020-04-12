@@ -1459,9 +1459,9 @@ button {
     padding: 5px 13px;
 }
 
-#profile-nav-likes, #profile-nav-tags {
-    padding-top: 9px;
-}
+/*#profile-nav-likes, #profile-nav-tags {*/
+/*    padding-top: 9px;*/
+/*}*/
 
 #profile-nav-likes ul, #profile-nav-tags {
     margin: 0;
@@ -1918,7 +1918,7 @@ button {
 
 .notification-list-item{
     border-bottom: 1px solid #e5e5f7;
-    padding: 15px 5px;
+    padding: 5px 5px;
     transition: .7s;
 }
 /*start of desktop styles */
