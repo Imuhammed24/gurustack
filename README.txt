@@ -24,9 +24,9 @@ With Pycharm; you only need to push.
 
 from django.contrib.auth.models import User
 from taggit.models import Tag
-
 u = User.objects.get(username=username)
 tags = Tag.objects.filter(object__owner=u)
+
 
 #################################################################
 #################################################################  DJANGO TAGGIT
