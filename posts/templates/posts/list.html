@@ -6,7 +6,7 @@
     {% for post in posts %}
     <div id="post-wrapper" class="post-wrapper blogBox overflow-hidden clearfix">
         <div class="m-3 overflow-hidden">
-            <div class="clearfix" id="post-author-img-div">
+            <div class="clearfix" id="post-author-img-div" onclick="location.href='{% url "account:user-detail" username=post.user.username %}';">
                 {% if post.user.profile.profile_photo %}
                 <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
                 {% else %}
@@ -52,9 +52,9 @@
                     {% endwith %}
                 </div>
 
-                <div id="comment-section{{forloop.counter0}}" class="comment-section">
+                <div id="comment-section{{post.id}}" class="comment-section">
                     <a class="text-decoration-none mb-2" href="{{post.get_absolute_url}}">view comment{{post.comments.count|pluralize}}</a>
-                    <h3>Reply This Post</h3>
+                    <h6 class="mb-0 pb-0">Reply This Post</h6>
                     <form action="{% url 'posts:add-comment' post.id %}" method="post">
                         {% csrf_token %}
                         {{ comment_form }}
@@ -75,7 +75,7 @@
     {% elif post %}
         <div id="post-wrapper" class="post-wrapper blogBox">
             <div class="m-2 overflow-hidden">
-                <div class="clearfix mr-2" id="post-author-img-div">
+                <div class="clearfix mr-2" id="post-author-img-div" onclick="location.href='{% url "account:user-detail" username=post.user.username %}';">
                     {% if post.user.profile.profile_photo %}
                     <img id="author-profile-pix" src="{{ post.user.profile.profile_photo.url }}" alt="">
                     {% else %}
@@ -118,13 +118,22 @@
                         </a>
                         {% endwith %}
                     </div>
+                    <small class="text-muted float-right"><span class="text-dark">posted</span> {{ post.created | timesince }} ago</small>
                     {% for tag in post.tag.all %}
                     {% if tag.tags.all %}
-                        <small class="mr-2">with <span class="text-muted">{{tag.tags.all|join:", "}}</span></small>
-                     <small class="mr-2">-</small>
+                        <small class="mr-2">with:
+                            <span class="text-muted">{% for tag in tag.tags.all %} {% if '@' in tag.name %}
+                            <a class="text-dark" {% if request.user.username == tag.name|slice:'1:' %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=tag.name|slice:'1:' %}" {% endif %}">{{tag}}</a>{% else %} - {% endif %} {% endfor %}
+                        </span></small>
                     {% endif %}
                     {% endfor %}
-                     <small class="text-muted"><span class="text-dark">posted</span> {{ post.created | timesince }} ago</small>
+
+                    {% for tag in post.tag.all %}
+                    {% if tag.tags.all %}
+                    <small class="mr-2 d-block">Tags: <span class="text-muted">{% for tag in tag.tags.all %} {% if '#' in tag.name %} <a class="text-dark" href="{% url 'account:explore' %}?q={{ tag.name|slice:'1:' }}">{{tag}}</a> {% else%}-{% endif %} {% endfor %}</span></small>
+                    {% endif %}
+                    {% endfor %}
+
                     {% if post.users_like %}
                     <small class="d-block text-muted"><span class="text-dark">Liked by;</span> {% for user in post.users_like.all%} {%if forloop.last and not forloop.first %} and {% endif %} @{{ user }}{%if not forloop.last%},{% endif %} {% endfor%}</small>
                     {% endif %}

@@ -14,7 +14,7 @@ $ git push origin master
 
 With Pycharm; you only need to push.
 
-
+<small class="mr-2">with <span class="text-muted">{{tag.tags.all|join:", "}}</span></small>
 
 --- let the result of the search be rendered...
 

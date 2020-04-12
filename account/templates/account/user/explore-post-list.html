@@ -22,6 +22,14 @@
                 <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
             </ul>
             <article id="post-article" onclick="location.href='{{post.get_absolute_url}}';">{{ post.article }}</article>
+            {% for tag in post.tag.all %}
+            {% if tag.tags.all %}
+                <small class="mr-2 d-block">
+                    <span class="text-muted">{% for tag in tag.tags.all %} {% if '@' in tag.name %}
+                    <a class="text-muted" {% if request.user.username == tag.name|slice:'1:' %}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=tag.name|slice:'1:' %}" {% endif %}">{{tag}}</a>{% else %} {{tag}} {% endif %} {% endfor %}
+                </span></small>
+            {% endif %}
+            {% endfor %}
             <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false" onclick="location.href='{{post.get_absolute_url}}';">
                 {% with forloop.counter0 as count %}
                 <ol class="carousel-indicators">

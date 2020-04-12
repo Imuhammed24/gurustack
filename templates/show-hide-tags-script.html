@@ -9,13 +9,29 @@
     }
   }
 
-  function showHideComment(post) {
-    var x = document.getElementById("comment-section" + post);
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
+  // function showHideComment(post) {
+  //   var x = document.getElementById("comment-section" + post);
+  //   if (x.style.display === "none") {
+  //     x.style.display = "block";
+  //   } else {
+  //     x.style.display = "none";
+  //   }
+  // }
 
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function (event) {
+
+        $(document).on('click', '.showHideComment', function (event) {
+            event.preventDefault();
+            var pk = $(this).attr('itemid')
+            var x = document.getElementById("comment-section" + pk);
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+        });
+    });
 </script>
