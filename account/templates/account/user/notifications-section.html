@@ -40,7 +40,8 @@
                                         {% else %}
                                             <img id="notification-icon-for-post2" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                                         {% endif %}
-                                        <p class="d-inline text-muted"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{{ action.target.user.first_name.title }} {{ action.target.user.last_name.title }}</strong></a>'s post</p>
+                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{% if request.user == action.target.user %}your{% else %} {{ action.target.user.first_name.title }} {{ action.target.user.last_name.title }}'s{% endif %}</strong></a> post</p>
+                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
 
                                     {% elif action.verb == 'started following' %}
                                         {% if action.user.profile.profile_photo%}
@@ -53,7 +54,17 @@
                                         {% else %}
                                         <img id="notification-icon-for-post4" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
                                         {% endif %}
-                                        <p class="d-inline text-muted"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{{ action.target.first_name.title }} {{ action.target.last_name.title }}</strong></a></p>
+                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="#"><strong>{% if request.user == action.target %} you {% else %} {{ action.target.first_name.title }} {{ action.target.last_name.title }} {% endif %}</strong></a></p>
+                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
+
+                                    {% elif action.verb == 'added' %}
+                                        {% if action.user.profile.profile_photo%}
+                                        <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{{ action.user.profile.profile_photo.url }}" alt="">
+                                        {% else %}
+                                        <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                                        {% endif %}
+                                        <p class="d-inline"><a class="text-dark" href="#"><strong>{{ action.user.first_name.title }} {{ action.user.last_name.title }}</strong></a> {{ action.verb }} <a class="text-dark" href="{{ action.target.get_absolute_url }}"><strong> a post.</strong> <span class="text-muted">({{action.target}}...)</span></a></p>
+                                        <small class="float-right text-muted"> {{ action.created |timesince}} ago</small>
 
                                     {% else%}
                                         {{ action.user }} {{ action.verb }} {{ action.target }}

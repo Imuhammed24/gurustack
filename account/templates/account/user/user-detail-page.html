@@ -48,6 +48,7 @@
                             <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span><strong>{{ user.following.count }}</strong></span> Following</button>
                             <button class="bg-transparent border-0 p-0" onclick="document.getElementById('followers-and-following-modal').style.display='block'"><span class="ml-3"><strong>{{ user.followers.count }}</strong></span> Follower</button>
                         </p>
+                        {% if request.user != user %}
                         <div id="message-follow-btn-in-user-detail-pg" class="mb-2">
                             <div class="d-inline">
                                 <button id="message-btn-in-user-detail">Message</button>
@@ -57,6 +58,7 @@
                                 {% include 'account/user/follow-unfollow-form.html' %}
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% include 'account/user/followers-and-following-template.html' %}
@@ -89,20 +91,13 @@
                 </div>
 
                 <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="user-detail-nav-likes-tab">
-                    {% for post in user.post.all %}
-                    <ul>
-                        {% if post.users_like.count > 0 %}
-                        <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
-                            @{{user.username}} {% if not forloop.last %}, {% endif %}
-                            {% endfor %} liked your post:
-                            <span class="text-black-50"><a class="text-dark" href="{{ post.get_absolute_url}}">{{ post.slug }}...</a></span></p></li>
-                        {% endif %}
-                    </ul>
-                    {% endfor %}
+                    {% with posts=user.posts_likes.all %}
+                        {% include 'posts/list.html' with posts=user.post.all %}
+                    {% endwith %}
                 </div>
 
                 <div class="tab-pane pl-3 pr-3 fade" id="profile-nav-media" role="tabpanel" aria-labelledby="user-detail-nav-media-tab">
-                    {% include 'posts/list.html' with posts=user.post.all %}
+                    {% include 'posts/list.html' with posts=media_posts %}
                 </div>
 
             </div>

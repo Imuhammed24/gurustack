@@ -105,11 +105,20 @@ def user_detail_view(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
     following_ids = request.user.following.values_list('id', flat=True)
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    # no_media_posts = user.post.filter(images=None).values_list('id', flat=True)
+    # media_posts = user.post.exclude(id__in=no_media_posts)
+    # no_media_posts = Post.objects.filter(user=user, images=None).values_list('id', flat=True)
+    no_media_posts = Post.objects.filter(user=user, images=None).values_list('id', flat=True)
+    all_posts = Post.objects.filter(user=user)
+
+    # print(no_media_posts)
+    media_posts = all_posts.exclude(pk__in=no_media_posts)
     trends = Tag.tags.most_common()
 
     context = {'display_section': 'user_detail',
                'html_title': f'{user.username} account',
                'tag_form': TagForm,
+               'media_posts': media_posts,
                'comment_form': comment_form,
                'users_to_follow': users,
                'trends': trends,

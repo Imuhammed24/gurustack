@@ -86,14 +86,24 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="tab-pane fade" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="tab-pane fade overflow-nd-clear" id="profile-nav-likes" role="tabpanel" aria-labelledby="nav-profile-tab">
                     {% for post in request.user.post.all %}
                     <ul>
                         {% if post.users_like.count > 0 %}
-                        <li class="list-unstyled border-bottom"><p> {% for user in post.users_like.all %}
+                        <li class="list-unstyled border-bottom"><p>
+                            {% for user in post.users_like.all %}
+                            {% if user != request.user %}
+                            {% if user.profile.profile_photo%}
+                                <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{{ user.profile.profile_photo.url }}" alt="">
+                                {% else %}
+                                <img id="notification-icon-for-post" class="d-inline rounded-circle" src="{% static 'svg/male-profile.svg' %}" alt="">
+                            {% endif %}
                             @{{user.username}} {% if not forloop.last %}, {% endif %}
-                            {% endfor %} liked your post:
-                            <span class="text-black-50">{{ post.slug }}...</span></p></li>
+                             liked your post:
+                            <span class="text-black-50"><a class="text-dark" href="{{ post.get_absolute_url}}">{{ post.slug }}...</a></span></p></li>
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
                         {% endif %}
                     </ul>
                     {% endfor %}

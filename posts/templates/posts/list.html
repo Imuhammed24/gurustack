@@ -16,7 +16,7 @@
             <div class="clearfix" id="post-info">
                 <ul id="post-meta">
                     <li id="post-meta-name-li">
-                        <a class="font-weight-bold text-decoration-none text-dark" href="{% url 'account:user-detail' username=post.user.username %}">
+                        <a class="font-weight-bold text-decoration-none text-dark" {%if request.user == post.user%}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=post.user.username %}" {% endif %}>
                         <span id="fullname-in-post" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
                             <span class="verified-icon-in-post">{% if post.user.profile.verified %}<img id="verified-icon-in-post" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                         </a>
@@ -85,7 +85,7 @@
                 <div class="overflow-nd-clear d-block">
                     <ul id="post-meta" class="p-0 m-0 d-inline-block">
                         <li class="list-unstyled">
-                            <a class="font-weight-bold text-decoration-none text-dark" href="{% url 'account:user-detail' username=post.user.username %}">
+                            <a class="font-weight-bold text-decoration-none text-dark" {%if request.user == post.user%}href="{% url 'account:profile' %}"{% else %} href="{% url 'account:user-detail' username=post.user.username %}" {% endif %}>
                             <span id="fullname-in-post" class="float-left">{{post.user.first_name.title }} {{ post.user.last_name.title }}</span>
                                 <span class="verified-icon-in-post2">{% if post.user.profile.verified %}<img id="verified-icon-in-post2" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                             </a>
