@@ -33,7 +33,7 @@
                         <div class="side-trend-content trendBox pl-1 pr-1 pb-1 overflow-hidden clearfix">
                             <div class="side-trend-list float-left">
                                 <div class=" float-left mr-3 overflow-hidden clearfix">
-                                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark font-weight-bold" href="#">{{ trend.name }}</a></h6>
+                                    <h6 class="p-0 m-0 d-inline-table"><a class="text-dark font-weight-bold" href="{% url 'account:explore' %}?q={{trend.name|slice:'1:'}}">{{ trend.name }}</a></h6>
                                     <small class="text-muted p-0 m-0 d-inline-table">{{ trend.num_times }} Post{{ trend.num_times|pluralize }}</small>
                                 </div>
                             </div>
