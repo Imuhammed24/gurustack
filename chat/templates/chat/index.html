@@ -1,0 +1,39 @@
+{% load static %}
+{% load encoded_url %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Chat Rooms</title>
+    </head>
+
+    <body>
+    {% if users %}
+        <p>Hello, {{request.user.username}}</p>
+        <p>What chat room would you like to enter?</p><br>
+        <input id="room-name-input" type="text" size="100"><br>
+        <input id="room-name-submit" type="button" value="Enter">
+        {% for user in users %}
+        {% if request.user != user %}
+            <a style="display: block" href="/chat/{% encode_url request.user user %}">chat up {{ user.username }}</a>
+        {% endif %}
+        {% endfor %}
+
+        <script>
+            document.querySelector('#room-name-input').focus();
+            document.querySelector('#room-name-input').onkeyup = function (e) {
+                if (e.keyCode === 13) {  // enter, return
+                    document.querySelector('#room-name-submit').click();
+                }
+            };
+
+            document.querySelector('#room-name-submit').onclick = function (e) {
+                var roomName = document.querySelector('#room-name-input').value;
+                window.location.pathname = '/chat/' + roomName + '/';
+            };
+        </script>
+    {% endif %}
+    </body>
+
+</html>

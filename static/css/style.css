@@ -1921,6 +1921,150 @@ button {
     padding: 5px 5px;
     transition: .7s;
 }
+
+
+/*########################################################*/
+/*########################################################*/
+/*########################################################                  MESSAGES SECTION            */
+/*########################################################*/
+/*########################################################*/
+
+#small-message-button{
+    background-color: midnightblue;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 7px;
+    transition: .1s;
+    letter-spacing: 1px;
+}
+
+#middle-div-middle-content-div-messages {
+    padding: 15px 15px 5px 15px;
+    overflow: hidden;
+    clear: none;
+}
+
+#account-base-section-middle-div-messages {
+    /*width: 53%;*/
+    width: 32%;
+    display: inline;
+    float: left;
+    min-height: 100vh;
+}
+
+#account-base-section-middle-div-content-messages {
+    border: 1px solid #e5e5f7;
+
+}
+
+#account-base-section-right-div-messages {
+    padding: 3px 0;
+    width: 49%;
+    display: inline;
+    float: right;
+}
+
+#middle-div-bottom-messages{
+    padding-bottom: 25px;
+}
+
+#profile-middle-div-top-messages {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e5e5f7;
+    border-right: 1px solid #e5e5f7;
+}
+
+#middle-div-top-content-div-messages, #profile-middle-div-mid-messages {
+    padding: 3px 15px;
+}
+
+#account-base-section-right-div-container-messages{
+    border-right: 1px solid #e5e5f7;
+    border-bottom: 1px solid #e5e5f7;
+}
+
+/*#############################################################################*/
+/*############################################################################# STILL MESSAGES*/
+
+#message_wrapper{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    clear: none;
+    /*margin-bottom: 7px;*/
+}
+#message-container{
+    display: inline-table;
+    padding: 10px 0;
+    width: 70%;
+    overflow: hidden;
+    clear: none;
+    /*margin-bottom: 5px;*/
+}
+
+#chat-log{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    clear: none;
+    height: 600px;
+    width: 50%;
+    max-height: 600px;
+    background-color: orange;
+    padding: 3px;
+}
+
+#chat-message-input{
+    width: 48%;
+    display: block;
+    margin: 5px 0;
+}
+#chat-message-submit{
+    display: block;
+}
+
+.message-content-p{
+    display: inline-table;
+    background-color: darkolivegreen;
+    padding: 8px 15px;
+    margin: 0;
+    border-radius: 15px;
+    max-width: 60%;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.replies img{
+    margin-right: 7px;
+}
+
+.sent img{
+    margin-left: 7px;
+}
+
+.replies, .replies img, .replies p{
+    float: left;
+}
+
+.sent, .sent img, .sent p{
+    float: right;
+}
+
+#message-container{
+    /*margin: 0 0 0 0;*/
+    /*padding: 0 0 0 0;*/
+}
+
+
+/*#############################################################################*/
+/*#############################################################################*/
+/*#############################################################################      END OF MESSAGES */
+/*#############################################################################*/
+/*#############################################################################*/
+
+
 /*start of desktop styles */
 
 /*@media screen and (max-width: 991px) {*/

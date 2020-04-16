@@ -20,6 +20,7 @@ from django.urls import path, include
 from .views import index
 
 urlpatterns = [
+    path('chat/', include(('chat.urls', 'chat'), namespace='chat')),
     path('taggit/', include('taggit_selectize.urls')),
     path('admin/', admin.site.urls),
     path('account/', include(('account.urls', 'account'), namespace='account')),

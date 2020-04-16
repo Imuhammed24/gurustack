@@ -1,3 +1,4 @@
+from dateutil.parser import parse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -16,6 +17,7 @@ from account.models import Contact
 from account.tokens import account_activation_token
 from actions.models import Action
 from actions.utils import create_action
+from chat.utils import base64_decode
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post, Tag
 from searches.models import SearchQuery
@@ -99,6 +101,44 @@ def account_view(request):
                'comment_form': comment_form,
                'users_to_follow': users,
                'trends': trends,
+               }
+
+    return render(request, 'account_base.html', context)
+################################################################################################
+
+
+@login_required
+def room(request, room_name):
+    room_name_4_decode = base64_decode(room_name)
+    extracted_timezones = room_name_4_decode.decode("utf-8")
+    split_timezones = extracted_timezones.split('secnd')
+    target_date = None
+    request_legitimacy = False
+
+    for date in split_timezones:
+        parsed_date = parse(date)
+        if request.user.date_joined != parsed_date:
+            target_date = parsed_date
+        else:
+            request_legitimacy = True
+    if request_legitimacy is True:
+        user = get_object_or_404(User, date_joined=target_date)
+        context = {
+            'user': user,
+            'room_name': room_name
+        }
+        return render(request, 'chat/room.html', context)
+    else:
+        return redirect('account:messages')
+
+
+################################################################################################
+
+@login_required
+def messages_view(request):
+
+    context = {'display_section': 'messages',
+               'html_title': f'{request.user} Messages',
                }
 
     return render(request, 'account_base.html', context)
