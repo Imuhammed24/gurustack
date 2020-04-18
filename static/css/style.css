@@ -1948,6 +1948,7 @@ button {
 
 #account-base-section-middle-div-messages {
     /*width: 53%;*/
+    border-left: 2px solid #e5e5f7;
     width: 32%;
     display: inline;
     float: left;
@@ -1960,8 +1961,9 @@ button {
 }
 
 #account-base-section-right-div-messages {
-    padding: 3px 0;
+    /*padding: 3px 0 0 0;*/
     width: 49%;
+    height: 100%;
     display: inline;
     float: right;
 }
@@ -1971,18 +1973,22 @@ button {
 }
 
 #profile-middle-div-top-messages {
-    padding-bottom: 5px;
+    padding: 5.5px 5px;
     border-bottom: 2px solid #e5e5f7;
-    border-right: 1px solid #e5e5f7;
+    border-right: 2px solid #e5e5f7;
 }
 
 #middle-div-top-content-div-messages, #profile-middle-div-mid-messages {
-    padding: 3px 15px;
+    padding: 0;
 }
 
 #account-base-section-right-div-container-messages{
-    border-right: 1px solid #e5e5f7;
-    border-bottom: 1px solid #e5e5f7;
+    border-right: 2px solid #e5e5f7;
+    border-left: 2px solid #e5e5f7;
+    /*border-bottom: 1px solid #e5e5f7;*/
+    height: 99vh;
+    overflow: hidden;
+    clear: none;
 }
 
 /*#############################################################################*/
@@ -1993,7 +1999,6 @@ button {
     width: 100%;
     overflow: hidden;
     clear: none;
-    /*margin-bottom: 7px;*/
 }
 #message-container{
     display: inline-table;
@@ -2001,32 +2006,74 @@ button {
     width: 70%;
     overflow: hidden;
     clear: none;
-    /*margin-bottom: 5px;*/
 }
+
 
 #chat-log{
     overflow-x: hidden;
     overflow-y: scroll;
     clear: none;
-    height: 600px;
-    width: 50%;
-    max-height: 600px;
-    background-color: orange;
-    padding: 3px;
+    height: 89%;
+    width: 100%;
+    background-color: rgba(226, 230, 234, 0.25);
+    padding: 3px 3px 3px 5px;
 }
 
+div * {
+    scrollbar-width: thin; /* Firefox */
+    -ms-overflow-style: none;
+}
+
+/* IE 10+ */  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: none !important;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 2px !important;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+
 #chat-message-input{
-    width: 48%;
-    display: block;
-    margin: 5px 0;
+    width: 92%;
+    height: 36px;
+    display: inline;
+    margin: 0 0 0 0;
+    border-color: midnightblue;
+    border-radius: 6px;
+    padding: 3px 5px;
 }
 #chat-message-submit{
-    display: block;
+    margin: 1px 0 0 0;
+    width: 6%;
+    height: 35px;
+    border: 2px solid darkorange;
+    border-radius: 10px;
+    display: inline;
+    background-color: transparent;
+}
+
+#type-and-submit{
+    margin-top: 2px;
+    overflow: hidden;
+    clear: none;
+}
+
+#send-button{
+    min-width: 15px;
+    width: 100%;
+    min-height: 25px;
+    height: 100%;
 }
 
 .message-content-p{
     display: inline-table;
-    background-color: darkolivegreen;
+    background-color: midnightblue;
     padding: 8px 15px;
     margin: 0;
     border-radius: 15px;
@@ -2052,10 +2099,6 @@ button {
     float: right;
 }
 
-#message-container{
-    /*margin: 0 0 0 0;*/
-    /*padding: 0 0 0 0;*/
-}
 
 
 /*#############################################################################*/

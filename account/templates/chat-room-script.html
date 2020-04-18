@@ -1,0 +1,101 @@
+{% load static %}
+
+<script src="{% static 'js/reconnecting-websocket.js' %}"></script>
+
+<script>
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+    const chatSocket = new ReconnectingWebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/messages/'
+        + roomName
+        + '/'
+    );
+
+    chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        if (data['command'] === 'messages') {
+            for (let i = 0; i < data['messages'].length; i++) {
+                let message = data['messages'][i];
+                createMessage(message);
+
+            }
+        } else if (data['message']['command'] === 'new_message') {
+            let message = data['message']['message'];
+            createMessage(message);
+        }
+    };
+
+    chatSocket.onopen = function (e) {
+        fetchMessages();
+    };
+
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        if (message !== '') {
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'command': 'new_message',
+                'from': '{{ request.user.username }}',
+                'to': '{{ user.username }}'
+            }));
+            messageInputDom.value = '';
+        }
+    };
+
+    function fetchMessages() {
+        chatSocket.send(JSON.stringify({
+            'command': 'fetch_messages',
+            'from': '{{ request.user.username }}',
+            'to': '{{ user.username }}'
+        }))
+    }
+
+    function createMessage(message) {
+        let author = message['author'];
+        let content = message['content'];
+        let message_div_tag = document.createElement('div');
+        let message_wrapper = document.createElement('div');
+        message_wrapper.id = 'message_wrapper';
+        message_div_tag.id = 'message-container';
+        let message_img_tag = document.createElement('img');
+        let message_p_tag = document.createElement('p');
+        message_p_tag.className = 'message-content-p';
+        message_p_tag.textContent = content;
+
+        message_img_tag.className ="d-inline who-to-follow-img rounded-circle"
+        // message_img_tag.src = 'data:image/png;base64,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';
+        message_img_tag.height = 30;
+        message_img_tag.width = 30;
+
+        if (author === '{{request.user.username}}'){
+            message_div_tag.className = 'sent';
+            message_img_tag.src = "{% if request.user.profile.profile_photo %}{{ request.user.profile.profile_photo.url }}{% else %}{% if request.user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}{% endif %}"
+        }
+        else{
+            message_div_tag.className = 'replies';
+            message_img_tag.src = "{% if user.profile.profile_photo %}{{ user.profile.profile_photo.url }}{% else %}{% if user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}{% endif %}"
+
+        }
+        message_div_tag.appendChild(message_img_tag);
+        message_div_tag.appendChild(message_p_tag);
+        message_wrapper.appendChild(message_div_tag);
+        document.querySelector('#chat-log').appendChild(message_wrapper);
+        document.getElementById('chat-log').scrollTo(0, 1200)
+        // document.querySelector('#chat-log').value += (message['content'] + '\n');
+    }
+
+</script>

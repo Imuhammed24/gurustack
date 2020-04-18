@@ -17,8 +17,8 @@ class ChatConsumer(WebsocketConsumer):
         author_name = data['from']
         recipient_name = data['to']
 
-        author = get_object_or_404(User, username=author_name)
-        recipient = get_object_or_404(User, username=recipient_name)
+        author = User.objects.get(username=author_name)
+        recipient = User.objects.get(username=recipient_name)
 
         messages = reversed(Message.objects.filter(author__in=[author, recipient], recipient__in=[author, recipient]))
         content = {

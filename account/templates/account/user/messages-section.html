@@ -19,8 +19,14 @@
         <div id="profile-middle-div-middle-messages" class="clearfix">
             <div id="middle-div-middle-content-div-messages" class="pt-2 clearfix">
 
-                <div id="active-chat">
-<!--                    active-->
+                <div id="conversation">
+                    <div>
+                        {% if request.user.message_recipient %}
+                        {% for chat in request.user.message_recipient.all.distinct %}
+                            <p> {{chat}}</p>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
 
                 <div id="chat-suggestion-div">
@@ -50,16 +56,29 @@
 <div id="account-base-section-right-div-messages">
     <div id="account-base-section-right-div-container-messages">
          <div id="profile-middle-div-top-messages">
-            <div id="middle-div-top-content-div-messages" class="clearfix pb-0">
-
+            <div id="middle-div-top-content-div-messages" class="clearfix pb-0 overflow-nd-clear">
                 <h4 class="pb-0 mb-0">
-                    <a class="text-dark no-txt-deco" href="{% url 'account:messages' %}">Messages</a><br>
+                    <a class="text-dark no-txt-deco" {% if user and room_name %}{% else %}href="{% url 'account:messages' %}"{% endif %}>
+                        {% if user and room_name %}
+                        {{ user.first_name.title }} {{ user.last_name.title }} <span class="position-absolute mt-1 ml-1">{% if user.profile.verified %}<img class="d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                        {% else %}
+                        Messages
+                        {% endif %}</a><br>
                 </h4>
 
             </div>
         </div>
-
-        <div id="profile-middle-div-mid-messages">helloooooo</div>
+        {% if room_name %}
+        <div id="profile-middle-div-mid-messages">
+            <div id="chat-log"></div>
+            <div id="type-and-submit">
+            <input id="chat-message-input" type="text">
+            <button id="chat-message-submit"><img id="send-button" src="{% static 'svg/send-button.svg' %}" alt="->"></button>
+            </div>
+        </div>
+        {{ room_name|json_script:"room-name" }}
+        {% include 'chat-room-script.html'%}
+        {% endif %}
 
     </div>
 

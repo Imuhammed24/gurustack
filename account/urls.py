@@ -10,6 +10,7 @@ urlpatterns = [
     path("users/<username>/", user_detail_view, name='user-detail'),
     path("explore/", search_view, name='explore'),
     path('messages/', messages_view, name='messages'),
+    path("messages/<str:room_name>/", messages_view, name='message-room'),
     path('notifications/', notifications_view, name='notifications'),
     path('login/', login_view, name='login'),
     path('edit-profile/', edit_profile_view, name='edit_profile'),
