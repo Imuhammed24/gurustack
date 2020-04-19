@@ -17,27 +17,27 @@
 
 
         <div id="profile-middle-div-middle-messages" class="clearfix">
-            <div id="middle-div-middle-content-div-messages" class="pt-2 clearfix">
+            <div id="middle-div-middle-content-div-messages" class="clearfix">
 
-                <div id="conversation">
+                <div id="active-conversations-div" class="">
+                    <h6>Active Conversations</h6>
                     <div>
                         {% if request.user.conversation_with %}
                         {% for chat in request.user.conversation_with.all %}
-                            <p> {{chat }}</p>
+                            {% include 'account/user/conversations-div.html' with chat_user=chat.user2 %}
                         {% endfor %}
                         {% endif %}
 
                         {% if request.user.conversation_from %}
                         {% for chat in request.user.conversation_from.all %}
-                            <p> {{chat}}</p>
+                            {% include 'account/user/conversations-div.html' with chat_user=chat.user1 %}
                         {% endfor %}
                         {% endif %}
                     </div>
                 </div>
 
-                <div id="chat-suggestion-div">
+                <div id="chat-suggestion-div" class="mb-0">
                     <h6>Chat with the people you know</h6>
-                    <hr>
                     {% for user in request.user.following.all %}
                         {% include 'account/user/message-suggestion-list.html' %}
                     {% endfor %}
@@ -84,6 +84,12 @@
         </div>
         {{ room_name|json_script:"room-name" }}
         {% include 'chat-room-script.html'%}
+        {% else %}
+        <div id="no-conversation-div">
+            <center>
+                <h4 class="text-black-50">You have not selected any conversation yet. Select a conversation to chat with friends</h4>
+            </center>
+        </div>
         {% endif %}
 
     </div>

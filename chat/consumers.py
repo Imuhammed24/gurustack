@@ -60,7 +60,7 @@ class ChatConsumer(WebsocketConsumer):
             'author': message.author.username,
             'recipient': message.recipient.username,
             'content': message.content,
-            'timestamp': str(message.timestamp)
+            'timestamp': str(message.timestamp)[:16]
         }
 
     commands = {

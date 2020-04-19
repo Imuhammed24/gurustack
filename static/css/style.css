@@ -1070,11 +1070,12 @@ body {
     border-bottom: 1px solid rgba(173, 216, 230, 0.33);
     transition: .5s;
     border-radius: 5px;
+    padding: 5px 5px 5px 0;
 }
 
 #small-user-list-div-content:hover{
     background-color: rgba(173, 216, 230, 0.14);
-    padding: 4px;
+    padding: 2px;
 }
 
 .username-on-users-list{
@@ -1940,6 +1941,29 @@ button {
     letter-spacing: 1px;
 }
 
+
+.verified-icon-conversation{
+    margin-top: -5px;
+    width: 17px;
+    height: 17px;
+}
+
+#active-conversations-div, #chat-suggestion-div{
+    border: 1px solid #e2e6ea;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.active-conversation{
+    border-right: 4px solid midnightblue;
+
+}
+
+#no-conversation-div{
+    margin-top: 50%;
+    margin-bottom: 50%;
+}
+
 #middle-div-middle-content-div-messages {
     padding: 15px 15px 5px 15px;
     overflow: hidden;
@@ -2007,6 +2031,7 @@ button {
     overflow: hidden;
     clear: none;
 }
+
 
 
 #chat-log{
@@ -2082,6 +2107,11 @@ div * {
     font-weight: bold;
     font-family: sans-serif;
 }
+
+.message-time{
+    display: inline-table;
+}
+
 
 .replies img{
     margin-right: 7px;
