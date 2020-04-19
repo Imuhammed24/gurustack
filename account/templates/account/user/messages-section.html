@@ -21,8 +21,14 @@
 
                 <div id="conversation">
                     <div>
-                        {% if request.user.message_recipient %}
-                        {% for chat in request.user.message_recipient.all.distinct %}
+                        {% if request.user.conversation_with %}
+                        {% for chat in request.user.conversation_with.all %}
+                            <p> {{chat }}</p>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if request.user.conversation_from %}
+                        {% for chat in request.user.conversation_from.all %}
                             <p> {{chat}}</p>
                         {% endfor %}
                         {% endif %}

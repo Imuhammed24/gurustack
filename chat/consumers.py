@@ -6,7 +6,7 @@ from channels.generic.websocket import WebsocketConsumer
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
-from .models import Message
+from .models import Message, Conversation
 
 User = get_user_model()
 
@@ -32,8 +32,16 @@ class ChatConsumer(WebsocketConsumer):
         recipient_name = data['to']
         author = get_object_or_404(User, username=author_name)
         recipient = get_object_or_404(User, username=recipient_name)
-        if data['message'] is not None:
+        if data['message'] is not None and author != recipient:
             message = Message.objects.create(author=author, content=data['message'], recipient=recipient)
+
+            if Conversation.objects.filter(user1__in=[author, recipient], user2__in=[author, recipient]):
+                conversation = Conversation.objects.get(user1__in=[author, recipient], user2__in=[author, recipient])
+                conversation.last_message = data['message']
+                conversation.save()
+            else:
+                Conversation.objects.create(user1=author, user2=recipient, last_message=data['message'])
+
             content = {
                 'command': 'new_message',
                 'message': self.message_to_json(message)
