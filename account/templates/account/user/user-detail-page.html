@@ -1,4 +1,5 @@
 {% load static %}
+{% load encoded_url %}
 
 <div id="account-base-section-middle-div">
     <div id="account-base-section-middle-div-content">
@@ -51,7 +52,7 @@
                         {% if request.user != user %}
                         <div id="message-follow-btn-in-user-detail-pg" class="mb-2">
                             <div class="d-inline">
-                                <button id="message-btn-in-user-detail">Message</button>
+                                <button id="message-btn-in-user-detail" onclick="location.href='/account/messages/{% encode_url request.user user %}';">Message</button>
                             </div>
 
                             <div class="d-inline follow-section{{user.id}}">

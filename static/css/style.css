@@ -2010,6 +2010,7 @@ button {
     border-right: 2px solid #e5e5f7;
     border-left: 2px solid #e5e5f7;
     /*border-bottom: 1px solid #e5e5f7;*/
+    min-height: 92vh;
     height: 99vh;
     overflow: hidden;
     clear: none;
@@ -2024,9 +2025,10 @@ button {
     overflow: hidden;
     clear: none;
 }
+
 #message-container{
     display: inline-table;
-    padding: 10px 0;
+    padding: 18px 0;
     width: 70%;
     overflow: hidden;
     clear: none;
@@ -2108,8 +2110,24 @@ div * {
     font-family: sans-serif;
 }
 
-.message-time{
+.sent small, .replies small{
+    display: block;
+    color: gray;
+}
+
+#message-break{
     display: inline-table;
+    overflow: hidden;
+    clear: both;
+    font-style: italic;
+}
+
+.replies small{
+    margin-left: 12%;
+}
+
+.sent small{
+    margin-right: 13%;
 }
 
 
@@ -2121,11 +2139,11 @@ div * {
     margin-left: 7px;
 }
 
-.replies, .replies img, .replies p{
+.replies, .replies img, .replies p, .replies small{
     float: left;
 }
 
-.sent, .sent img, .sent p{
+.sent, .sent img, .sent p, .sent small{
     float: right;
 }
 

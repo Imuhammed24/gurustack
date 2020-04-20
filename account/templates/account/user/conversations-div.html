@@ -4,7 +4,7 @@
 <div id="small-user-list-div" class="d-block overflow-hidden clearfix">
     <div id="small-user-list-div-content" class="overflow-hidden pointer-cursor {% if chat_user == user %}active-conversation{% endif %} clearfix" onclick="location.href='/account/messages/{% encode_url request.user chat_user %}';">
         {% with user=chat_user %}
-        <div class="overflow-nd-clear pb-1 float-left clearfix">
+        <div class="overflow-nd-clear float-left clearfix">
             <div class="d-inline float-left mr-2 overflow-hidden clearfix">
                 {% if user.profile.profile_photo %}
                 <img src="{{ user.profile.profile_photo.url }}" alt="" class="d-inline who-to-follow-img rounded-circle">

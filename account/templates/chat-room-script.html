@@ -79,6 +79,9 @@
         message_time_tag.className = 'message-time';
         message_time_tag.textContent = timestamp;
         message_p_tag.textContent = content;
+        let break_tag = document.createElement('br');
+        break_tag.id = 'message-break';
+        // let break_tag2 = document.createElement('br');
 
         message_img_tag.className ="d-inline who-to-follow-img rounded-circle";
         message_img_tag.height = 30;
@@ -96,8 +99,11 @@
 
         message_div_tag.appendChild(message_img_tag);
         message_div_tag.appendChild(message_p_tag);
+        message_div_tag.appendChild(break_tag);
+        // message_div_tag.appendChild(break_tag2);
         message_div_tag.appendChild(message_time_tag);
         message_wrapper.appendChild(message_div_tag);
+        // message_wrapper.appendChild(message_time_tag);
         document.querySelector('#chat-log').appendChild(message_wrapper);
         document.getElementById('chat-log').scrollTo(0, 1012345689)
         // document.querySelector('#chat-log').value += (message['content'] + '\n');
