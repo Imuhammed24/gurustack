@@ -2125,11 +2125,11 @@ div * {
 }
 
 .replies small{
-    margin-left: 12%;
+    margin-left: 7px;
 }
 
 .sent small{
-    margin-right: 13%;
+    margin-right: 7px;
 }
 
 
@@ -2141,12 +2141,14 @@ div * {
     margin-left: 7px;
 }
 
-.replies, .replies img, .replies p, .replies small{
+.replies, .replies p, .replies small{
     float: left;
+    margin-left: 2px;
 }
 
-.sent, .sent img, .sent p, .sent small{
+.sent, .sent p, .sent small{
     float: right;
+    margin-right: 2px;
 }
 
 
