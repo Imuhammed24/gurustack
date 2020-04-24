@@ -84,13 +84,15 @@ def search_view(request):
 @login_required
 def account_view(request):
     image_form = ImageForm()
+
     following_ids = request.user.following.values_list('id', flat=True)
-    posts = Post.objects.filter(user__id__in=following_ids)
+    other_users_ids = User.objects.filter(is_active=True).exclude(pk=request.user.id).values_list('id', flat=True)
+    not_following_ids = other_users_ids.filter(is_active=True).exclude(pk__in=following_ids).values_list('id', flat=True)
+
+    posts = Post.objects.all().exclude(user__pk__in=not_following_ids)
+
     users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).order_by('?')[:5]
-    # all_users_id = User.objects.filter(is_active=True).exclude(pk__in=following_ids).values_list('id', flat=True)
-    # random_users_list = list(all_users_id)
-    # random_users_shuffled = shuffle(random_users_list)
-    # users = dict(random_users_shuffled)
+
     trends = Tag.tags.most_common()
 
     context = {'display_section': 'home',

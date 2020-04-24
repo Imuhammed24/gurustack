@@ -18,12 +18,23 @@
                     <span class="ml-1">{% if user.profile.verified %}<img class="verified-icon-conversation d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                     <span class="text-muted p-0 m-0 d-inline">@{{ user.username }}</span>
                 </h6>
-                <p class="text-black-50 p-0 m-0"> {{chat.last_message}}</p>
+                <p class="text-black-50 pb-1 pt-1 m-0"> {{chat.last_message}}</p>
             </div>
         </div>
         {% endwith %}
+        <br>
+        <br>
+        <div>
+            {% if chat.is_past_due == 'yesterday'  %}
+            <small class="text-muted float-right">{{chat.timestamp|date:"H:i" }} yesterday</small>
+            {% elif chat.is_past_due == 'date' %}
+            <small class="text-muted float-right">{{chat.timestamp|date:"H:i - d/m/Y" }}</small>
+            {% else %}
+            <small class="text-muted float-right">{{chat.timestamp|date:"H:i" }}</small>
+            {% endif %}
+        </div>
+
         <div class="w-100 overflow-nd-clear">
-            <small class="text-muted float-right">{{chat.timestamp|timesince}} ago</small>
         </div>
     </div>
 </div>

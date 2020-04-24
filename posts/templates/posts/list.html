@@ -26,7 +26,7 @@
                     <li id="post-meta-time-li"><a href="">{{ post.created | timesince }}</a></li>
                 </ul>
                 <article id="post-article" onclick="location.href='{{post.get_absolute_url}}';">{{ post.article }}</article>
-                <div id="carouselExampleIndicators{{forloop.counter0}}" onclick="location.href='{{post.get_absolute_url}}';" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
+                <div id="carouselExampleIndicators{{forloop.counter0}}" class="carousel slide post-images-div" data-ride="carousel" data-interval="false">
                     {% with forloop.counter0 as count %}
                     <ol class="carousel-indicators">
                         {% for img in post.images.all %}
@@ -36,7 +36,7 @@
 
                     <div class="carousel-inner">
                         {% for img in post.images.all %}
-                        <div {% if forloop.counter == 1 %} class="carousel-item active"{% else %} class="carousel-item" {% endif %}>
+                        <div {% if forloop.counter == 1 %}  onclick="location.href='{{post.get_absolute_url}}';" class="carousel-item active"{% else %} class="carousel-item" {% endif %}>
                             <img class="d-block post-img-gallery-img" src="{{ img.image.url }}" alt="post-image">
                         </div>
                         {% endfor %}
@@ -58,6 +58,7 @@
                     <form action="{% url 'posts:add-comment' post.id %}" method="post">
                         {% csrf_token %}
                         {{ comment_form }}
+                        <br>
                         <input class="comment-button" type="submit" value="Reply">
                     </form>
                 </div>
@@ -71,6 +72,7 @@
         </div>
     </div>
     {% endfor %}
+
 
     {% elif post %}
         <div id="post-wrapper" class="post-wrapper blogBox">
@@ -134,8 +136,8 @@
                     {% endif %}
                     {% endfor %}
 
-                    {% if post.users_like %}
-                    <small class="d-block text-muted"><span class="text-dark">Liked by;</span> {% for user in post.users_like.all%} {%if forloop.last and not forloop.first %} and {% endif %} @{{ user }}{%if not forloop.last%},{% endif %} {% endfor%}</small>
+                    {% if post.users_like.count >= 1 %}
+                    <small class="d-block text-muted"><span class="text-dark">Liked by</span> {% for user in post.users_like.all%} {%if forloop.last and not forloop.first %} and {% endif %} @{{ user }}{%if not forloop.last%},{% endif %} {% endfor%}</small>
                     {% endif %}
 
 

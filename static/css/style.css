@@ -1158,6 +1158,7 @@ body {
 }
 
 .comment-section textarea {
+    display: block;
     border: unset;
     margin: 15px 0px;
     box-shadow: rgba(82, 171, 255, 0.17) 0px 2px 7px 8px;
@@ -1187,6 +1188,7 @@ body {
 }
 
 .comment-button {
+    display: block;
     background-color: orange;
     padding: 6px 12px;
     border: none;
