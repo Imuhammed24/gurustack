@@ -2024,6 +2024,7 @@ button {
 #message_wrapper{
     display: block;
     width: 100%;
+    padding: 0 7px;
     overflow: hidden;
     clear: none;
 }
@@ -2125,30 +2126,30 @@ div * {
 }
 
 .replies small{
-    margin-left: 7px;
+    margin-left: 10px;
+    float: left;
 }
 
 .sent small{
-    margin-right: 7px;
-}
-
-
-.replies img{
-    margin-right: 7px;
-}
-
-.sent img{
-    margin-left: 7px;
-}
-
-.replies, .replies p, .replies small{
-    float: left;
-    margin-left: 2px;
-}
-
-.sent, .sent p, .sent small{
+    margin-right: 10px;
     float: right;
-    margin-right: 2px;
+}
+
+.replies, .replies p{
+    float: left;
+}
+
+.sent, .sent p{
+    float: right;
+}
+
+#recipient-profile-pix, #recipient-profile-demo-pix{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: #eeeeee;
+    padding: 3px;
+    /*margin: 10px;*/
 }
 
 

@@ -63,7 +63,16 @@
     <div id="account-base-section-right-div-container-messages">
          <div id="profile-middle-div-top-messages">
             <div id="middle-div-top-content-div-messages" class="clearfix pb-0 overflow-nd-clear">
-                <h4 class="pb-0 mb-0">
+                {% if user and room_name %}
+                    <div class="d-inline float-left mr-2">
+                        {% if user.profile.profile_photo %}
+                        <img id="recipient-profile-pix" src="{{ user.profile.profile_photo.url }}" alt="">
+                        {% else %}
+                        <img id="recipient-profile-demo-pix" src="{% static 'svg/male-profile.svg' %}" alt="">
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                <h4 class="pb-0 mb-0 mt-1">
                     <a class="text-dark no-txt-deco" {% if user and room_name %}{% else %}href="{% url 'account:messages' %}"{% endif %}>
                         {% if user and room_name %}
                         {{ user.first_name.title }} {{ user.last_name.title }} <span class="position-absolute mt-1 ml-1">{% if user.profile.verified %}<img class="d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>

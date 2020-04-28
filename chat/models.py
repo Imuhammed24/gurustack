@@ -33,12 +33,12 @@ class Conversation(models.Model):
     def is_past_due(self):
         now = datetime.now()
         now = pytz.utc.localize(now)
-        one_day_ago = now - timedelta(hours=24)
-        two_day_ago = now - timedelta(hours=48)
-        if one_day_ago >= self.timestamp:
+        one_day_ago = now - timedelta(days=1)
+        two_day_ago = now - timedelta(days=2)
+        if self.timestamp > one_day_ago:
             return 'yesterday'
         elif two_day_ago >= self.timestamp:
-            return 'date'
+            return 'two_days'
 
     class Meta:
         ordering = ['-timestamp']

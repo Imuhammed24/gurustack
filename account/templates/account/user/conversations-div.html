@@ -27,8 +27,8 @@
         <div>
             {% if chat.is_past_due == 'yesterday'  %}
             <small class="text-muted float-right">{{chat.timestamp|date:"H:i" }} yesterday</small>
-            {% elif chat.is_past_due == 'date' %}
-            <small class="text-muted float-right">{{chat.timestamp|date:"H:i - d/m/Y" }}</small>
+            {% elif chat.is_past_due == 'two_days' %}
+            <small class="text-muted float-right">{{chat.timestamp|timesince }}</small>
             {% else %}
             <small class="text-muted float-right">{{chat.timestamp|date:"H:i" }}</small>
             {% endif %}
