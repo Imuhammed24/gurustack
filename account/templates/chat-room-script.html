@@ -19,9 +19,10 @@
             for (let i = 0; i < data['messages'].length; i++) {
                 let message = data['messages'][i];
                 createMessage(message);
-
             }
-        } else if (data['message']['command'] === 'new_message') {
+        }
+
+        else if (data['message']['command'] === 'new_message') {
             let message = data['message']['message'];
             createMessage(message);
         }
@@ -72,7 +73,6 @@
         let message_wrapper = document.createElement('div');
         message_wrapper.id = 'message_wrapper';
         message_div_tag.id = 'message-container';
-        // let message_img_tag = document.createElement('img');
         let message_p_tag = document.createElement('p');
         message_p_tag.className = 'message-content-p';
         let message_time_tag = document.createElement('small');
@@ -81,32 +81,21 @@
         message_p_tag.textContent = content;
         let break_tag = document.createElement('br');
         break_tag.id = 'message-break';
-        // let break_tag2 = document.createElement('br');
-
-        // message_img_tag.className ="d-inline who-to-follow-img rounded-circle";
-        // message_img_tag.height = 30;
-        // message_img_tag.width = 30;
 
         if (author === '{{request.user.username}}'){
             message_div_tag.className = 'sent';
-            // message_img_tag.src = "{% if request.user.profile.profile_photo %}{{ request.user.profile.profile_photo.url }}{% else %}{% if request.user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}{% endif %}"
         }
 
         else{
             message_div_tag.className = 'replies';
-            // message_img_tag.src = "{% if user.profile.profile_photo %}{{ user.profile.profile_photo.url }}{% else %}{% if user.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}{% endif %}"
         }
 
-        // message_div_tag.appendChild(message_img_tag);
         message_div_tag.appendChild(message_p_tag);
         message_div_tag.appendChild(break_tag);
-        // message_div_tag.appendChild(break_tag2);
         message_div_tag.appendChild(message_time_tag);
         message_wrapper.appendChild(message_div_tag);
-        // message_wrapper.appendChild(message_time_tag);
         document.querySelector('#chat-log').appendChild(message_wrapper);
         document.getElementById('chat-log').scrollTo(0, 1012345689)
-        // document.querySelector('#chat-log').value += (message['content'] + '\n');
     }
 
 </script>

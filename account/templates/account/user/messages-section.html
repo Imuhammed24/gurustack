@@ -62,7 +62,7 @@
 <div id="account-base-section-right-div-messages">
     <div id="account-base-section-right-div-container-messages">
          <div id="profile-middle-div-top-messages">
-            <div id="middle-div-top-content-div-messages" class="clearfix pb-0 overflow-nd-clear">
+            <div id="middle-div-top-content-div-messages" class="clearfix pb-0 pt-0 overflow-nd-clear">
                 {% if user and room_name %}
                     <div class="d-inline float-left mr-2">
                         {% if user.profile.profile_photo %}
@@ -72,14 +72,16 @@
                         {% endif %}
                     </div>
                     {% endif %}
-                <h4 class="pb-0 mb-0 mt-1">
+                <h5 id="name-in-chat" class="pb-0 mb-0 mt-2">
                     <a class="text-dark no-txt-deco" {% if user and room_name %}{% else %}href="{% url 'account:messages' %}"{% endif %}>
                         {% if user and room_name %}
-                        {{ user.first_name.title }} {{ user.last_name.title }} <span class="position-absolute mt-1 ml-1">{% if user.profile.verified %}<img class="d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                        {{ user.first_name.title }} {{ user.last_name.title }} <span class="position-absolute mt-0 ml-1">{% if user.profile.verified %}<img id="verified-icon-in-mssg" class="d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                         {% else %}
                         Messages
-                        {% endif %}</a><br>
-                </h4>
+                        {% endif %}
+                    </a>
+                    <br>
+                </h5>
 
             </div>
         </div>

@@ -6,7 +6,7 @@ from channels.generic.websocket import WebsocketConsumer
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
-from .models import Message, Conversation
+from .models import Message, Conversation, MessageProperty
 
 User = get_user_model()
 
@@ -21,8 +21,11 @@ class ChatConsumer(WebsocketConsumer):
         recipient = User.objects.get(username=recipient_name)
 
         messages = reversed(Message.objects.filter(author__in=[author, recipient], recipient__in=[author, recipient]))
+        # messages_properties = reversed(MessageProperty.objects.filter(message__in=messages))
+
         content = {
             'command': 'messages',
+            # 'message_property': self.messages_properties_to_json(messages_properties),
             'messages': self.messages_to_json(messages)
         }
         self.send_message(content)
@@ -34,6 +37,7 @@ class ChatConsumer(WebsocketConsumer):
         recipient = get_object_or_404(User, username=recipient_name)
         if data['message'] is not None and author != recipient:
             message = Message.objects.create(author=author, content=data['message'], recipient=recipient)
+            MessageProperty.objects.create(message=message, sender=author, receiver=recipient)
 
             if Conversation.objects.filter(user1__in=[author, recipient], user2__in=[author, recipient]):
                 conversation = Conversation.objects.get(user1__in=[author, recipient], user2__in=[author, recipient])
@@ -47,6 +51,21 @@ class ChatConsumer(WebsocketConsumer):
                 'message': self.message_to_json(message)
             }
             return self.send_chat_message(content)
+
+    def messages_properties_to_json(self, messages_properties):
+        # create json version of the messages from db
+        result = []
+        for message_property in messages_properties:
+            result.append(self.message_property_to_json(message_property))
+        return result
+
+    def message_property_to_json(self, message_property):
+        return {
+            'message': message_property.message.__str__(),
+            'sender': message_property.sender.username,
+            'receiver': message_property.receiver.username,
+            'delivered': str(message_property.delivered)
+        }
 
     def messages_to_json(self, messages):
         # create json version of the messages from db

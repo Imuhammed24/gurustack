@@ -21,6 +21,20 @@ class Message (models.Model):
         ordering = ['-timestamp']
 
 
+class MessageProperty(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='properties')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
+    delivered = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return f'{self.sender.username} to {self.receiver.username}'
+
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class Conversation(models.Model):
     user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='conversation_with')
     user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='conversation_from')
