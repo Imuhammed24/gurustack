@@ -17,7 +17,13 @@
                     <span class="ml-1">{% if recipient.profile.verified %}<img class="verified-icon-conversation d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                     <span class="text-muted p-0 m-0 d-inline">@{{ recipient.username }}</span>
                 </h6>
-                <small class="text-black-50 pt-1 m-0 d-block">{{chat.last_message|truncatewords:7}}</small>
+                <small class="text-black-50 pt-1 m-0 d-block">
+                    {% if chat.last_by == request.user.username %}
+                    <img src="{% static 'svg/thick.svg' %}" alt=""> {{chat.last_message|truncatewords:7}}
+                    {% else %}
+                    {{chat.last_message|truncatewords:7}}
+                    {% endif %}
+                </small>
 
             </div>
         </div>

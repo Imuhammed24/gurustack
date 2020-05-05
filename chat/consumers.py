@@ -54,11 +54,11 @@ class ChatConsumer(WebsocketConsumer):
 
             conversation = Conversation.objects.filter(participants__in=[author]).get(participants__in=[recipient])
             if conversation:
-                print('check conversation')
                 conversation.last_message = data['message']
+                conversation.last_by = author_name
                 conversation.save()
             else:
-                conversation = Conversation(last_message=data['message'])
+                conversation = Conversation(last_message=data['message'], last_by=str(author_name))
                 participants = User.objects.filter(username__in=[author_name, recipient_name])
                 conversation.save()
                 conversation.participants.set(participants)

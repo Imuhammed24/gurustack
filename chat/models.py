@@ -39,6 +39,7 @@ class MessageProperty(models.Model):
 class Conversation(models.Model):
     participants = models.ManyToManyField(User, related_name='conversations', blank=True)
     last_message = models.TextField()
+    last_by = models.CharField(max_length=20, blank=True, null=True)
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
