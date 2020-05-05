@@ -11,21 +11,20 @@
                 <img src="{% if recipient.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}" alt="" class="who-to-follow-img d-inline img-thumbnail rounded-circle">
                 {% endif %}
             </div>
-            <div class="float-left d-block overflow-hidden clearfix">
+            <div class="float-left inline-table overflow-hidden clearfix">
                 <h6 class="p-0 m-0 username-on-users-list">
                     <a class="text-decoration-none text-dark" href="{% url 'account:user-detail' username=recipient.username %}">{{ recipient.first_name.title }} {{ recipient.last_name.title }}</a>
                     <span class="ml-1">{% if recipient.profile.verified %}<img class="verified-icon-conversation d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
                     <span class="text-muted p-0 m-0 d-inline">@{{ recipient.username }}</span>
                 </h6>
-                <small class="text-black-50 pb-1 pt-1 m-0 d-block"> {{chat.last_message|truncatewords:7}}</small>
+                <small class="text-black-50 pt-1 m-0 d-block">{{chat.last_message|truncatewords:7}}</small>
 
             </div>
         </div>
         <br>
         <br>
         <div>
-            <small data-value="{% get_unread_messages request.user recipient %}" class="p-0 new-message float-right m-0 d-block">{% get_unread_messages request.user recipient %} <img class="new-message-icon hidden" src="{% static 'svg/small_message.svg' %}" alt=""></small>
-            <br class="no-margin-nd-padding">
+            <small class="p-0 new-message font-weight-bold float-right m-0">{% get_unread_messages request.user recipient %}<img class="new-message-icon" src="{% static 'svg/small_message.svg' %}" alt=""></small><br class="no-margin-nd-padding">
             {% if chat.is_past_due == 'yesterday'  %}
             <small class="text-muted d-block float-right">{{chat.timestamp|date:"H:i" }} yesterday</small>
             {% elif chat.is_past_due == 'two_days' %}

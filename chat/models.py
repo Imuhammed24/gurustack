@@ -33,6 +33,7 @@ class MessageProperty(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
+        verbose_name_plural = 'Message Properties'
 
 
 class Conversation(models.Model):

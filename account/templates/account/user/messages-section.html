@@ -32,7 +32,7 @@
 
                 <div id="chat-suggestion-div" class="mb-0">
                     <h6>Chat with the people you know</h6>
-                    {% for user in request.user.contact.all %}
+                    {% for user in contacts %}
                         {% include 'account/user/message-suggestion-list.html' %}
                     {% endfor %}
                 </div>

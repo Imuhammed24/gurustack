@@ -17,6 +17,7 @@ from account.models import Contact
 from account.tokens import account_activation_token
 from actions.models import Action
 from actions.utils import create_action
+from chat.models import Conversation
 from chat.utils import base64_decode
 from posts.forms import TagForm, ImageForm, CommentForm
 from posts.models import Post, Tag
@@ -108,41 +109,31 @@ def account_view(request):
     return render(request, 'account_base.html', context)
 
 
-################################################################################################
-
-
-# @login_required
-# def room(request, room_name):
-#     room_name_4_decode = base64_decode(room_name)
-#     extracted_timezones = room_name_4_decode.decode("utf-8")
-#     split_timezones = extracted_timezones.split('secnd')
-#     target_date = None
-#     request_legitimacy = False
-#
-#     for date in split_timezones:
-#         parsed_date = parse(date)
-#         if request.user.date_joined != parsed_date:
-#             target_date = parsed_date
-#         else:
-#             request_legitimacy = True
-#     if request_legitimacy is True:
-#         user = get_object_or_404(User, date_joined=target_date)
-#         context = {
-#             'user': user,
-#             'room_name': room_name
-#         }
-#         return render(request, 'chat/room.html', context)
-#     else:
-#         return redirect('account:messages')
-#
-
-################################################################################################
-
 @login_required
 def messages_view(request, room_name=None):
+    people_messaged = []
+    established_conversation = Conversation.objects.filter(participants__in=[request.user])
+    for conversation in established_conversation:
+        for user in conversation.participants.all():
+            people_messaged.append(user.username)
+
+    following_ids = request.user.following.values_list('id', flat=True)
+    followers_ids = request.user.followers.values_list('id', flat=True)
+
+    # get users that are not followed and are not followers
+    unconnected_contacts = User.objects.filter(is_active=True)\
+        .exclude(pk__in=following_ids)\
+        .exclude(pk__in=followers_ids)
+
+    # get the users someone is followers and following
+    connected_users = User.objects.filter(is_active=True)\
+        .exclude(pk__in=unconnected_contacts)\
+        .distinct().\
+        exclude(username__in=people_messaged)
 
     context = {'display_section': 'messages',
                'html_title': f'{request.user} Messages',
+               'contacts': connected_users,
                }
 
     if room_name is not None:

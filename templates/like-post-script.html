@@ -3,14 +3,14 @@
 
         $(document).on('click', '.like', function (event) {
             event.preventDefault();
-            var pk = $(this).attr('value')
+            var pk = $(this).attr('value');
             $.ajax({
                 type: 'POST',
                 url: "{% url 'account:like-post' %}",
                 data: {'post_id': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
                 dataType: 'json',
                 success: function (response) {
-                    $('.like-section' + pk).html(response['form'])
+                    $('.like-section' + pk).html(response['form']);
                     console.log($('.like-section' + pk).html(response['form']));
                 },
                 error: function (rs, e) {

@@ -27,3 +27,4 @@ def encode_url(request_user, target_user):
         encode_string = str(target_user.date_joined) + 'secnd' + str(request_user.date_joined)
 
     return str(base64_encode(bytes(encode_string, 'utf-8')))[2:-2]
+

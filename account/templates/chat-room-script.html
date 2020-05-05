@@ -18,7 +18,7 @@
         if (data['command'] === 'messages') {
             for (let i = 0; i < data['messages'].length; i++) {
                 let message = data['messages'][i];
-                createMessage(message);
+                createMessage(message, );
             }
         }
 
@@ -108,7 +108,7 @@
 
         if (recipient === '{{request.user.username}}'){
             seenMessage(message);
-            console.log('seenMssg')
+            console.log('Recipient: Mssg Received')
         }
     }
 

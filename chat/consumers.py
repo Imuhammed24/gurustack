@@ -37,13 +37,10 @@ class ChatConsumer(WebsocketConsumer):
         recipient = User.objects.get(username=recipient_name)
 
         for message in Message.objects.filter(author=author, recipient=recipient):
-            if message.recipient == recipient:
-                print('check recipient')
-                props = MessageProperty.objects.get(message=message)
-                print('get props')
+            props = MessageProperty.objects.get(message=message)
+            if not props.delivered:
                 props.delivered = True
                 props.save()
-                print('set true')
 
     def new_message(self, data):
         author_name = data['from']
@@ -55,8 +52,9 @@ class ChatConsumer(WebsocketConsumer):
             message.save()
             MessageProperty.objects.create(message=message, sender=author, receiver=recipient)
 
-            if Conversation.objects.filter(participants__in=[author and recipient]):
-                conversation = Conversation.objects.get(participants__in=[author and recipient])
+            conversation = Conversation.objects.filter(participants__in=[author]).get(participants__in=[recipient])
+            if conversation:
+                print('check conversation')
                 conversation.last_message = data['message']
                 conversation.save()
             else:

@@ -1068,7 +1068,6 @@ body {
 #small-user-list-div-content{
     display: block;
     border: 1px solid rgba(173, 216, 230, 0.33);
-    /*border-top: 1px solid rgba(173, 216, 230, 0.33);*/
     transition: .5s;
     border-radius: 5px;
     padding: 5px;
@@ -1089,6 +1088,9 @@ body {
     padding: 0;
 }
 
+.inline-table{
+    display: inline-table;
+}
 
 /*#######################################################*/
 /*#######################################################*/
@@ -1963,8 +1965,8 @@ button {
 }
 
 .active-conversation{
-    border-right: 4px solid midnightblue;
-
+    background-color: rgba(173, 216, 230, 0.2);
+    padding: 2px;
 }
 
 #no-conversation-div{
@@ -2163,7 +2165,14 @@ div * {
     width: 19px;
 }
 
+.new-message-icon{
+    background-color: rgba(255, 165, 0, 0.21);
+    margin-left: 2px;
+}
 
+.new-message{
+    font-size: 15px;
+}
 
 /*#############################################################################*/
 /*#############################################################################*/
