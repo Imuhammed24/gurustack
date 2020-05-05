@@ -15,7 +15,7 @@ class MessageAdmin(admin.ModelAdmin):
 
 
 class ConversationAdmin(admin.ModelAdmin):
-    list_display = ['user1', 'user2', 'timestamp', 'last_message']
+    list_display = ['timestamp', 'last_message']
 
 
 admin.site.register(Message, MessageAdmin)

@@ -21,14 +21,29 @@ class ChatConsumer(WebsocketConsumer):
         recipient = User.objects.get(username=recipient_name)
 
         messages = reversed(Message.objects.filter(author__in=[author, recipient], recipient__in=[author, recipient]))
-        # messages_properties = reversed(MessageProperty.objects.filter(message__in=messages))
 
         content = {
             'command': 'messages',
-            # 'message_property': self.messages_properties_to_json(messages_properties),
             'messages': self.messages_to_json(messages)
         }
         self.send_message(content)
+
+    def seen_message(self, data):
+        print('seenMssg')
+        author_name = data['from']
+        recipient_name = data['to']
+
+        author = User.objects.get(username=author_name)
+        recipient = User.objects.get(username=recipient_name)
+
+        for message in Message.objects.filter(author=author, recipient=recipient):
+            if message.recipient == recipient:
+                print('check recipient')
+                props = MessageProperty.objects.get(message=message)
+                print('get props')
+                props.delivered = True
+                props.save()
+                print('set true')
 
     def new_message(self, data):
         author_name = data['from']
@@ -36,15 +51,19 @@ class ChatConsumer(WebsocketConsumer):
         author = get_object_or_404(User, username=author_name)
         recipient = get_object_or_404(User, username=recipient_name)
         if data['message'] is not None and author != recipient:
-            message = Message.objects.create(author=author, content=data['message'], recipient=recipient)
+            message = Message(author=author, content=data['message'], recipient=recipient)
+            message.save()
             MessageProperty.objects.create(message=message, sender=author, receiver=recipient)
 
-            if Conversation.objects.filter(user1__in=[author, recipient], user2__in=[author, recipient]):
-                conversation = Conversation.objects.get(user1__in=[author, recipient], user2__in=[author, recipient])
+            if Conversation.objects.filter(participants__in=[author and recipient]):
+                conversation = Conversation.objects.get(participants__in=[author and recipient])
                 conversation.last_message = data['message']
                 conversation.save()
             else:
-                Conversation.objects.create(user1=author, user2=recipient, last_message=data['message'])
+                conversation = Conversation(last_message=data['message'])
+                participants = User.objects.filter(username__in=[author_name, recipient_name])
+                conversation.save()
+                conversation.participants.set(participants)
 
             content = {
                 'command': 'new_message',
@@ -85,6 +104,7 @@ class ChatConsumer(WebsocketConsumer):
     commands = {
         'fetch_messages': fetch_messages,
         'new_message': new_message,
+        'seen_message': seen_message,
         }
 
     def connect(self):

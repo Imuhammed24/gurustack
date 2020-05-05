@@ -9,20 +9,10 @@
     }
   }
 
-  // function showHideComment(post) {
-  //   var x = document.getElementById("comment-section" + post);
-  //   if (x.style.display === "none") {
-  //     x.style.display = "block";
-  //   } else {
-  //     x.style.display = "none";
-  //   }
-  // }
-
 </script>
 
 <script type="text/javascript">
     $(document).ready(function (event) {
-
         $(document).on('click', '.showHideComment', function (event) {
             event.preventDefault();
             var pk = $(this).attr('itemid')
@@ -33,5 +23,15 @@
               x.style.display = "none";
             }
         });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function (event) {
+        let new_mssg = document.getElementsByClassName('new-message');
+        if (new_mssg.data-value !== "0") {
+              new_mssg.style.display = 'block';
+            }
     });
 </script>

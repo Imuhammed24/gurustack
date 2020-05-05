@@ -1067,10 +1067,12 @@ body {
 
 #small-user-list-div-content{
     display: block;
-    border-bottom: 1px solid rgba(173, 216, 230, 0.33);
+    border: 1px solid rgba(173, 216, 230, 0.33);
+    /*border-top: 1px solid rgba(173, 216, 230, 0.33);*/
     transition: .5s;
     border-radius: 5px;
-    padding: 5px 5px 5px 0;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
 #small-user-list-div-content:hover{
@@ -1082,6 +1084,10 @@ body {
     font-size: 16px;
 }
 
+.no-margin-nd-padding{
+    margin: 0;
+    padding: 0;
+}
 
 
 /*#######################################################*/

@@ -1,0 +1,41 @@
+{% load static %}
+{% load encoded_url %}
+
+<div id="small-user-list-div" class="d-block overflow-hidden clearfix">
+    <div id="small-user-list-div-content" class="overflow-hidden pointer-cursor {% if recipient == user %}active-conversation{% endif %} clearfix" onclick="location.href='/account/messages/{% encode_url request.user recipient %}';">
+        <div class="overflow-nd-clear list-of-conversation float-left clearfix">
+            <div class="d-inline float-left mr-2 overflow-hidden clearfix">
+                {% if recipient.profile.profile_photo %}
+                <img src="{{ recipient.profile.profile_photo.url }}" alt="" class="d-inline who-to-follow-img rounded-circle">
+                {% else %}
+                <img src="{% if recipient.profile.gender == 'female' %}{% static '/svg/female-profile.svg' %}{% else %}{% static '/svg/male-profile.svg' %} {% endif %}" alt="" class="who-to-follow-img d-inline img-thumbnail rounded-circle">
+                {% endif %}
+            </div>
+            <div class="float-left d-block overflow-hidden clearfix">
+                <h6 class="p-0 m-0 username-on-users-list">
+                    <a class="text-decoration-none text-dark" href="{% url 'account:user-detail' username=recipient.username %}">{{ recipient.first_name.title }} {{ recipient.last_name.title }}</a>
+                    <span class="ml-1">{% if recipient.profile.verified %}<img class="verified-icon-conversation d-inline" src="{% static 'svg/verified.svg' %}" alt="(verified)">{% endif %}</span>
+                    <span class="text-muted p-0 m-0 d-inline">@{{ recipient.username }}</span>
+                </h6>
+                <small class="text-black-50 pb-1 pt-1 m-0 d-block"> {{chat.last_message|truncatewords:7}}</small>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <small data-value="{% get_unread_messages request.user recipient %}" class="p-0 new-message float-right m-0 d-block">{% get_unread_messages request.user recipient %} <img class="new-message-icon hidden" src="{% static 'svg/small_message.svg' %}" alt=""></small>
+            <br class="no-margin-nd-padding">
+            {% if chat.is_past_due == 'yesterday'  %}
+            <small class="text-muted d-block float-right">{{chat.timestamp|date:"H:i" }} yesterday</small>
+            {% elif chat.is_past_due == 'two_days' %}
+            <small class="text-muted d-block float-right">{{chat.timestamp|timesince }}</small>
+            {% else %}
+            <small class="text-muted d-block float-right">{{chat.timestamp|date:"H:i" }}</small>
+            {% endif %}
+        </div>
+
+        <div class="w-100 overflow-nd-clear">
+        </div>
+    </div>
+</div>

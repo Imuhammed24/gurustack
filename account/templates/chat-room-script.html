@@ -65,8 +65,17 @@
         }))
     }
 
+    function seenMessage(message) {
+        chatSocket.send(JSON.stringify({
+            'command': 'seen_message',
+            'from': message['author'],
+            'to': '{{ request.user.username }}'
+        }))
+    }
+
     function createMessage(message) {
         let author = message['author'];
+        let recipient = message['recipient'];
         let content = message['content'];
         let timestamp = message['timestamp'];
         let message_div_tag = document.createElement('div');
@@ -95,7 +104,12 @@
         message_div_tag.appendChild(message_time_tag);
         message_wrapper.appendChild(message_div_tag);
         document.querySelector('#chat-log').appendChild(message_wrapper);
-        document.getElementById('chat-log').scrollTo(0, 1012345689)
+        document.getElementById('chat-log').scrollTo(0, 1012345689);
+
+        if (recipient === '{{request.user.username}}'){
+            seenMessage(message);
+            console.log('seenMssg')
+        }
     }
 
 </script>

@@ -8,14 +8,14 @@ User = get_user_model()
 # Create your models here.
 
 
-class Message (models.Model):
+class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_messages')
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='message_recipient')
 
     def __str__(self):
-        return self.author.username
+        return f'{self.author.username} and {self.recipient.username}'
 
     class Meta:
         ordering = ['-timestamp']
@@ -36,13 +36,12 @@ class MessageProperty(models.Model):
 
 
 class Conversation(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='conversation_with')
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='conversation_from')
+    participants = models.ManyToManyField(User, related_name='conversations', blank=True)
     last_message = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.user1.username} and {self.user2.username}'
+        return f'{self.participants}'
 
     def is_past_due(self):
         now = datetime.now()
