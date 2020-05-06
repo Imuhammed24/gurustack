@@ -2174,6 +2174,21 @@ div * {
     font-size: 15px;
 }
 
+#green_light{
+    padding: 5.5px;
+    /*background-color: rgba(0, 128, 0, 0.56);*/
+    background-color: rgba(25, 25, 112, 0.57);
+    border-radius: 50%;
+    height: 2px;
+    width: 2px;
+    margin-bottom: 2px;
+    margin-left: 4.5px;
+}
+
+.chat-card, .message-suggestion-card{
+    display: none;
+}
+
 /*#############################################################################*/
 /*#############################################################################*/
 /*#############################################################################      END OF MESSAGES */

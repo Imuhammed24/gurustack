@@ -18,7 +18,7 @@
         if (data['command'] === 'messages') {
             for (let i = 0; i < data['messages'].length; i++) {
                 let message = data['messages'][i];
-                createMessage(message, );
+                createMessage(message);
             }
         }
 
@@ -69,7 +69,7 @@
         chatSocket.send(JSON.stringify({
             'command': 'seen_message',
             'from': message['author'],
-            'to': '{{ request.user.username }}'
+            'to': message['recipient'],
         }))
     }
 

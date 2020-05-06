@@ -58,5 +58,37 @@
             }
         });
     });
+
+        $(document).ready(function () {
+        $(".chat-box").slice(0, 7).show();
+        if ($(".chat-card:hidden").length !== 0) {
+            $("#loadMoreChat").show();
+        }
+        $("#loadMoreChat").on('click', function (e) {
+            e.preventDefault();
+            $(".chat-box:hidden").slice(0, 5).slideDown();
+            if ($(".chat-box:hidden").length == 0) {
+                $("#loadMoreChat").fadeOut('slow');
+                $("#loadMoreChat-div").fadeOut('slow');
+            }
+        });
+    });
+
+        $(document).ready(function () {
+        $(".message-suggestion-div").slice(0, 7).show();
+        if ($(".message-suggestion-card:hidden").length !== 0) {
+            $("#loadMoreChatSuggestions").show();
+        }
+        $("#loadMoreChatSuggestions").on('click', function (e) {
+            e.preventDefault();
+            $(".message-suggestion-div:hidden").slice(0, 5).slideDown();
+            if ($(".message-suggestion-div:hidden").length == 0) {
+                $("#loadMoreChatSuggestions").fadeOut('slow');
+                $("#loadMoreChatSuggestions-div").fadeOut('slow');
+            }
+        });
+    });
+
+
 </script>
 

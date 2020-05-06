@@ -20,13 +20,18 @@
             <div id="middle-div-middle-content-div-messages" class="clearfix">
 
                 <div id="active-conversations-div" class="">
-                    <h6>Active Conversations</h6>
+                    <h6>Active Conversations {% if unread_message %}<small class="very-small-text font-weight-bold">({{new_chat_count}} unread)</small>{% endif %}</h6>
                     <div>
                         {% if request.user.conversations %}
                         {% for chat in request.user.conversations.all %}
                             {% include 'account/user/conversations-div.html' %}
                         {% endfor %}
                         {% endif %}
+                        {% if request.user.conversations.count > 7 %}
+                        <div id="loadMoreChat-div">
+                                <a class="btn btn-light text-black-50 very-small-text" id="loadMoreChat" href="#">Load More</a>
+                        </div>
+                        {% endif%}
                     </div>
                 </div>
 
@@ -35,6 +40,12 @@
                     {% for user in contacts %}
                         {% include 'account/user/message-suggestion-list.html' %}
                     {% endfor %}
+
+                    {% if contacts.count > 7 %}
+                    <div id="loadMoreChatSuggestions-div">
+                            <a class="btn btn-light text-black-50 very-small-text" id="loadMoreChatSuggestions" href="#">Load More</a>
+                    </div>
+                    {% endif %}
                 </div>
 
             </div>

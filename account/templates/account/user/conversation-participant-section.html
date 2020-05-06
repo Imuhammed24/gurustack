@@ -1,7 +1,7 @@
 {% load static %}
 {% load encoded_url %}
 
-<div id="small-user-list-div" class="d-block overflow-hidden clearfix">
+<div id="small-user-list-div" class="chat-box overflow-hidden clearfix chat-card">
     <div id="small-user-list-div-content" class="overflow-hidden pointer-cursor {% if recipient == user %}active-conversation{% endif %} clearfix" onclick="location.href='/account/messages/{% encode_url request.user recipient %}';">
         <div class="overflow-nd-clear list-of-conversation float-left clearfix">
             <div class="d-inline float-left mr-2 overflow-hidden clearfix">
@@ -33,7 +33,7 @@
             <small class="p-0 new-message font-weight-bold float-right m-0">{% get_unread_messages request.user recipient %}<img class="new-message-icon" src="{% static 'svg/small_message.svg' %}" alt=""></small><br class="no-margin-nd-padding">
             {% if chat.is_past_due == 'yesterday'  %}
             <small class="text-muted d-block float-right">{{chat.timestamp|date:"H:i" }} yesterday</small>
-            {% elif chat.is_past_due == 'two_days' %}
+            {% elif chat.is_past_due == 'two_days' or chat.is_past_due  == many_days %}
             <small class="text-muted d-block float-right">{{chat.timestamp|timesince }}</small>
             {% else %}
             <small class="text-muted d-block float-right">{{chat.timestamp|date:"H:i" }}</small>

@@ -19,15 +19,16 @@ from actions.models import Action
 from actions.utils import create_action
 from chat.models import Conversation
 from chat.utils import base64_decode
-from posts.forms import TagForm, ImageForm, CommentForm
+from posts.forms import TagForm, ImageForm
 from posts.models import Post, Tag
 from searches.models import SearchQuery
 from .forms import LoginForm, UserRegistrationForm, \
     StudentProfileForm, EditProfileForm, \
     StaffProfileForm, EditStaffProfileForm
 
+
 # Create your views here.
-comment_form = CommentForm()
+# comment_form = CommentForm()
 
 
 def login_view(request):
@@ -54,7 +55,7 @@ def search_view(request):
     query = request.GET.get('q', None)
     trends = Tag.tags.most_common()
     following_ids = request.user.following.values_list('id', flat=True)
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
     user = None
     users_queryset = None
     posts_queryset = None
@@ -75,7 +76,6 @@ def search_view(request):
                'users_to_follow': users,
                'trends': trends,
                'query': query,
-               'comment_form': comment_form,
                'users_queryset': users_queryset,
                'posts_queryset': posts_queryset}
 
@@ -92,7 +92,7 @@ def account_view(request):
 
     posts = Post.objects.all().exclude(user__pk__in=not_following_ids)
 
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).order_by('?')[:5]
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
 
     trends = Tag.tags.most_common()
 
@@ -101,7 +101,6 @@ def account_view(request):
                'tag_form': TagForm,
                'image_form': image_form,
                'posts': posts,
-               'comment_form': comment_form,
                'users_to_follow': users,
                'trends': trends,
                }
@@ -167,7 +166,7 @@ def messages_view(request, room_name=None):
 def user_detail_view(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
     following_ids = request.user.following.values_list('id', flat=True)
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)[:5]
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
     no_media_posts = Post.objects.filter(user=user, images=None).values_list('id', flat=True)
     all_posts = Post.objects.filter(user=user)
     media_posts = all_posts.exclude(pk__in=no_media_posts)
@@ -178,7 +177,6 @@ def user_detail_view(request, username):
                'html_title': f'{user.username} account',
                'tag_form': TagForm,
                'media_posts': media_posts,
-               'comment_form': comment_form,
                'users_to_follow': users,
                'trends': trends,
                'user': user, }
@@ -189,7 +187,7 @@ def user_detail_view(request, username):
 @login_required
 def connect_view(request):
     following_ids = request.user.following.values_list('id', flat=True)
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
     context = {'display_section': 'connect',
                'html_title': f'connect {request.user.username}',
                'users_to_follow': users, }
@@ -200,7 +198,7 @@ def connect_view(request):
 @login_required
 def notifications_view(request):
     following_ids = request.user.following.values_list('id', flat=True)
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
     actions = Action.objects.all().exclude(user=request.user)
     trends = Tag.tags.most_common()
     following_ids = request.user.following.values_list('id', flat=True)
@@ -221,7 +219,7 @@ def notifications_view(request):
 @login_required
 def profile_view(request):
     following_ids = request.user.following.values_list('id', flat=True)
-    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids)
+    users = User.objects.filter(is_active=True).exclude(pk__in=following_ids).exclude(username=request.user.username).order_by('?')[:5]
     trends = Tag.tags.most_common()
     profile_form = StudentProfileForm()
     staff_profile_form = StaffProfileForm()
@@ -233,7 +231,6 @@ def profile_view(request):
                'staff_profile_form': staff_profile_form,
                'edit_profile_form': edit_profile_form,
                'trends': trends,
-               'comment_form': comment_form,
                'users_to_follow': users,
                'html_title': f'{request.user} profile',
                }

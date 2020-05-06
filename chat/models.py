@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 
-import pytz
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -46,14 +45,17 @@ class Conversation(models.Model):
         return f'{self.participants}'
 
     def is_past_due(self):
-        now = datetime.now()
-        now = pytz.utc.localize(now)
+        now = datetime.now().date()
+        timestamp = self.timestamp
         one_day_ago = now - timedelta(days=1)
         two_day_ago = now - timedelta(days=2)
-        if self.timestamp > one_day_ago:
+
+        if str(one_day_ago) >= str(timestamp)[:10]:
             return 'yesterday'
-        elif two_day_ago >= self.timestamp:
+        elif str(two_day_ago) >= str(timestamp)[:10]:
             return 'two_days'
+        else:
+            return 'many_days'
 
     class Meta:
         ordering = ['-timestamp']

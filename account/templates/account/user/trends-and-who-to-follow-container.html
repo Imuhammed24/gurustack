@@ -39,6 +39,7 @@
     
     
     {% if display_section != 'connect'%}
+    {% if users_to_follow.count >= 1 %}
     <div id="who-to-follow-side-container" class="pt-1 pl-1 pr-1">
         <h5><strong>Who to follow</strong></h5>
         <hr class="who-to-follow-hr">
@@ -69,6 +70,7 @@
             <a href="/account/connect/" class="show-more">show more</a>
         </div>
     </div>
+    {% endif %}
     {% else %}
     {% endif %}
 </div>
