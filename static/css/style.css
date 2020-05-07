@@ -613,6 +613,12 @@ body {
     letter-spacing: .5px;
     font-weight: bold;
     border-radius: 20px;
+    margin-top: -10px;
+    transition: .7s;
+}
+
+#new-post-a:hover{
+    padding: 13px 45px;
 }
 
 #middle-div-top-content-div h4 {
@@ -752,14 +758,17 @@ body {
     margin-bottom: 7px;
 }
 
-#image-label, #add-tag-label {
+#image-label, #add-post-image-label, #add-tag-label {
     padding: 8px 8px 6px 8px;
     background-color: rgba(173, 216, 230, 0.32);
-    border-radius: 15px;
     margin-right: 7px;
 }
 
-#image-label:hover, #add-tag-label:hover {
+#image-label{
+    border-radius: 15px;
+}
+
+#image-label:hover, #add-post-image-label:hover, #add-tag-label:hover {
     background-color: lightblue;
 }
 
@@ -1496,7 +1505,7 @@ button {
     float: right;
     font-size: 30px;
     background-color: #ededff;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     padding: 0 15px;
     margin-top: -7px;
 }
@@ -1519,12 +1528,12 @@ button {
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
-#edit-profile_modal {
+#edit-profile_modal, #add-post-modal{
     display: none;
 }
 
 
-#edit-profile-modal-content {
+#edit-profile-modal-content{
     width: 35%;
     height: 90%;
     margin: 40px auto 40px auto;
@@ -1649,11 +1658,6 @@ button {
 
 }
 
-
-/*########################################################*/
-/*########################################################*/
-/*########################################################         EDIT PROFILE MODAL FORM             */
-/*########################################################*/
 .create-post-textarea:focus {
     outline: none;
     border: 2px solid lightgray;
@@ -1663,6 +1667,12 @@ button {
     color: gray;
     font-size: 20px;
 }
+
+/*########################################################*/
+/*########################################################*/
+/*########################################################         EDIT PROFILE MODAL FORM             */
+/*########################################################*/
+
 
 #edit-page-profile-demo-img {
     background-color: #e2e6ea;
@@ -2192,6 +2202,67 @@ div * {
 /*#############################################################################*/
 /*#############################################################################*/
 /*#############################################################################      END OF MESSAGES */
+/*#############################################################################*/
+/*#############################################################################*/
+
+
+
+/*#############################################################################*/
+/*#############################################################################*/
+/*#############################################################################      ADD POST MODAL */
+/*#############################################################################*/
+/*#############################################################################*/
+
+#add-post-modal-tags-span{
+    overflow: visible;
+    clear: both;
+}
+
+#add-post-modal-tags-span p{
+    display: inline;
+    float: left;
+    width: 90%;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#tags-span p .selectize-control{
+    width: 95.5%;
+}
+
+#add-post-modal-tags-span p .selectize-control{
+    padding: 0;
+    margin-top: 0;
+}
+
+
+.selectize-control{
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/*.selectize-control div{*/
+/*    z-index: +1;*/
+/*}*/
+
+/*.selectize-dropdown{*/
+/*    z-index: +1;*/
+/*}*/
+
+#add-post-modal-content {
+    width: 35%;
+    height: 75%;
+    margin: 40px auto 40px auto;
+    background-color: white;
+    padding: 15px;
+    overflow: scroll;
+    border-radius: 15px;
+}
+
+/*#############################################################################*/
+/*#############################################################################*/
+/*#############################################################################      END OF ADD POST MODAL */
 /*#############################################################################*/
 /*#############################################################################*/
 

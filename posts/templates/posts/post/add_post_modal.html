@@ -1,0 +1,61 @@
+{% load static %}
+<div id="add-post-modal" class="modal fade-in">
+    <div id="add-post-modal-content">
+         <header class="edit-modal-header">
+            <span onclick="document.getElementById('add-post-modal').style.display='none'"
+                  class="w3-button edit-pg-modal-close-btn w3-large w3-display-topright">&times;</span>
+            <h4>Add New Post</h4>
+        </header>
+
+
+        <div id="add-modal-content">
+            <form method="post" action="{% url 'posts:create-post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <textarea class="create-post-textarea w-100 ml-0 d-block mb-2" name="article" id="post"
+                          placeholder="What's on your mind{% if request.user.last_name %}, {{ request.user.last_name }}{% endif %}?"></textarea>
+
+                <div class="overflow-nd-clear" id="add-post-modal-tags-span">
+                    {{ tag_form.as_p }}
+
+                <label id="add-post-image-label" class="d-inline float-left mr-0" title="Upload an image" for="image">
+                    <img class="upload-img-img" src="{% static 'svg/upload-img.svg' %}" alt="upload image">
+                    <span class="upload-img-txt ml-1"></span>
+                </label>
+                </div>
+                {{ image_form }}
+
+                <div class="d-block" id="post-uploaded_images_div">
+                    <img class="post-uploaded-img" id="output1"/>
+                    <img class="post-uploaded-img" id="output2"/>
+                    <img class="post-uploaded-img" id="output3"/>
+                    <img class="post-uploaded-img" id="output4"/>
+                    <img class="post-uploaded-img" id="output5"/>
+                </div>
+
+                <div class="clearfix d-block mt-3">
+                    <span id="create-post-icon-span">
+
+
+
+                        <label class="d-none" onclick="myFunction()" id="add-tag-label" title="Tag a user" for="tags">
+                            <img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user">
+                            <span class="upload-img-txt ml-1">Add Tag</span>
+                        </label>
+
+                    </span>
+                </div>
+
+                 <div>
+                    <input type="submit" value="post" class="submit-create-post float-left mt-2 mb-2">
+                </div>
+
+            </form>
+        </div>
+
+        <!--        <footer class="w3-container w3-teal">-->
+        <!--            <p>Modal Footer</p>-->
+        <!--        </footer>-->
+
+    </div>
+</div>
