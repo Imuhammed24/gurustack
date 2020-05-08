@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
+
 from chat.models import MessageProperty
-from posts.forms import CommentForm
+from posts.forms import CommentForm, ImageForm, TagForm
 
 
 def check_unread_mssg(request):
@@ -25,3 +27,12 @@ def check_unread_mssg(request):
 def comment_form_context(request):
     comment_form = CommentForm()
     return {'comment_form': comment_form}
+
+
+@login_required
+def add_post_context(request):
+    image_form = ImageForm()
+    return {
+        'tag_form': TagForm,
+        'image_form': image_form,
+    }

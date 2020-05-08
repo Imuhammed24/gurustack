@@ -7,8 +7,8 @@
             <h4>Add New Post</h4>
         </header>
 
-
-        <div id="add-modal-content">
+<!--        card-footer class below makes the modal popup to look strangely beautiful-->
+        <div class="overflow-nd-clear card-footer" id="add-modal-content">
             <form method="post" action="{% url 'posts:create-post' %}" enctype="multipart/form-data">
                 {% csrf_token %}
 
@@ -25,37 +25,25 @@
                 </div>
                 {{ image_form }}
 
-                <div class="d-block" id="post-uploaded_images_div">
-                    <img class="post-uploaded-img" id="output1"/>
-                    <img class="post-uploaded-img" id="output2"/>
-                    <img class="post-uploaded-img" id="output3"/>
-                    <img class="post-uploaded-img" id="output4"/>
-                    <img class="post-uploaded-img" id="output5"/>
+                <div class="d-block pb-3" id="post-uploaded_images_div">
+                    <img class="post-uploaded-img pb-1" id="output1"/>
+                    <img class="post-uploaded-img pb-1" id="output2"/>
+                    <img class="post-uploaded-img pb-1" id="output3"/>
+                    <img class="post-uploaded-img pb-1" id="output4"/>
+                    <img class="post-uploaded-img pb-1" id="output5"/>
                 </div>
 
-                <div class="clearfix d-block mt-3">
-                    <span id="create-post-icon-span">
-
-
-
-                        <label class="d-none" onclick="myFunction()" id="add-tag-label" title="Tag a user" for="tags">
-                            <img class="upload-img-img" src="{% static 'svg/add-tag.svg' %}" alt="tag user">
-                            <span class="upload-img-txt ml-1">Add Tag</span>
-                        </label>
-
-                    </span>
-                </div>
-
-                 <div>
-                    <input type="submit" value="post" class="submit-create-post float-left mt-2 mb-2">
+                <div>
+                    <input type="submit" value="post" class="overflow-nd-clear submit-create-post float-left mb-2">
                 </div>
 
             </form>
         </div>
 
-        <!--        <footer class="w3-container w3-teal">-->
-        <!--            <p>Modal Footer</p>-->
-        <!--        </footer>-->
+        <div class="overflow-nd-clear">
+            <hr>
+            guruStack
+        </div>
 
     </div>
 </div>

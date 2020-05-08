@@ -18,5 +18,15 @@
 </span>
     <!--        </center>-->
 
-    <a title="Share Post" class="btn float-right"> <img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mr-1"{% endif %} src="{% static 'svg/share-post.svg' %}" alt=""></a>
+    <div class="d-inline float-right mr-5">
+        <div class="dropup position-absolute">
+            <button title="Share Post" type="button" data-toggle="dropdown" class="btn btn-default float-right"><img {% if display_section == 'explore' or display_section == 'post_detail' %}class="mt-1 mr-1"{% else %}class="mr-1"{% endif %} src="{% static 'svg/share-post.svg' %}" alt=""></button>
+            <ul id="share-post-dropup" class="dropdown-menu">
+                <li><a href="#">Share Post</a></li>
+                <li><a href="#">Bookmark</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+

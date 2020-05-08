@@ -19,7 +19,7 @@ from actions.models import Action
 from actions.utils import create_action
 from chat.models import Conversation
 from chat.utils import base64_decode
-from posts.forms import TagForm, ImageForm
+from posts.forms import TagForm
 from posts.models import Post, Tag
 from searches.models import SearchQuery
 from .forms import LoginForm, UserRegistrationForm, \
@@ -49,6 +49,7 @@ def login_view(request):
         form = LoginForm
     return render(request, 'registration/login.html', {'html_title': 'Gurustack_Login',
                                                        'form': form})
+
 
 @login_required
 def search_view(request):
@@ -84,7 +85,6 @@ def search_view(request):
 
 @login_required
 def account_view(request):
-    image_form = ImageForm()
 
     following_ids = request.user.following.values_list('id', flat=True)
     other_users_ids = User.objects.filter(is_active=True).exclude(pk=request.user.id).values_list('id', flat=True)
@@ -99,7 +99,6 @@ def account_view(request):
     context = {'display_section': 'home',
                'html_title': f'{request.user} account',
                'tag_form': TagForm,
-               'image_form': image_form,
                'posts': posts,
                'users_to_follow': users,
                'trends': trends,
@@ -175,7 +174,6 @@ def user_detail_view(request, username):
 
     context = {'display_section': 'user_detail',
                'html_title': f'{user.username} account',
-               'tag_form': TagForm,
                'media_posts': media_posts,
                'users_to_follow': users,
                'trends': trends,
@@ -308,10 +306,7 @@ def post_like(request):
         if request.user is not post.user:
             create_action(request.user, 'likes', post)
 
-    context = {'post': post,
-               # 'is_liked': post.is_liked,
-               # 'total_no_likes': post.users_like.count,
-               }
+    context = {'post': post}
     if request.is_ajax():
         html = render_to_string('posts/like_section.html', context, request=request)
         return JsonResponse({'form': html})
@@ -369,28 +364,6 @@ def register_profile_view(request):
         else:
             messages.error(request, 'Error creating profile')
     return redirect('account:profile')
-
-
-# @login_required
-# def user_list_view(request):
-#     users = User.objects.filter(is_active=True)
-#     return render(request, 'account/user/user-list.html', {'display_section': 'people',
-#                                                            'users': users})
-
-#
-# @login_required
-# def user_detail_view(request, username):
-#     user = get_object_or_404(User, username=username, is_active=True)
-#     if user.followers.filter(id=request.user.id).exists():
-#         is_followed = True
-#     else:
-#         is_followed = False
-#     return render(request, 'account/user/user-detail.html', {'display_section': 'people',
-#                                                              'is_followed': is_followed,
-#                                                              'total_no_followers': user.followers.count,
-#                                                              'all_followers': user.followers.all,
-#                                                              'total_no_following': user.following.count,
-#                                                              'user': user})
 
 
 @login_required

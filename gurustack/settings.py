@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'account.context_processor.check_unread_mssg',
                 'account.context_processor.comment_form_context',
+                'account.context_processor.add_post_context',
             ],
         },
     },

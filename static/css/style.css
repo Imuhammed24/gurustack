@@ -673,6 +673,7 @@ body {
 .create-post-textarea:focus {
     outline: none;
     border: 2px solid lightgray;
+    /*border: 2px solid rgba(173, 216, 230, 0.62);*/
 }
 
 .create-post-textarea {
@@ -681,14 +682,18 @@ body {
     border: unset;
     border-radius: 5px;
     clear-side: right;
-    overflow: hidden;
+    overflow-y: scroll;
     resize: none;
     width: 85%;
     min-height: 70px;
     max-height: 250px;
     padding: 9px 7px;
     box-shadow: rgba(102, 141, 255, 0.07) 0px 2px 7px 8px;
+    transition: .7s;
+}
 
+.create-post-textarea:hover{
+    background-color: rgba(173, 216, 230, 0.09);
 }
 
 .create-post-textarea::placeholder {
@@ -813,9 +818,9 @@ body {
 }
 
 .post-uploaded-img {
-    background-color: rgba(173, 216, 230, 0.14);;
+    background-color: rgba(173, 216, 230, 0.14);
     /*border: 1px solid rgba(173, 216, 230, 0.39);*/
-    margin-right: 9px;
+    margin-right: 4px;
     /*max-height: 100px;*/
     /*max-width: 100px;*/
     min-height: 0px;
@@ -824,8 +829,8 @@ body {
 
 #post-uploaded_images_div {
     display: block;
-    margin-bottom: 6px;
-    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 6px;
     /*display: none;*/
 }
 
@@ -859,6 +864,22 @@ body {
     clear: none;
     /*padding-bottom: 10px;*/
     transition: .9s;
+}
+
+#share-post-dropup{
+    z-index: +1;
+    /*background-color: rgba(25, 25, 112, 0.51);*/
+    background-color: rgba(25, 25, 112, 0.83);
+    padding: 0 5px;
+    width: fit-content;
+}
+
+#share-post-dropup li a{
+    color: white;
+}
+
+#share-post-dropup li a:hover{
+    background-color: darkorange;
 }
 
 #post-wrapper:hover {
@@ -2185,13 +2206,13 @@ div * {
 }
 
 #green_light{
-    padding: 5.5px;
-    /*background-color: rgba(0, 128, 0, 0.56);*/
-    background-color: rgba(25, 25, 112, 0.57);
+    padding: 5px;
+    background-color: rgba(0, 128, 0, 0.56);
+    /*background-color: rgba(25, 25, 112, 0.57);*/
     border-radius: 50%;
     height: 2px;
     width: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 1.5px;
     margin-left: 4.5px;
 }
 
@@ -2224,6 +2245,8 @@ div * {
     width: 90%;
     padding-top: 0;
     margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 5px;
 }
 
 #tags-span p .selectize-control{
@@ -2252,7 +2275,8 @@ div * {
 
 #add-post-modal-content {
     width: 35%;
-    height: 75%;
+    max-height: 75%;
+    min-height: 50%;
     margin: 40px auto 40px auto;
     background-color: white;
     padding: 15px;
