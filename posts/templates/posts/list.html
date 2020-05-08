@@ -140,7 +140,11 @@
                     <small class="d-block text-muted"><span class="text-dark">Liked by</span> {% for user in post.users_like.all%} {%if forloop.last and not forloop.first %} and {% endif %} @{{ user }}{%if not forloop.last%},{% endif %} {% endfor%}</small>
                     {% endif %}
 
-
+                    {% if request.user == post.user %}
+                    <div>
+                        <a class="btn bg-success float-right" href="#">Edit Post</a>
+                    </div>
+                    {% endif %}
 
                 </div>
             </div>

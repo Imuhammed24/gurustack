@@ -878,8 +878,13 @@ body {
     color: white;
 }
 
-#share-post-dropup li a:hover{
-    background-color: darkorange;
+#share-post-dropup li:hover{
+    background-color: lightblue;
+}
+
+#share-post-dropup li{
+    width: fit-content;
+    transition: .5s;
 }
 
 #post-wrapper:hover {
