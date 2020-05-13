@@ -29,6 +29,7 @@ class ImageForm(forms.ModelForm):
                                                                     'hidden': True,
                                                                     'onchange': "loadFile(event);",
                                                                     'id': 'image',
+                                                                    'class': 'image',
                                                                     'accept': 'image/gif, image/jpeg, image/jpg, image/png'}))
 
     class Meta:

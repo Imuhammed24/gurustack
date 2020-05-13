@@ -38,7 +38,7 @@
             </li>
             <li><img src="{% static 'svg/more.svg' %}" alt="">More</li>
         </ul>
-        {% include 'posts/post/add_post_modal.html' %}
+        {% include 'posts/post/add_post_modal.html' with title='Add New Post'%}
         <a class="btn" onclick="document.getElementById('add-post-modal').style.display='block'" id="new-post-a">New Post</a>
     </div>
 

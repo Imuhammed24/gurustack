@@ -827,7 +827,7 @@ body {
     min-width: 0px;
 }
 
-#post-uploaded_images_div {
+.post-uploaded_images_div {
     display: block;
     margin-right: 10px;
     line-height: 6px;
@@ -1554,7 +1554,7 @@ button {
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
-#edit-profile_modal, #add-post-modal{
+#edit-profile_modal, #add-post-modal, #edit-post-modal{
     display: none;
 }
 
@@ -2239,12 +2239,12 @@ div * {
 /*#############################################################################*/
 /*#############################################################################*/
 
-#add-post-modal-tags-span{
+#add-post-modal-tags-span, #edit-post-modal-tags-span{
     overflow: visible;
     clear: both;
 }
 
-#add-post-modal-tags-span p{
+#add-post-modal-tags-span p, #edit-post-modal-tags-span p{
     display: inline;
     float: left;
     width: 90%;
@@ -2258,7 +2258,16 @@ div * {
     width: 95.5%;
 }
 
-#add-post-modal-tags-span p .selectize-control{
+#edit-post-modal-tags-span p .selectize-control, #edit-post-modal-tags-span p div input, #edit-post-modal-tags-span p{
+    width: 100%;
+}
+
+#edit-post-modal-tags-span p{
+    padding-left: 2px;
+    padding-right: 3px;
+}
+
+#add-post-modal-tags-span p .selectize-control, #edit-post-modal-tags-span p .selectize-control{
     padding: 0;
     margin-top: 0;
 }
@@ -2278,7 +2287,7 @@ div * {
 /*    z-index: +1;*/
 /*}*/
 
-#add-post-modal-content {
+#add-post-modal-content, #edit-post-modal-content {
     width: 35%;
     max-height: 75%;
     min-height: 50%;

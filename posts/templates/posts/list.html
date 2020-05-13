@@ -142,7 +142,8 @@
 
                     {% if request.user == post.user %}
                     <div>
-                        <a class="btn bg-success float-right" href="#">Edit Post</a>
+                        <a class="btn bg-success float-right" onclick="document.getElementById('edit-post-modal').style.display='block'">Edit Post</a>
+                        {% include 'posts/post/edit-post-modal.html' %}
                     </div>
                     {% endif %}
 

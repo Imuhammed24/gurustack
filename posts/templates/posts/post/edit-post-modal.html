@@ -1,0 +1,49 @@
+{% load static %}
+<div id="edit-post-modal" class="modal fade-in">
+    <div id="edit-post-modal-content">
+         <header class="edit-modal-header">
+            <span onclick="document.getElementById('edit-post-modal').style.display='none'"
+                  class="w3-button edit-pg-modal-close-btn w3-large w3-display-topright">&times;</span>
+            <h4>Edit Post</h4>
+        </header>
+
+<!--        card-footer class below makes the modal popup to look strangely beautiful-->
+        <div class="overflow-nd-clear card-footer" id="add-modal-content">
+            <form method="post" action="{% url 'posts:create-post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <textarea class="create-post-textarea w-100 ml-0 d-block mb-2" name="article" id="post"
+                          placeholder="What's on your mind{% if request.user.last_name %}, {{ request.user.last_name }}{% endif %}?"></textarea>
+
+                <div class="overflow-nd-clear" id="edit-post-modal-tags-span">
+                    {{ edit_tags_form.as_p }}
+
+<!--                <label id="add-post-image-label" class="d-inline float-left mr-0" title="Upload an image" for="image">-->
+<!--                    <img class="upload-img-img" src="{% static 'svg/upload-img.svg' %}" alt="upload image">-->
+<!--                    <span class="upload-img-txt ml-1"></span>-->
+<!--                </label>-->
+                </div>
+                {{ edit_image_form.management_form }}
+
+                <div class="d-block pb-3" id="post-uploaded_images_div">
+                    <img class="post-uploaded-img pb-1" id="output1"/>
+                    <img class="post-uploaded-img pb-1" id="output2"/>
+                    <img class="post-uploaded-img pb-1" id="output3"/>
+                    <img class="post-uploaded-img pb-1" id="output4"/>
+                    <img class="post-uploaded-img pb-1" id="output5"/>
+                </div>
+
+                <div>
+                    <input type="submit" value="save" class="overflow-nd-clear submit-create-post float-left mt-2 mb-2">
+                </div>
+
+            </form>
+        </div>
+
+        <div class="overflow-nd-clear">
+            <hr>
+            guruStack
+        </div>
+
+    </div>
+</div>

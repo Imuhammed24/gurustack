@@ -37,7 +37,7 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post')
-    article = models.CharField(max_length=450)
+    article = models.CharField(max_length=450, blank=True, null=True)
     slug = models.CharField(max_length=200, blank=True)
     created = models.DateTimeField(auto_now_add=True, db_index=True, null=True)
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
@@ -50,11 +50,11 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.article[:10])
+            self.slug = slugify(self.article[:15])
             super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.article[:10]
+        return self.slug
 
     def get_absolute_url(self):
         return reverse('posts:detail', args=[self.id, self.slug])
@@ -79,7 +79,7 @@ class Tag(models.Model):
 
 
 def get_image_filename(instance, filename):
-    slug = instance.post.slug
+    slug = instance.post.slug + str(instance.post.id)
     return f"post_images/{slug}-{filename}"
 
 
