@@ -52,13 +52,13 @@ class ChatConsumer(WebsocketConsumer):
             message.save()
             MessageProperty.objects.create(message=message, sender=author, receiver=recipient)
 
-            conversation = Conversation.objects.filter(participants__in=[author]).get(participants__in=[recipient])
-            if conversation:
+            try:
+                conversation = Conversation.objects.filter(participants__in=[author]).get(participants__in=[recipient])
                 conversation.last_message = data['message']
                 conversation.last_by = str(author_name)
                 conversation.save()
 
-            else:
+            except:
                 conversation = Conversation(last_message=data['message'], last_by=str(author_name))
                 participants = User.objects.filter(username__in=[author_name, recipient_name])
                 conversation.save()
@@ -118,6 +118,7 @@ class ChatConsumer(WebsocketConsumer):
 
         self.accept()
 
+
     def disconnect(self, close_code):
         # Leave room group
         async_to_sync(self.channel_layer.group_discard)(
@@ -125,11 +126,13 @@ class ChatConsumer(WebsocketConsumer):
             self.channel_name
         )
 
+
     # Receive message from WebSocket
     def receive(self, text_data):
         data = json.loads(text_data)
         self.commands[data['command']](self, data)
         # message = data['message']
+
 
     def send_chat_message(self, message):
         # Send message to room group
@@ -140,6 +143,7 @@ class ChatConsumer(WebsocketConsumer):
                 'message': message
             }
         )
+
 
     def send_message(self, message):
         self.send(text_data=json.dumps(message))

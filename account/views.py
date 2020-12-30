@@ -1,4 +1,3 @@
-from dateutil.parser import parse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -13,7 +12,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.http import require_POST
 
-from account.models import Contact
+from account.models import Contact, Profile
 from account.tokens import account_activation_token
 from actions.models import Action
 from actions.utils import create_action
@@ -137,20 +136,20 @@ def messages_view(request, room_name=None):
     if room_name is not None:
         room_name_4_decode = base64_decode(room_name)
         extracted_timezones = room_name_4_decode.decode("utf-8")
-        split_timezones = extracted_timezones.split('secnd')
-        target_date = None
+        split_secrets = extracted_timezones.split('secnd')
+        target_secret = None
         request_legitimacy = False
 
-        for date in split_timezones:
-            parsed_date = parse(date)
-            if request.user.date_joined != parsed_date:
-                target_date = parsed_date
+        for code in split_secrets:
+            # parsed_date = parse(date)
+            if request.user.profile.secret_code != code:
+                target_secret = code
             else:
                 request_legitimacy = True
         if request_legitimacy is True:
-            user = get_object_or_404(User, date_joined=target_date)
+            profile = get_object_or_404(Profile, secret_code=target_secret)
 
-            context['user'] = user
+            context['user'] = profile.user
             context['room_name'] = room_name
 
             return render(request, 'account_base.html', context)

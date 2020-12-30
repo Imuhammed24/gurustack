@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -47,6 +49,7 @@ class Profile(models.Model):
     year_of_entrance = models.CharField(max_length=10, default='2020', choices=YEAR_OF_ENTRANCE, blank=True)
     year_of_graduation = models.CharField(max_length=10, blank=True, null=True, choices=YEAR_OF_GRADUATION)
     email_confirmed = models.BooleanField(default=False)
+    secret_code = models.CharField(null=True, blank=True, max_length=32, unique=True)
 
     def __str__(self):
         return f'profile for user {self.user.username}'
@@ -54,6 +57,15 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         if self.profile_photo:
             self.thumbnail = make_thumbnail(self.profile_photo, size=(90, 90))
+        if not self.secret_code:
+            profiles = Profile.objects.all()
+            codes = [code.secret_code for code in profiles]
+            confirm_new_secret = False
+            while not confirm_new_secret:
+                new_secret = random.randint(1000000000000000000000000000000, 99999999999999999999999999999999)
+                if new_secret not in codes:
+                    self.secret_code = new_secret
+                    confirm_new_secret = True
         super().save(*args, **kwargs)
 
 

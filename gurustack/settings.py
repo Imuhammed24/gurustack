@@ -144,6 +144,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]

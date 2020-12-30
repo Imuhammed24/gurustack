@@ -25,11 +25,11 @@ def encode_url(request_user, target_user):
     target_user = User.objects.get(username=target_user)
 
     if request_user.date_joined > target_user.date_joined:
-        encode_string = str(request_user.date_joined) + 'secnd' + str(target_user.date_joined)
+        encode_string = str(request_user.profile.secret_code) + 'secnd' + str(target_user.profile.secret_code)
     else:
-        encode_string = str(target_user.date_joined) + 'secnd' + str(request_user.date_joined)
+        encode_string = str(target_user.profile.secret_code) + 'secnd' + str(request_user.profile.secret_code)
 
-    return str(base64_encode(bytes(encode_string, 'utf-8')))[2:-2]
+    return str(base64_encode(bytes(encode_string, 'utf-8')))[2:-1]
 
 
 @register.simple_tag
