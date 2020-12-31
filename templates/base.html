@@ -20,6 +20,21 @@
     <script type="text/javascript" src="{% static 'jquery/jquery-ui.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'ajax/popper.min.js' %}"></script>
     <script type="text/javascript" src="/static/taggit_selectize/js/selectize.js"></script>
+    <script type="text/javascript">
+        setInterval("my_function();",2000);
+        function my_function(){
+            if ($('#message-li')){
+                $('#message-li').load(location.href + ' #message-on-sidebar');
+            }
+
+            if ($('#active-conversations-div')){
+                // $('#active-conversations-div').load(location.href + ' #conversation-user-wrapper');
+                $('#chatSection').load(location.href + ' #conversation-user-wrapper');
+            }
+
+            // $('#single-conversation-div').load(location.href + ' #conversation-user-wrapper')[0]['children']['conversation-user-wrapper'].style.display = 'none';
+        }
+    </script>
 
 </head>
 
@@ -41,3 +56,4 @@
 
 </body>
 </html>
+/

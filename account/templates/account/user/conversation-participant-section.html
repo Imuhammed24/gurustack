@@ -1,9 +1,9 @@
 {% load static %}
 {% load encoded_url %}
 
-<div id="small-user-list-div" class="chat-box overflow-hidden clearfix chat-card">
-    <div id="small-user-list-div-content" class="overflow-hidden pointer-cursor {% if recipient == user %}active-conversation{% endif %} clearfix" onclick="location.href='/account/messages/{% encode_url request.user recipient %}';">
-        <div class="overflow-nd-clear list-of-conversation float-left clearfix">
+<div id="single-conversation-div" class="chat-box single-conversation-div overflow-hidden clearfix chat-card">
+    <div id="conversation-user-wrapper" class="overflow-hidden conversation-user-list pointer-cursor {% if recipient == user %}active-conversation{% endif %} clearfix" onclick="location.href='/account/messages/{% encode_url request.user recipient %}';">
+        <div id="single" class="overflow-nd-clear list-of-conversation float-left clearfix">
             <div class="d-inline float-left mr-2 overflow-hidden clearfix">
                 {% if recipient.profile.profile_photo %}
                 <img src="{{ recipient.profile.profile_photo.url }}" alt="" class="d-inline who-to-follow-img rounded-circle">

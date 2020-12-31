@@ -25,9 +25,9 @@
                 <img src="{% static 'svg/notification.svg' %}" alt="">Notifications
                 </a>
             </li>
-            <li {% if unread_message %}title="{{total_messages}} New messages from {{new_chat_count}} {{new_chat_count|pluralize}}chat"{% else %}title="Messages"{% endif%}>
-                <a class="no-txt-deco-li {% if display_section == 'messages' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:messages' %}">
-                    <img src="{% static 'svg/messages.svg' %}" alt="">{% if unread_message %}Messages<img src="" id="green_light">{% else %}Messages{% endif %}
+            <li id="message-li" {% if unread_message %}title="{{total_messages}} New messages from {{new_chat_count}} {{new_chat_count|pluralize}}chat"{% else %}title="Messages"{% endif%}>
+                <a id="message-on-sidebar" class="no-txt-deco-li {% if display_section == 'messages' %}active-section{% else %}text-dark{% endif %}" href="{% url 'account:messages' %}">
+                    <img src="{% static 'svg/messages.svg' %}" alt="">{% if unread_message %}Messages <small>({{new_chat_count}})</small><img src="" id="green_light">{% else %}Messages{% endif %}
                 </a>
             </li>
             <li><img src="{% static 'svg/bookmark.svg' %}" alt="">Bookmarks</li>

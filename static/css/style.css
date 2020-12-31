@@ -1114,6 +1114,20 @@ body {
     padding: 2px;
 }
 
+#conversation-user-wrapper{
+    display: block;
+    border: 1px solid rgba(173, 216, 230, 0.33);
+    transition: .5s;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#conversation-user-wrapper:hover{
+    background-color: rgba(173, 216, 230, 0.14);
+    padding: 2px;
+}
+
 .username-on-users-list{
     font-size: 16px;
 }
@@ -2087,7 +2101,7 @@ button {
     overflow-x: hidden;
     overflow-y: scroll;
     clear: none;
-    height: 89%;
+    height: 86vh;
     width: 100%;
     background-color: rgba(226, 230, 234, 0.25);
     padding: 3px 3px 3px 5px;

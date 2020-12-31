@@ -21,7 +21,7 @@
 
                 <div id="active-conversations-div" class="">
                     <h6>Active Conversations {% if unread_message %}<small class="very-small-text font-weight-bold">({{new_chat_count}} unread)</small>{% endif %}</h6>
-                    <div>
+                    <div id="chatSection">
                         {% if request.user.conversations %}
                         {% for chat in request.user.conversations.all %}
                             {% include 'account/user/conversations-div.html' %}
