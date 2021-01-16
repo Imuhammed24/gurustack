@@ -1,0 +1,1372 @@
+[
+{
+  "model": "chat.message",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "content": "hi",
+    "timestamp": "2020-12-30T14:39:06.713Z",
+    "recipient": 2
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 2,
+  "fields": {
+    "author": 2,
+    "content": "Hello",
+    "timestamp": "2020-12-30T14:40:26.126Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 3,
+  "fields": {
+    "author": 2,
+    "content": "How are you?",
+    "timestamp": "2020-12-30T14:43:12.512Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 4,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T14:45:33.116Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 5,
+  "fields": {
+    "author": 1,
+    "content": "Heyo",
+    "timestamp": "2020-12-30T14:45:40.931Z",
+    "recipient": 2
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 6,
+  "fields": {
+    "author": 1,
+    "content": "Holla",
+    "timestamp": "2020-12-30T14:45:48.583Z",
+    "recipient": 2
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 7,
+  "fields": {
+    "author": 2,
+    "content": "eyeyeye",
+    "timestamp": "2020-12-30T14:45:54.268Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 8,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T14:47:45.851Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 9,
+  "fields": {
+    "author": 2,
+    "content": "hiiiiii",
+    "timestamp": "2020-12-30T14:47:55.665Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 10,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T15:29:37.340Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 11,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T15:30:15.185Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 12,
+  "fields": {
+    "author": 2,
+    "content": "hey",
+    "timestamp": "2020-12-30T15:31:24.270Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 13,
+  "fields": {
+    "author": 2,
+    "content": "heyy",
+    "timestamp": "2020-12-30T15:33:05.097Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 14,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T15:33:49.862Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 15,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T15:39:16.035Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 16,
+  "fields": {
+    "author": 3,
+    "content": "helloooooooooooooooooooooo!",
+    "timestamp": "2020-12-30T16:04:38.317Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 17,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T16:27:53.565Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 18,
+  "fields": {
+    "author": 3,
+    "content": "lk",
+    "timestamp": "2020-12-30T16:44:15.564Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 19,
+  "fields": {
+    "author": 3,
+    "content": "ii",
+    "timestamp": "2020-12-30T16:44:32.913Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 20,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T16:44:59.056Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 21,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T16:50:20.325Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 22,
+  "fields": {
+    "author": 3,
+    "content": "f",
+    "timestamp": "2020-12-30T16:55:49.592Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 23,
+  "fields": {
+    "author": 3,
+    "content": "op",
+    "timestamp": "2020-12-30T16:56:43.244Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 24,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T17:06:12.119Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 25,
+  "fields": {
+    "author": 3,
+    "content": "hhooo",
+    "timestamp": "2020-12-30T17:06:31.311Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 26,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T17:07:28.573Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 27,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T18:44:50.705Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 28,
+  "fields": {
+    "author": 2,
+    "content": "heyo",
+    "timestamp": "2020-12-30T18:45:35.588Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 29,
+  "fields": {
+    "author": 2,
+    "content": "jiji",
+    "timestamp": "2020-12-30T18:49:03.205Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 30,
+  "fields": {
+    "author": 1,
+    "content": "hi",
+    "timestamp": "2020-12-30T18:51:08.837Z",
+    "recipient": 2
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 31,
+  "fields": {
+    "author": 3,
+    "content": "hi",
+    "timestamp": "2020-12-30T18:55:17.479Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 32,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T18:56:39.393Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 33,
+  "fields": {
+    "author": 2,
+    "content": "ki",
+    "timestamp": "2020-12-30T18:58:44.846Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 34,
+  "fields": {
+    "author": 1,
+    "content": "ji",
+    "timestamp": "2020-12-30T19:01:22.912Z",
+    "recipient": 3
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 35,
+  "fields": {
+    "author": 2,
+    "content": "hi",
+    "timestamp": "2020-12-30T21:01:41.708Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 36,
+  "fields": {
+    "author": 2,
+    "content": "ji",
+    "timestamp": "2020-12-30T21:02:08.963Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 37,
+  "fields": {
+    "author": 2,
+    "content": "po",
+    "timestamp": "2020-12-31T09:14:09.749Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 38,
+  "fields": {
+    "author": 2,
+    "content": "ok",
+    "timestamp": "2020-12-31T09:15:26.977Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 39,
+  "fields": {
+    "author": 2,
+    "content": "ok",
+    "timestamp": "2020-12-31T09:15:34.643Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 40,
+  "fields": {
+    "author": 2,
+    "content": "kooo",
+    "timestamp": "2020-12-31T10:00:37.271Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 41,
+  "fields": {
+    "author": 2,
+    "content": "kpk",
+    "timestamp": "2020-12-31T10:00:58.949Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 42,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:01:06.464Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 43,
+  "fields": {
+    "author": 3,
+    "content": "hohohohoh",
+    "timestamp": "2020-12-31T10:02:08.246Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 44,
+  "fields": {
+    "author": 3,
+    "content": "koko",
+    "timestamp": "2020-12-31T10:02:31.343Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 45,
+  "fields": {
+    "author": 3,
+    "content": "koko",
+    "timestamp": "2020-12-31T10:02:59.016Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 46,
+  "fields": {
+    "author": 3,
+    "content": "polop",
+    "timestamp": "2020-12-31T10:03:42.187Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 47,
+  "fields": {
+    "author": 3,
+    "content": "pol",
+    "timestamp": "2020-12-31T10:04:19.143Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 48,
+  "fields": {
+    "author": 2,
+    "content": "koko",
+    "timestamp": "2020-12-31T10:07:05.124Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 49,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:07:59.488Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 50,
+  "fields": {
+    "author": 2,
+    "content": "koko",
+    "timestamp": "2020-12-31T10:08:31.299Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 51,
+  "fields": {
+    "author": 2,
+    "content": "pop",
+    "timestamp": "2020-12-31T10:11:35.657Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 52,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:11:49.550Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 53,
+  "fields": {
+    "author": 2,
+    "content": "05050500",
+    "timestamp": "2020-12-31T10:12:45.275Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 54,
+  "fields": {
+    "author": 2,
+    "content": "kiki",
+    "timestamp": "2020-12-31T10:12:53.179Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 55,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:13:03.577Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 56,
+  "fields": {
+    "author": 2,
+    "content": "oioi",
+    "timestamp": "2020-12-31T10:13:13.741Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 57,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:13:32.225Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 58,
+  "fields": {
+    "author": 2,
+    "content": "kiop",
+    "timestamp": "2020-12-31T10:13:39.478Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 59,
+  "fields": {
+    "author": 2,
+    "content": "test",
+    "timestamp": "2020-12-31T10:13:45.323Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 60,
+  "fields": {
+    "author": 2,
+    "content": "koip",
+    "timestamp": "2020-12-31T10:14:21.709Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 61,
+  "fields": {
+    "author": 2,
+    "content": "popo",
+    "timestamp": "2020-12-31T10:14:54.225Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 62,
+  "fields": {
+    "author": 2,
+    "content": "po",
+    "timestamp": "2020-12-31T10:15:23.610Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 63,
+  "fields": {
+    "author": 3,
+    "content": "kop",
+    "timestamp": "2020-12-31T10:16:28.863Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.message",
+  "pk": 64,
+  "fields": {
+    "author": 2,
+    "content": "lolo",
+    "timestamp": "2020-12-31T10:17:00.809Z",
+    "recipient": 1
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 1,
+  "fields": {
+    "message": 1,
+    "receiver": 2,
+    "sender": 1,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:39:07.592Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 2,
+  "fields": {
+    "message": 2,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:40:26.218Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 3,
+  "fields": {
+    "message": 3,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:43:12.659Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 4,
+  "fields": {
+    "message": 4,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:45:33.225Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 5,
+  "fields": {
+    "message": 5,
+    "receiver": 2,
+    "sender": 1,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:45:41.100Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 6,
+  "fields": {
+    "message": 6,
+    "receiver": 2,
+    "sender": 1,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:45:48.694Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 7,
+  "fields": {
+    "message": 7,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:45:54.294Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 8,
+  "fields": {
+    "message": 8,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:47:45.944Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 9,
+  "fields": {
+    "message": 9,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T14:47:55.809Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 10,
+  "fields": {
+    "message": 10,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:29:37.694Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 11,
+  "fields": {
+    "message": 11,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:30:15.278Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 12,
+  "fields": {
+    "message": 12,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:31:24.280Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 13,
+  "fields": {
+    "message": 13,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:33:05.191Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 14,
+  "fields": {
+    "message": 14,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:33:49.960Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 15,
+  "fields": {
+    "message": 15,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T15:39:16.127Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 16,
+  "fields": {
+    "message": 16,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:04:39.109Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 17,
+  "fields": {
+    "message": 17,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:27:53.652Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 18,
+  "fields": {
+    "message": 18,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:44:15.577Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 19,
+  "fields": {
+    "message": 19,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:44:33.378Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 20,
+  "fields": {
+    "message": 20,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:44:59.079Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 21,
+  "fields": {
+    "message": 21,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:50:20.422Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 22,
+  "fields": {
+    "message": 22,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:55:49.684Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 23,
+  "fields": {
+    "message": 23,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T16:56:43.341Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 24,
+  "fields": {
+    "message": 24,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T17:06:12.297Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 25,
+  "fields": {
+    "message": 25,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T17:06:31.615Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 26,
+  "fields": {
+    "message": 26,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T17:07:28.588Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 27,
+  "fields": {
+    "message": 27,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:44:50.800Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 28,
+  "fields": {
+    "message": 28,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:45:35.601Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 29,
+  "fields": {
+    "message": 29,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:49:03.298Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 30,
+  "fields": {
+    "message": 30,
+    "receiver": 2,
+    "sender": 1,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:51:08.917Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 31,
+  "fields": {
+    "message": 31,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:55:17.572Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 32,
+  "fields": {
+    "message": 32,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:56:39.484Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 33,
+  "fields": {
+    "message": 33,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T18:58:44.863Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 34,
+  "fields": {
+    "message": 34,
+    "receiver": 3,
+    "sender": 1,
+    "delivered": true,
+    "timestamp": "2020-12-30T19:01:22.926Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 35,
+  "fields": {
+    "message": 35,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T21:01:42.875Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 36,
+  "fields": {
+    "message": 36,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-30T21:02:09.265Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 37,
+  "fields": {
+    "message": 37,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T09:14:10.728Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 38,
+  "fields": {
+    "message": 38,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T09:15:27.372Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 39,
+  "fields": {
+    "message": 39,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T09:15:34.744Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 40,
+  "fields": {
+    "message": 40,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:00:37.452Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 41,
+  "fields": {
+    "message": 41,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:00:59.256Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 42,
+  "fields": {
+    "message": 42,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:01:06.503Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 43,
+  "fields": {
+    "message": 43,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:02:08.306Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 44,
+  "fields": {
+    "message": 44,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:02:31.557Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 45,
+  "fields": {
+    "message": 45,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:03:00.291Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 46,
+  "fields": {
+    "message": 46,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:03:42.395Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 47,
+  "fields": {
+    "message": 47,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:04:19.770Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 48,
+  "fields": {
+    "message": 48,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:07:05.478Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 49,
+  "fields": {
+    "message": 49,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:07:59.523Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 50,
+  "fields": {
+    "message": 50,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:08:32.576Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 51,
+  "fields": {
+    "message": 51,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:11:36.984Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 52,
+  "fields": {
+    "message": 52,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:11:49.755Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 53,
+  "fields": {
+    "message": 53,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:12:45.325Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 54,
+  "fields": {
+    "message": 54,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:12:53.197Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 55,
+  "fields": {
+    "message": 55,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:13:04.030Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 56,
+  "fields": {
+    "message": 56,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": true,
+    "timestamp": "2020-12-31T10:13:15.230Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 57,
+  "fields": {
+    "message": 57,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:13:32.272Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 58,
+  "fields": {
+    "message": 58,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:13:39.652Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 59,
+  "fields": {
+    "message": 59,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:13:45.357Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 60,
+  "fields": {
+    "message": 60,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:14:22.605Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 61,
+  "fields": {
+    "message": 61,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:14:54.710Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 62,
+  "fields": {
+    "message": 62,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:15:24.493Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 63,
+  "fields": {
+    "message": 63,
+    "receiver": 1,
+    "sender": 3,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:16:29.006Z"
+  }
+},
+{
+  "model": "chat.messageproperty",
+  "pk": 64,
+  "fields": {
+    "message": 64,
+    "receiver": 1,
+    "sender": 2,
+    "delivered": false,
+    "timestamp": "2020-12-31T10:17:01.076Z"
+  }
+},
+{
+  "model": "chat.conversation",
+  "pk": 1,
+  "fields": {
+    "last_message": "lolo",
+    "last_by": "mko",
+    "timestamp": "2020-12-31T10:17:01.150Z",
+    "participants": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "chat.conversation",
+  "pk": 3,
+  "fields": {
+    "last_message": "kop",
+    "last_by": "abdul",
+    "timestamp": "2020-12-31T10:16:29.031Z",
+    "participants": [
+      1,
+      3
+    ]
+  }
+}
+]

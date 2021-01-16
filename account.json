@@ -1,0 +1,77 @@
+[
+{
+  "model": "account.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "gender": "male",
+    "profile_photo": "profile_pictures/pasport2.jpeg",
+    "bio": "",
+    "phone_number": "",
+    "department": "",
+    "level": null,
+    "staff_status": false,
+    "verified": false,
+    "year_of_entrance": "",
+    "year_of_graduation": null,
+    "email_confirmed": false,
+    "secret_code": "23443642713100199799547602799833"
+  }
+},
+{
+  "model": "account.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "gender": "male",
+    "profile_photo": "",
+    "bio": "",
+    "phone_number": "",
+    "department": "",
+    "level": null,
+    "staff_status": false,
+    "verified": false,
+    "year_of_entrance": "",
+    "year_of_graduation": null,
+    "email_confirmed": false,
+    "secret_code": "98431552208758601054016792435807"
+  }
+},
+{
+  "model": "account.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "gender": "male",
+    "profile_photo": "profile_pictures/pasport.jpeg",
+    "bio": "",
+    "phone_number": "",
+    "department": "",
+    "level": null,
+    "staff_status": false,
+    "verified": false,
+    "year_of_entrance": "",
+    "year_of_graduation": null,
+    "email_confirmed": false,
+    "secret_code": "8494559082126226892156441209228"
+  }
+},
+{
+  "model": "account.contact",
+  "pk": 1,
+  "fields": {
+    "user_from": 3,
+    "user_to": 1,
+    "created": "2020-12-29T11:15:41.559Z"
+  }
+},
+{
+  "model": "account.contact",
+  "pk": 2,
+  "fields": {
+    "user_from": 2,
+    "user_to": 1,
+    "created": "2020-12-30T14:27:27.515Z"
+  }
+}
+]
