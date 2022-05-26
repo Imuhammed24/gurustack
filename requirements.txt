@@ -36,7 +36,7 @@ service-identity==18.1.0
 six==1.15.0
 sqlparse==0.4.1
 taggit-selectize==2.10.0
-Twisted==20.3.0
+Twisted==22.4.0
 txaio==20.4.1
 urllib3==1.25.11
 zope.interface==5.2.0
